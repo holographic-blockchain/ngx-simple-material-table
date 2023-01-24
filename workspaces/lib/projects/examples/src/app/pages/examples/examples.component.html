@@ -1,0 +1,242 @@
+
+<mat-accordion>
+    <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+            <mat-panel-title>Basic Table Displaying Object Properties</mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>
+            Binds to an array of objects, displaying the object property values as-is. For best results use a <code>MatTableDataSource</code>
+            which includes default sorting and pagination(???).
+        </p>
+        <mat-tab-group>
+            <mat-tab label="Example">
+                <hb-mat-table [gridData]="matGridData01">
+                    <hb-mat-table-column name="string1"></hb-mat-table-column>
+                    <hb-mat-table-column name="string2"></hb-mat-table-column>
+                    <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
+                    <hb-mat-table-column name="number1" dataType="number"></hb-mat-table-column>
+                    <hb-mat-table-column name="dateDate" dataType="date"></hb-mat-table-column>
+                    <hb-mat-table-column name="dateString" dataType="date"></hb-mat-table-column>
+                </hb-mat-table>
+
+            </mat-tab>
+            <mat-tab label="Html">
+                <code>
+                    <pre>
+&lt;hb-mat-table [gridData]="matGridData"&gt;
+    &lt;hb-mat-table-column name="string1"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="string2"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="stringWithALongName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="number1" dataType="number"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="dateDate" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="dateString" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
+&lt;/hb-mat-table&gt;
+</pre>
+                </code>
+            </mat-tab>
+            <mat-tab label="TypeScript">
+                <code>
+                    <pre>
+gridData: DataEntity[] = ...;
+matGridData: MatTableDataSource&lt;DataEntity&gt;;
+
+constructor() {{ '{' }}
+    this.matGridData = new MatTableDataSource&lt;DataEntity&gt;(this.gridData);
+}
+
+class DataEntity {{ '{' }}
+    string1: string | null = null;
+    string2: string | null = null;
+    stringWithALongName: string | null = null;
+    number1: number | null = null;
+    dateDate: Date | number | null = null;
+    dateString: string | null = null;
+}
+
+</pre>
+                </code>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Custom Column Rendering</mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>
+            To display something other than the straight property value, add a template to the column definition. The variable available contains
+            the object for the row.
+        </p>
+        <hb-mat-table [gridData]="matGridData02">
+            <hb-mat-table-column name="string1">
+                <div *hbMatTableColumnTemplate="let data">{{ data.string1 | uppercase }}</div>
+            </hb-mat-table-column>
+            <hb-mat-table-column name="string2"></hb-mat-table-column>
+            <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
+            <hb-mat-table-column name="number1" dataType="number"></hb-mat-table-column>
+            <hb-mat-table-column name="dateDate" dataType="date"></hb-mat-table-column>
+            <hb-mat-table-column name="dateString" dataType="date"></hb-mat-table-column>
+        </hb-mat-table>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Completely Derived Column</mat-panel-title>
+        </mat-expansion-panel-header>
+        <hb-mat-table [gridData]="matGridData03">
+            <hb-mat-table-column name="string1"></hb-mat-table-column>
+            <hb-mat-table-column name="string2"></hb-mat-table-column>
+            <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
+            <hb-mat-table-column name="number1" dataType="number"></hb-mat-table-column>
+            <hb-mat-table-column name="dateDate" dataType="date"></hb-mat-table-column>
+            <hb-mat-table-column name="dateString" dataType="date"></hb-mat-table-column>
+            <hb-mat-table-column name="derived">
+                <div *hbMatTableColumnTemplate="let data">{{ data.string1 }} :: {{ data.number1 }}</div>
+            </hb-mat-table-column>
+        </hb-mat-table>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Custom Number/Date Formatting</mat-panel-title>
+        </mat-expansion-panel-header>
+        <hb-mat-table [gridData]="matGridData04">
+            <hb-mat-table-column name="string1"></hb-mat-table-column>
+            <hb-mat-table-column name="string2"></hb-mat-table-column>
+            <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
+            <hb-mat-table-column name="number1" dataType="number" dataFormat="1.1-1"></hb-mat-table-column>
+            <hb-mat-table-column name="dateDate" dataType="date" dataFormat="medium"></hb-mat-table-column>
+            <hb-mat-table-column name="dateString" dataType="date"></hb-mat-table-column>
+        </hb-mat-table>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Only Display Some Columns</mat-panel-title>
+        </mat-expansion-panel-header>
+        <hb-mat-table [gridData]="matGridData05"
+                      [displayedColumns]="gridBasicColumns">
+            <hb-mat-table-column name="string1"></hb-mat-table-column>
+            <hb-mat-table-column name="string2"></hb-mat-table-column>
+            <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
+            <hb-mat-table-column name="number1" dataType="number"></hb-mat-table-column>
+            <hb-mat-table-column name="dateDate" dataType="date"></hb-mat-table-column>
+            <hb-mat-table-column name="dateString" dataType="date"></hb-mat-table-column>
+        </hb-mat-table>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Disable Sort on Single Column</mat-panel-title>
+        </mat-expansion-panel-header>
+        <hb-mat-table [gridData]="matGridData06">
+            <hb-mat-table-column name="string1" [canSort]="false"></hb-mat-table-column>
+            <hb-mat-table-column name="string2"></hb-mat-table-column>
+            <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
+            <hb-mat-table-column name="number1" dataType="number"></hb-mat-table-column>
+            <hb-mat-table-column name="dateDate" dataType="date"></hb-mat-table-column>
+            <hb-mat-table-column name="dateString" dataType="date"></hb-mat-table-column>
+        </hb-mat-table>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Disable Sort on Whole Table</mat-panel-title>
+        </mat-expansion-panel-header>
+        <hb-mat-table [gridData]="matGridData07"
+                      [canSort]="false">
+            <hb-mat-table-column name="string1"></hb-mat-table-column>
+            <hb-mat-table-column name="string2"></hb-mat-table-column>
+            <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
+            <hb-mat-table-column name="number1" dataType="number"></hb-mat-table-column>
+            <hb-mat-table-column name="dateDate" dataType="date"></hb-mat-table-column>
+            <hb-mat-table-column name="dateString" dataType="date"></hb-mat-table-column>
+        </hb-mat-table>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Custom Header Text</mat-panel-title>
+        </mat-expansion-panel-header>
+        <hb-mat-table [gridData]="matGridData08">
+            <hb-mat-table-column name="string1" caption="Custom String"></hb-mat-table-column>
+            <hb-mat-table-column name="string2"></hb-mat-table-column>
+            <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
+            <hb-mat-table-column name="number1" dataType="number"></hb-mat-table-column>
+            <hb-mat-table-column name="dateDate" dataType="date"></hb-mat-table-column>
+            <hb-mat-table-column name="dateString" dataType="date"></hb-mat-table-column>
+        </hb-mat-table>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Custom Sorting</mat-panel-title>
+        </mat-expansion-panel-header>
+        <hb-mat-table [gridData]="matGridData09">
+            <hb-mat-table-column name="string1"></hb-mat-table-column>
+            <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
+            <hb-mat-table-column name="number1" dataType="number"></hb-mat-table-column>
+            <hb-mat-table-column name="dateDate" dataType="date"></hb-mat-table-column>
+            <hb-mat-table-column name="dateString" dataType="date"></hb-mat-table-column>
+            <hb-mat-table-column name="derived">
+                <div *hbMatTableColumnTemplate="let data">{{ data.string1 }} :: {{ data.number1 }}</div>
+            </hb-mat-table-column>
+        </hb-mat-table>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Table-level Filtering</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-form-field>
+            <mat-label>Filter Data</mat-label>
+            <input matInput type="text" [(ngModel)]="gridFilter10" />
+        </mat-form-field>
+
+        <hb-mat-table [gridData]="matGridData10">
+            <hb-mat-table-column name="string1"></hb-mat-table-column>
+            <hb-mat-table-column name="string2"></hb-mat-table-column>
+            <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
+            <hb-mat-table-column name="number1" dataType="number"></hb-mat-table-column>
+            <hb-mat-table-column name="dateDate" dataType="date"></hb-mat-table-column>
+            <hb-mat-table-column name="dateString" dataType="date"></hb-mat-table-column>
+        </hb-mat-table>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Footer Row</mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>no data passed to the footer. can use component variables</p>
+        <hb-mat-table [gridData]="matGridData11"
+                      [showFooter]="true">
+            <hb-mat-table-column name="string1">
+                <div *hbMatTableFooterTemplate>Totals::</div>
+            </hb-mat-table-column>
+            <hb-mat-table-column name="string2"></hb-mat-table-column>
+            <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
+            <hb-mat-table-column name="number1" dataType="number">
+                <div *hbMatTableFooterTemplate>{{ sampleFooterValue | number }}</div>
+            </hb-mat-table-column>
+            <hb-mat-table-column name="dateDate" dataType="date"></hb-mat-table-column>
+            <hb-mat-table-column name="dateString" dataType="date"></hb-mat-table-column>
+        </hb-mat-table>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Sticky Header Row</mat-panel-title>
+        </mat-expansion-panel-header>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Fixed Column(s)</mat-panel-title>
+        </mat-expansion-panel-header>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Single Row Selection</mat-panel-title>
+        </mat-expansion-panel-header>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Mutliple Row Selection</mat-panel-title>
+        </mat-expansion-panel-header>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Pagination</mat-panel-title>
+        </mat-expansion-panel-header>
+    </mat-expansion-panel>
+</mat-accordion>
+
+
