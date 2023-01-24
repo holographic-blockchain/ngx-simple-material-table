@@ -6,7 +6,120 @@
     </ng-container>
 
     <ng-container *ngFor="let col of tableColumns">
-        <ng-container [matColumnDef]="col.name">
+        <!-- Note: the content cannot be put into a template because the column def needs to find the header, cell and footer defs
+            directly inside it. Putting it in a template (outside the column def) results in errors. So the column def content is duplicated. -->
+        <ng-container *ngIf="col.isStickyStart">
+            <ng-container [matColumnDef]="col.name" sticky>
+                <ng-container *ngIf="canSort && col.canSort; else noSortHeader">
+                    <th mat-header-cell mat-sort-header *matHeaderCellDef>{{ col.caption ?? col.name | hbMatTableColumnHeader }}</th>
+                </ng-container>
+                <ng-template #noSortHeader>
+                    <th mat-header-cell *matHeaderCellDef>{{ col.caption ?? col.name | hbMatTableColumnHeader }}</th>
+                </ng-template>
+
+                <td mat-cell *matCellDef="let rowData">
+                    <ng-container *ngIf="col.cellTemplate">
+                        <ng-container *ngTemplateOutlet="col.cellTemplate.templateRef; context: { $implicit: rowData }"></ng-container>
+                    </ng-container>
+                    <ng-container *ngIf="!col.cellTemplate" [ngSwitch]="col.dataType">
+                        <ng-container *ngSwitchCase="'string'">
+                            {{ rowData[col.name] }}
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'number'">
+                            {{ rowData[col.name] | number : col.dataFormat }}
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'date'">
+                            {{ rowData[col.name] | date: col.dataFormat }}
+                        </ng-container>
+                    </ng-container>
+                </td>
+
+                <ng-container *ngIf="showFooter">
+                    <td mat-footer-cell *matFooterCellDef>
+                        <ng-container *ngIf="col.footerTemplate">
+                            <ng-container *ngTemplateOutlet="col.footerTemplate.templateRef"></ng-container>
+                        </ng-container>
+                    </td>
+                </ng-container>
+            </ng-container>
+        </ng-container>
+        <ng-container *ngIf="!col.isStickyStart && col.isStickyEnd">
+            <ng-container [matColumnDef]="col.name" stickyEnd>
+                <ng-container *ngIf="canSort && col.canSort; else noSortHeader">
+                    <th mat-header-cell mat-sort-header *matHeaderCellDef>{{ col.caption ?? col.name | hbMatTableColumnHeader }}</th>
+                </ng-container>
+                <ng-template #noSortHeader>
+                    <th mat-header-cell *matHeaderCellDef>{{ col.caption ?? col.name | hbMatTableColumnHeader }}</th>
+                </ng-template>
+
+                <td mat-cell *matCellDef="let rowData">
+                    <ng-container *ngIf="col.cellTemplate">
+                        <ng-container *ngTemplateOutlet="col.cellTemplate.templateRef; context: { $implicit: rowData }"></ng-container>
+                    </ng-container>
+                    <ng-container *ngIf="!col.cellTemplate" [ngSwitch]="col.dataType">
+                        <ng-container *ngSwitchCase="'string'">
+                            {{ rowData[col.name] }}
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'number'">
+                            {{ rowData[col.name] | number : col.dataFormat }}
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'date'">
+                            {{ rowData[col.name] | date: col.dataFormat }}
+                        </ng-container>
+                    </ng-container>
+                </td>
+
+                <ng-container *ngIf="showFooter">
+                    <td mat-footer-cell *matFooterCellDef>
+                        <ng-container *ngIf="col.footerTemplate">
+                            <ng-container *ngTemplateOutlet="col.footerTemplate.templateRef"></ng-container>
+                        </ng-container>
+                    </td>
+                </ng-container>
+            </ng-container>
+        </ng-container>
+        <ng-container *ngIf="!col.isStickyStart && !col.isStickyEnd">
+            <ng-container [matColumnDef]="col.name">
+                <ng-container *ngIf="canSort && col.canSort; else noSortHeader">
+                    <th mat-header-cell mat-sort-header *matHeaderCellDef>{{ col.caption ?? col.name | hbMatTableColumnHeader }}</th>
+                </ng-container>
+                <ng-template #noSortHeader>
+                    <th mat-header-cell *matHeaderCellDef>{{ col.caption ?? col.name | hbMatTableColumnHeader }}</th>
+                </ng-template>
+
+                <td mat-cell *matCellDef="let rowData">
+                    <ng-container *ngIf="col.cellTemplate">
+                        <ng-container *ngTemplateOutlet="col.cellTemplate.templateRef; context: { $implicit: rowData }"></ng-container>
+                    </ng-container>
+                    <ng-container *ngIf="!col.cellTemplate" [ngSwitch]="col.dataType">
+                        <ng-container *ngSwitchCase="'string'">
+                            {{ rowData[col.name] }}
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'number'">
+                            {{ rowData[col.name] | number : col.dataFormat }}
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'date'">
+                            {{ rowData[col.name] | date: col.dataFormat }}
+                        </ng-container>
+                    </ng-container>
+                </td>
+
+                <ng-container *ngIf="showFooter">
+                    <td mat-footer-cell *matFooterCellDef>
+                        <ng-container *ngIf="col.footerTemplate">
+                            <ng-container *ngTemplateOutlet="col.footerTemplate.templateRef"></ng-container>
+                        </ng-container>
+                    </td>
+                </ng-container>
+            </ng-container>
+        </ng-container>
+
+
+
+
+
+
+        <!--<ng-container [matColumnDef]="col.name">
             <ng-container *ngIf="canSort && col.canSort; else noSortHeader">
                 <th mat-header-cell mat-sort-header *matHeaderCellDef>{{ col.caption ?? col.name | hbMatTableColumnHeader }}</th>
             </ng-container>
@@ -38,6 +151,6 @@
                     </ng-container>
                 </td>
             </ng-container>
-        </ng-container>
+        </ng-container>-->
     </ng-container>
 </table>

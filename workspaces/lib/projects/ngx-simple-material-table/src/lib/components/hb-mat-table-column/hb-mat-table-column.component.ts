@@ -13,6 +13,8 @@ export class HbMatTableColumn {
     @Input() dataFormat: string | undefined = undefined;
     @Input() canSort: boolean = true;
     @Input() caption: string | undefined = undefined;
+    @Input() isStickyStart: boolean = false;
+    @Input() isStickyEnd: boolean = false;
 
     @ContentChild(HbMatTableColumnTemplateDirective) cellTemplate: HbMatTableColumnTemplateDirective | undefined = undefined;
     @ContentChild(HbMatTableFooterTemplateDirective) footerTemplate: HbMatTableFooterTemplateDirective | undefined = undefined;
