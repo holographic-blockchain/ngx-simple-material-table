@@ -85,6 +85,11 @@ export class ExamplesComponent {
     matGridData09: MatTableDataSource<DataEntity>;
     matGridData10: MatTableDataSource<DataEntity>;
     matGridData11: MatTableDataSource<DataEntity>;
+    matGridData12: MatTableDataSource<DataEntity>;
+    matGridData13: MatTableDataSource<DataEntity>;
+    matGridData14: MatTableDataSource<DataEntity>;
+    matGridData15: MatTableDataSource<DataEntity>;
+    matGridData16: MatTableDataSource<DataEntity>;
     gridBasicColumns: string[] = ['string1', 'number1', 'dateString'];
     sampleFooterValue: number = 33432432;
 
@@ -128,6 +133,11 @@ export class ExamplesComponent {
         };
         this.matGridData10 = new MatTableDataSource<DataEntity>(this.gridData);
         this.matGridData11 = new MatTableDataSource<DataEntity>(this.gridData);
+        this.matGridData12 = new MatTableDataSource<DataEntity>(this.gridData);
+        this.matGridData13 = new MatTableDataSource<DataEntity>(this.gridData);
+        this.matGridData14 = new MatTableDataSource<DataEntity>(this.gridData);
+        this.matGridData15 = new MatTableDataSource<DataEntity>(this.gridData);
+        this.matGridData16 = new MatTableDataSource<DataEntity>(this.gridData);
     }
 }
 

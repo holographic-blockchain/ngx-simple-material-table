@@ -1,5 +1,5 @@
 <table mat-table [dataSource]="gridData" matSort>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: isHeaderSticky"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     <ng-container *ngIf="showFooter">
         <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>

@@ -13,6 +13,7 @@ export class HbMatTable implements AfterViewInit {
     @Input() gridData: any;
     @Input() canSort: boolean = true;
     @Input() showFooter: boolean = false;
+    @Input() isHeaderSticky: boolean = false;
     @ViewChild(MatSort) sort!: MatSort;
     @ViewChild(MatTable) table!: MatTable<any>;
     @ContentChildren(HbMatTableColumn) tableColumns!: QueryList<HbMatTableColumn>;
