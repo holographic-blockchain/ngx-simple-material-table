@@ -5,8 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build-dev": "ng build examples --configuration development",
-    "watch": "ng build --watch --configuration development",
+    "build-dev": "ng build dev-tests --configuration development",
+    "watch": "ng build dev-tests --watch --configuration development",
     "test": "ng test",
     "build-lib-dev": "ng build ngx-simple-material-table --configuration development",
     "build-lib": "ng build ngx-simple-material-table"
