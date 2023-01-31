@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CdkTableModule } from '@angular/cdk/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 
@@ -26,6 +27,7 @@ import { HbMatTableFooterTemplateDirective } from './directives/hb-mat-table-foo
         CommonModule,
         BrowserAnimationsModule,
         CdkTableModule,
+        MatCheckboxModule,
         MatTableModule,
         MatSortModule,
     ],

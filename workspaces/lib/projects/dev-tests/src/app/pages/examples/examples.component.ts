@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { DateTime } from 'luxon';
+import { HbMatTable } from '../../../../../../dist/ngx-simple-material-table';
 
 @Component({
   selector: 'app-examples',
@@ -101,6 +102,8 @@ export class ExamplesComponent {
         this._gridFilter10 = value;
         this.matGridData10.filter = value;
     }
+
+    @ViewChild('singleSelectTable') table14: HbMatTable | null = null;
 
     constructor() {
         this.matGridData01 = new MatTableDataSource<DataEntity>(this.gridData);

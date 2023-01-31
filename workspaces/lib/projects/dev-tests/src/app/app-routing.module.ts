@@ -1,13 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ExamplesComponent } from './pages/examples/examples.component';
+import { SelectionExamplesComponent } from './pages/selection-examples/selection-examples.component';
 
 const routes: Routes = [
     {
         path: 'examples',
         component: ExamplesComponent,
         title: 'Examples',
-    }
+    },
+    {
+        path: 'row-selection',
+        component: SelectionExamplesComponent,
+        title: 'Row Selection',
+    },
 ];
 
 @NgModule({

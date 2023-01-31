@@ -5,6 +5,32 @@
         <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
     </ng-container>
 
+    <!--
+        The selection column will always be on the left for now. There should be an option for location (start|end) respecting the rtl settings.
+        The column name will always be 'select'.
+    -->
+    <ng-container *ngIf="selectionMode !== 'none'">
+        <ng-container matColumnDef="select">
+            <ng-container *ngIf="selectionMode === 'multiple'; else singleSelectHeader">
+                <th mat-header-cell *matHeaderCellDef>
+                    <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                                  [checked]="selection.hasValue() && isAllSelected()"
+                                  [indeterminate]="selection.hasValue() && !isAllSelected()"></mat-checkbox>
+                </th>
+            </ng-container>
+            <ng-template #singleSelectHeader>
+                <th mat-header-cell *matHeaderCellDef></th>
+            </ng-template>
+            
+            <td mat-cell *matCellDef="let row">
+                <mat-checkbox (click)="$event.stopPropagation()"
+                              (change)="$event ? toggleRowSelection(row) : null"
+                              [checked]="selection.isSelected(row)"></mat-checkbox>
+            </td>
+        </ng-container>
+        
+    </ng-container>
+
     <ng-container *ngFor="let col of tableColumns">
         <!-- Note: the content cannot be put into a template because the column def needs to find the header, cell and footer defs
             directly inside it. Putting it in a template (outside the column def) results in errors. So the column def content is duplicated. -->

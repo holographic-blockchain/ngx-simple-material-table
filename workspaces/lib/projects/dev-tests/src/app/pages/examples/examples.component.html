@@ -1,17 +1,17 @@
 
 <mat-accordion>
-    <mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel>
         <mat-expansion-panel-header>
             <mat-panel-title>Basic Table Displaying Object Properties</mat-panel-title>
         </mat-expansion-panel-header>
-                <hb-mat-table [gridData]="matGridData01">
-                    <hb-mat-table-column name="string1"></hb-mat-table-column>
-                    <hb-mat-table-column name="string2"></hb-mat-table-column>
-                    <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
-                    <hb-mat-table-column name="number1" dataType="number"></hb-mat-table-column>
-                    <hb-mat-table-column name="dateDate" dataType="date"></hb-mat-table-column>
-                    <hb-mat-table-column name="dateString" dataType="date"></hb-mat-table-column>
-                </hb-mat-table>
+        <hb-mat-table [gridData]="matGridData01">
+            <hb-mat-table-column name="string1"></hb-mat-table-column>
+            <hb-mat-table-column name="string2"></hb-mat-table-column>
+            <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
+            <hb-mat-table-column name="number1" dataType="number"></hb-mat-table-column>
+            <hb-mat-table-column name="dateDate" dataType="date"></hb-mat-table-column>
+            <hb-mat-table-column name="dateString" dataType="date"></hb-mat-table-column>
+        </hb-mat-table>
     </mat-expansion-panel>
     <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -192,16 +192,6 @@
                 <hb-mat-table-column name="dateString" dataType="date" [isStickyEnd]="true"></hb-mat-table-column>
             </hb-mat-table>
         </div>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title>Single Row Selection</mat-panel-title>
-        </mat-expansion-panel-header>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title>Mutliple Row Selection</mat-panel-title>
-        </mat-expansion-panel-header>
     </mat-expansion-panel>
     <mat-expansion-panel>
         <mat-expansion-panel-header>

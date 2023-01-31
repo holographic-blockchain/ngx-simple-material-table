@@ -17,11 +17,13 @@ import { AppComponent } from './app.component';
 
 import { NgxSimpleMaterialTableModule } from 'ngx-simple-material-table';
 import { ExamplesComponent } from './pages/examples/examples.component';
+import { SelectionExamplesComponent } from './pages/selection-examples/selection-examples.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        ExamplesComponent
+        ExamplesComponent,
+        SelectionExamplesComponent
     ],
     imports: [
         BrowserModule,
