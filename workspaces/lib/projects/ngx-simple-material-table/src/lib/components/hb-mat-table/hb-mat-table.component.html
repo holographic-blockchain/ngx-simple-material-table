@@ -13,7 +13,8 @@
         <ng-container matColumnDef="select">
             <ng-container *ngIf="selectionMode === 'multiple'; else singleSelectHeader">
                 <th mat-header-cell *matHeaderCellDef>
-                    <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                    <mat-checkbox [color]="selectionColor"
+                                  (change)="$event ? toggleAllRows() : null"
                                   [checked]="selection.hasValue() && isAllSelected()"
                                   [indeterminate]="selection.hasValue() && !isAllSelected()"></mat-checkbox>
                 </th>
@@ -23,7 +24,8 @@
             </ng-template>
             
             <td mat-cell *matCellDef="let row">
-                <mat-checkbox (click)="$event.stopPropagation()"
+                <mat-checkbox [color]="selectionColor"
+                              (click)="$event.stopPropagation()"
                               (change)="$event ? toggleRowSelection(row) : null"
                               [checked]="selection.isSelected(row)"></mat-checkbox>
             </td>

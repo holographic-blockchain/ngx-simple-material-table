@@ -16,6 +16,7 @@ export class HbMatTable implements AfterViewInit {
     @Input() showFooter: boolean = false;
     @Input() isHeaderSticky: boolean = false;
     @Input() selectionMode: HbMatTableSelectionMode = 'none';
+    @Input() selectionColor: HbMatTableSelectionColor | undefined = undefined;
     @ViewChild(MatSort) sort!: MatSort;
     @ViewChild(MatTable) table!: MatTable<any>;
     @ContentChildren(HbMatTableColumn) tableColumns!: QueryList<HbMatTableColumn>;
@@ -71,3 +72,4 @@ export class HbMatTable implements AfterViewInit {
 }
 
 export declare type HbMatTableSelectionMode = 'none' | 'single' | 'multiple';
+export declare type HbMatTableSelectionColor = 'primary' | 'accent' | 'warn';

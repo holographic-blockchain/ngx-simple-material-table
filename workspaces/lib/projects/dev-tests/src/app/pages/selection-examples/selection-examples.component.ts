@@ -18,6 +18,7 @@ export class SelectionExamplesComponent {
 
     @ViewChild('singleSelectTable') table01: HbMatTable | undefined;
     @ViewChild('multiSelectTable') table02: HbMatTable | undefined;
+    @ViewChild('customSelectColorTable') table03: HbMatTable | undefined;
 
     constructor(private dataService: DataService) {
         this.matGridData01 = new MatTableDataSource<DataTypesEntity>(this.dataService.gridData);
