@@ -115,25 +115,6 @@ export class ExamplesComponent {
         this.matGridData07 = new MatTableDataSource<DataEntity>(this.gridData);
         this.matGridData08 = new MatTableDataSource<DataEntity>(this.gridData);
         this.matGridData09 = new MatTableDataSource<DataEntity>(this.gridData);
-        this.matGridData09.sortingDataAccessor = (data: DataEntity, sortHeaderId: string): string | number => {
-            // the sortHeaderId is the name of the column, not the header text
-            switch (sortHeaderId) {
-                case 'string1': return data.string1 ?? '';
-                case 'stringWithALongName': return data.stringWithALongName ?? '';
-                case 'number1': return data.number1 ?? 0;
-                case 'dateDate':
-                    if (data.dateDate == null) return 0;
-                    return <number>data.dateDate;
-                case 'dateString':
-                    if (data.dateString)
-                        return DateTime.fromISO(data.dateString).toMillis();
-                    return 0;
-                case 'derived':
-                    return `${data.string1} ${data.number1}`;
-            }
-
-            return '';
-        };
         this.matGridData10 = new MatTableDataSource<DataEntity>(this.gridData);
         this.matGridData11 = new MatTableDataSource<DataEntity>(this.gridData);
         this.matGridData12 = new MatTableDataSource<DataEntity>(this.gridData);

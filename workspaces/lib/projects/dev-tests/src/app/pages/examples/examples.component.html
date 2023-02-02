@@ -73,33 +73,6 @@
     </mat-expansion-panel>
     <mat-expansion-panel>
         <mat-expansion-panel-header>
-            <mat-panel-title>Disable Sort on Single Column</mat-panel-title>
-        </mat-expansion-panel-header>
-        <hb-mat-table [gridData]="matGridData06">
-            <hb-mat-table-column name="string1" [canSort]="false"></hb-mat-table-column>
-            <hb-mat-table-column name="string2"></hb-mat-table-column>
-            <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
-            <hb-mat-table-column name="number1" dataType="number"></hb-mat-table-column>
-            <hb-mat-table-column name="dateDate" dataType="date"></hb-mat-table-column>
-            <hb-mat-table-column name="dateString" dataType="date"></hb-mat-table-column>
-        </hb-mat-table>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title>Disable Sort on Whole Table</mat-panel-title>
-        </mat-expansion-panel-header>
-        <hb-mat-table [gridData]="matGridData07"
-                      [canSort]="false">
-            <hb-mat-table-column name="string1"></hb-mat-table-column>
-            <hb-mat-table-column name="string2"></hb-mat-table-column>
-            <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
-            <hb-mat-table-column name="number1" dataType="number"></hb-mat-table-column>
-            <hb-mat-table-column name="dateDate" dataType="date"></hb-mat-table-column>
-            <hb-mat-table-column name="dateString" dataType="date"></hb-mat-table-column>
-        </hb-mat-table>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
             <mat-panel-title>Custom Header Text</mat-panel-title>
         </mat-expansion-panel-header>
         <hb-mat-table [gridData]="matGridData08">
@@ -109,21 +82,6 @@
             <hb-mat-table-column name="number1" dataType="number"></hb-mat-table-column>
             <hb-mat-table-column name="dateDate" dataType="date"></hb-mat-table-column>
             <hb-mat-table-column name="dateString" dataType="date"></hb-mat-table-column>
-        </hb-mat-table>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title>Custom Sorting</mat-panel-title>
-        </mat-expansion-panel-header>
-        <hb-mat-table [gridData]="matGridData09">
-            <hb-mat-table-column name="string1"></hb-mat-table-column>
-            <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
-            <hb-mat-table-column name="number1" dataType="number"></hb-mat-table-column>
-            <hb-mat-table-column name="dateDate" dataType="date"></hb-mat-table-column>
-            <hb-mat-table-column name="dateString" dataType="date"></hb-mat-table-column>
-            <hb-mat-table-column name="derived">
-                <div *hbMatTableColumnTemplate="let data">{{ data.string1 }} :: {{ data.number1 }}</div>
-            </hb-mat-table-column>
         </hb-mat-table>
     </mat-expansion-panel>
     <mat-expansion-panel>

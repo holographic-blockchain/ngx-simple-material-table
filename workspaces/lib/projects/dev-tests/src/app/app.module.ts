@@ -18,12 +18,14 @@ import { AppComponent } from './app.component';
 import { NgxSimpleMaterialTableModule } from 'ngx-simple-material-table';
 import { ExamplesComponent } from './pages/examples/examples.component';
 import { SelectionExamplesComponent } from './pages/selection-examples/selection-examples.component';
+import { SortingExamplesComponent } from './pages/sorting-examples/sorting-examples.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         ExamplesComponent,
-        SelectionExamplesComponent
+        SelectionExamplesComponent,
+        SortingExamplesComponent
     ],
     imports: [
         BrowserModule,

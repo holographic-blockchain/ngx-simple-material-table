@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ExamplesComponent } from './pages/examples/examples.component';
 import { SelectionExamplesComponent } from './pages/selection-examples/selection-examples.component';
+import { SortingExamplesComponent } from './pages/sorting-examples/sorting-examples.component';
 
 const routes: Routes = [
     {
@@ -13,6 +14,11 @@ const routes: Routes = [
         path: 'row-selection',
         component: SelectionExamplesComponent,
         title: 'Row Selection',
+    },
+    {
+        path: 'sorting',
+        component: SortingExamplesComponent,
+        title: 'Sorting',
     },
 ];
 
