@@ -27,7 +27,7 @@
                 <mat-checkbox [color]="selectionColor"
                               (click)="$event.stopPropagation()"
                               (change)="$event ? toggleRowSelection(row) : null"
-                              [checked]="selection.isSelected(row)"></mat-checkbox>
+                              [checked]="isRowSelected(row)"></mat-checkbox>
             </td>
         </ng-container>
         

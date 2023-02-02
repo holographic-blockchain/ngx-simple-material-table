@@ -14,7 +14,7 @@
             <hb-mat-table-column name="dateString" dataType="date"></hb-mat-table-column>
         </hb-mat-table>
         <h4>Selected Row:</h4>
-        <p>{{ table01?.selection?.selected | json }}</p>
+        <p>{{ table01?.selection?.selected }}</p>
     </mat-expansion-panel>
     <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -31,7 +31,7 @@
             <hb-mat-table-column name="dateString" dataType="date"></hb-mat-table-column>
         </hb-mat-table>
         <h4>Selected Rows: ({{ table02?.selection?.selected?.length }} selected) </h4>
-        <p>{{ table02?.selection?.selected | json }}</p>
+        <p>{{ table02?.selection?.selected }}</p>
     </mat-expansion-panel>
     <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -40,7 +40,7 @@
         <hb-mat-table #customSelectColorTable
                       [gridData]="matGridData03"
                       selectionMode="single"
-                      selectionColor="warn">
+                      selectionColor="primary">
             <hb-mat-table-column name="string1"></hb-mat-table-column>
             <hb-mat-table-column name="string2"></hb-mat-table-column>
             <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
@@ -49,6 +49,24 @@
             <hb-mat-table-column name="dateString" dataType="date"></hb-mat-table-column>
         </hb-mat-table>
         <h4>Selected Row:</h4>
-        <p>{{ table03?.selection?.selected | json }}</p>
+        <p>{{ table03?.selection?.selected }}</p>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Custom Row Key</mat-panel-title>
+        </mat-expansion-panel-header>
+        <hb-mat-table #customRowKeyTable
+                      [gridData]="matGridData04"
+                      selectionMode="single"
+                      [rowKey]="['id', 'string1']">
+            <hb-mat-table-column name="string1"></hb-mat-table-column>
+            <hb-mat-table-column name="string2"></hb-mat-table-column>
+            <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
+            <hb-mat-table-column name="number1" dataType="number"></hb-mat-table-column>
+            <hb-mat-table-column name="dateDate" dataType="date"></hb-mat-table-column>
+            <hb-mat-table-column name="dateString" dataType="date"></hb-mat-table-column>
+        </hb-mat-table>
+        <h4>Selected Row:</h4>
+        <p>{{ table04?.selection?.selected }}</p>
     </mat-expansion-panel>
 </mat-accordion>

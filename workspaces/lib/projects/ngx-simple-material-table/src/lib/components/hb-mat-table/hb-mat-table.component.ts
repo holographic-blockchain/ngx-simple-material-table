@@ -5,9 +5,9 @@ import { MatTable } from '@angular/material/table';
 import { HbMatTableColumn } from '../hb-mat-table-column/hb-mat-table-column.component';
 
 @Component({
-  selector: 'hb-mat-table',
-  templateUrl: './hb-mat-table.component.html',
-  styleUrls: ['./hb-mat-table.component.scss']
+    selector: 'hb-mat-table',
+    templateUrl: './hb-mat-table.component.html',
+    styleUrls: ['./hb-mat-table.component.scss']
 })
 export class HbMatTable implements AfterViewInit {
     @Input() displayedColumns: string[] | undefined;
@@ -17,6 +17,7 @@ export class HbMatTable implements AfterViewInit {
     @Input() isHeaderSticky: boolean = false;
     @Input() selectionMode: HbMatTableSelectionMode = 'none';
     @Input() selectionColor: HbMatTableSelectionColor | undefined = undefined;
+    @Input() rowKey: string[] | undefined = undefined; // the data's property names; when undefined, uses the entire row value as the key
     @ViewChild(MatSort) sort!: MatSort;
     @ViewChild(MatTable) table!: MatTable<any>;
     @ContentChildren(HbMatTableColumn) tableColumns!: QueryList<HbMatTableColumn>;
@@ -60,14 +61,31 @@ export class HbMatTable implements AfterViewInit {
         return false;
     }
 
+    isRowSelected(row: any): boolean {
+        return this.selection.isSelected(this.buildRowKey(row));
+    }
+
     toggleAllRows(): void {
         this.isAllSelected()
             ? this.selection.clear()
-            : this.gridData.data.forEach((row: any) => this.selection.select(row));
+            : this.gridData.data.forEach((row: any) => this.selection.select(this.buildRowKey(row)));
     }
 
     toggleRowSelection(row: any): void {
-        this.selection.toggle(row);
+        this.selection.toggle(this.buildRowKey(row));
+    }
+
+    /** Builds the row's key used by the selection model. Objects are by reference, so stringify the key to allow for comparisons. */
+    private buildRowKey(row: any): any {
+        if (this.rowKey) {
+            let key: any = {};
+            this.rowKey.forEach(propName => {
+                key[propName] = row[propName];
+            });
+            return JSON.stringify(key);
+        }
+
+        return JSON.stringify(row);
     }
 }
 
