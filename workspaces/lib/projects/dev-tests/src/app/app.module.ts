@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -19,13 +20,15 @@ import { NgxSimpleMaterialTableModule } from 'ngx-simple-material-table';
 import { ExamplesComponent } from './pages/examples/examples.component';
 import { SelectionExamplesComponent } from './pages/selection-examples/selection-examples.component';
 import { SortingExamplesComponent } from './pages/sorting-examples/sorting-examples.component';
+import { PaginationExamplesComponent } from './pages/pagination-examples/pagination-examples.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         ExamplesComponent,
         SelectionExamplesComponent,
-        SortingExamplesComponent
+        SortingExamplesComponent,
+        PaginationExamplesComponent
     ],
     imports: [
         BrowserModule,
@@ -36,6 +39,7 @@ import { SortingExamplesComponent } from './pages/sorting-examples/sorting-examp
         MatCardModule,
         MatExpansionModule,
         MatInputModule,
+        MatPaginatorModule,
         MatTabsModule,
         MatTableModule,
         MatToolbarModule,

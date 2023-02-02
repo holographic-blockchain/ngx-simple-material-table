@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { DateTime } from 'luxon';
 import { DataTypesEntity } from '../models/data-types-entity';
+import { GeneralDataEntity } from '../models/general-data-entity';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class DataService {
     gridData: DataTypesEntity[] = [
@@ -79,5 +80,194 @@ export class DataService {
             'dateDate': DateTime.now().minus({ minutes: 34 }).toJSDate(),
             'dateString': DateTime.now().minus({ minutes: 34 }).toISO(),
         },
+    ];
+    pagedGridData: GeneralDataEntity[] = [
+        {
+            "id": 1,
+            "firstName": "Consectetur",
+            "lastName": "Voluptate",
+            "role": "Proident",
+        },
+        {
+            "id": 2,
+            "firstName": "Aliquam",
+            "lastName": "Condimentum",
+            "role": "Maecenas",
+        },
+        {
+            "id": 3,
+            "firstName": "Condimentum",
+            "lastName": "Posuere",
+            "role": "Morbi",
+        },
+        {
+            "id": 4,
+            "firstName": "Dignissim",
+            "lastName": "Commodo",
+            "role": "Proident",
+        },
+        {
+            "id": 5,
+            "firstName": "Volutpat",
+            "lastName": "Voluptate",
+            "role": "Ultricies",
+        },
+        {
+            "id": 6,
+            "firstName": "Turpis",
+            "lastName": "Tincidunt",
+            "role": "Proident",
+        },
+        {
+            "id": 7,
+            "firstName": "Ullamcorper",
+            "lastName": "Scelerisque",
+            "role": "Maecenas",
+        },
+        {
+            "id": 8,
+            "firstName": "Tincidunt",
+            "lastName": "Consequat",
+            "role": "Ultricies",
+        },
+        {
+            "id": 9,
+            "firstName": "Malesuada",
+            "lastName": "Dictum",
+            "role": "Maecenas",
+        },
+        {
+            "id": 10,
+            "firstName": "Adipiscing",
+            "lastName": "Porttitor",
+            "role": "Proident",
+        },
+        {
+            "id": 11,
+            "firstName": "Sollicitudin",
+            "lastName": "Tempor",
+            "role": "Ultricies",
+        },
+        {
+            "id": 12,
+            "firstName": "Fermentum",
+            "lastName": "Pretium",
+            "role": "Proident",
+        },
+        {
+            "id": 13,
+            "firstName": "Malesuada",
+            "lastName": "Maecenas",
+            "role": "Proident",
+        },
+        {
+            "id": 14,
+            "firstName": "Fringilla",
+            "lastName": "Porttitor",
+            "role": "Ultricies",
+        },
+        {
+            "id": 15,
+            "firstName": "Rhoncus",
+            "lastName": "Purus",
+            "role": "Ultricies",
+        },
+        {
+            "id": 16,
+            "firstName": "Faucibus",
+            "lastName": "Pellentesque",
+            "role": "Maecenas",
+        },
+        {
+            "id": 17,
+            "firstName": "Elementum",
+            "lastName": "Voluptate",
+            "role": "Proident",
+        },
+        {
+            "id": 18,
+            "firstName": "Tincidunt",
+            "lastName": "Feugiat",
+            "role": "Proident",
+        },
+        {
+            "id": 19,
+            "firstName": "Consectetur",
+            "lastName": "Consequat",
+            "role": "Ultricies",
+        },
+        {
+            "id": 20,
+            "firstName": "Pretium",
+            "lastName": "Ornare",
+            "role": "Maecenas",
+        },
+        {
+            "id": 21,
+            "firstName": "Vivamus",
+            "lastName": "Bibendum",
+            "role": "Ultricies",
+        },
+        {
+            "id": 22,
+            "firstName": "Proin",
+            "lastName": "Pulvinar",
+            "role": "Maecenas",
+        },
+        {
+            "id": 23,
+            "firstName": "Sollicitudin",
+            "lastName": "Venenatis",
+            "role": "Proident",
+        },
+        {
+            "id": 24,
+            "firstName": "Fringilla",
+            "lastName": "Lacus",
+            "role": "Proident",
+        },
+        {
+            "id": 25,
+            "firstName": "Laoreet",
+            "lastName": "Turpis",
+            "role": "Ultricies",
+        },
+        {
+            "id": 26,
+            "firstName": "Ultrices",
+            "lastName": "Iaculis",
+            "role": "Proident",
+        },
+        {
+            "id": 27,
+            "firstName": "Viverra",
+            "lastName": "Bibendum",
+            "role": "Ultricies",
+        },
+        {
+            "id": 28,
+            "firstName": "Tincidunt",
+            "lastName": "Euismod",
+            "role": "Proident",
+        },
+        {
+            "id": 29,
+            "firstName": "Tristique",
+            "lastName": "Egestas",
+            "role": "Morbi",
+        },
+        {
+            "id": 30,
+            "firstName": "Suspendisse",
+            "lastName": "Mattis",
+            "role": "Proident",
+        },
+        {
+            "id": 31,
+            "firstName": "Malesuada",
+            "lastName": "Magna",
+            "role": "Proident",
+        },
+
     ];
 }

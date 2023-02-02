@@ -1,5 +1,6 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { AfterViewInit, ChangeDetectorRef, Component, ContentChildren, Input, QueryList, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ContentChild, ContentChildren, Input, QueryList, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { HbMatTableColumn } from '../hb-mat-table-column/hb-mat-table-column.component';
@@ -21,6 +22,7 @@ export class HbMatTable implements AfterViewInit {
     @ViewChild(MatSort) sort!: MatSort;
     @ViewChild(MatTable) table!: MatTable<any>;
     @ContentChildren(HbMatTableColumn) tableColumns!: QueryList<HbMatTableColumn>;
+    @ContentChild(MatPaginator) contentPaginator: MatPaginator | undefined;
 
     public selection: SelectionModel<any> = new SelectionModel<any>(false, []);
 
@@ -29,6 +31,9 @@ export class HbMatTable implements AfterViewInit {
 
     ngAfterViewInit(): void {
         this.gridData.sort = this.sort;
+        if (this.contentPaginator) {
+            this.gridData.paginator = this.contentPaginator;
+        }
 
         // display all defined columns unless they have specified which columns to display
         if (!this.displayedColumns) {
