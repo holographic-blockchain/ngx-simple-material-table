@@ -4,7 +4,7 @@
         <mat-expansion-panel-header>
             <mat-panel-title>Basic Table Displaying Object Properties</mat-panel-title>
         </mat-expansion-panel-header>
-        <hb-mat-table [gridData]="matGridData01">
+        <hb-mat-table [tableData]="matGridData01">
             <hb-mat-table-column name="string1"></hb-mat-table-column>
             <hb-mat-table-column name="string2"></hb-mat-table-column>
             <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
@@ -17,7 +17,7 @@
         <mat-expansion-panel-header>
             <mat-panel-title>Custom Column Rendering</mat-panel-title>
         </mat-expansion-panel-header>
-        <hb-mat-table [gridData]="matGridData02">
+        <hb-mat-table [tableData]="matGridData02">
             <hb-mat-table-column name="string1">
                 <div *hbMatTableColumnTemplate="let data">{{ data.string1 | uppercase }}</div>
             </hb-mat-table-column>
@@ -32,7 +32,7 @@
         <mat-expansion-panel-header>
             <mat-panel-title>Completely Derived Column</mat-panel-title>
         </mat-expansion-panel-header>
-        <hb-mat-table [gridData]="matGridData03">
+        <hb-mat-table [tableData]="matGridData03">
             <hb-mat-table-column name="string1"></hb-mat-table-column>
             <hb-mat-table-column name="string2"></hb-mat-table-column>
             <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
@@ -48,7 +48,7 @@
         <mat-expansion-panel-header>
             <mat-panel-title>Custom Number/Date Formatting</mat-panel-title>
         </mat-expansion-panel-header>
-        <hb-mat-table [gridData]="matGridData04">
+        <hb-mat-table [tableData]="matGridData04">
             <hb-mat-table-column name="string1"></hb-mat-table-column>
             <hb-mat-table-column name="string2"></hb-mat-table-column>
             <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
@@ -61,7 +61,7 @@
         <mat-expansion-panel-header>
             <mat-panel-title>Only Display Some Columns</mat-panel-title>
         </mat-expansion-panel-header>
-        <hb-mat-table [gridData]="matGridData05"
+        <hb-mat-table [tableData]="matGridData05"
                       [displayedColumns]="gridBasicColumns">
             <hb-mat-table-column name="string1"></hb-mat-table-column>
             <hb-mat-table-column name="string2"></hb-mat-table-column>
@@ -75,7 +75,7 @@
         <mat-expansion-panel-header>
             <mat-panel-title>Custom Header Text</mat-panel-title>
         </mat-expansion-panel-header>
-        <hb-mat-table [gridData]="matGridData08">
+        <hb-mat-table [tableData]="matGridData08">
             <hb-mat-table-column name="string1" caption="Custom String"></hb-mat-table-column>
             <hb-mat-table-column name="string2"></hb-mat-table-column>
             <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
@@ -93,7 +93,7 @@
             <input matInput type="text" [(ngModel)]="gridFilter10" />
         </mat-form-field>
 
-        <hb-mat-table [gridData]="matGridData10">
+        <hb-mat-table [tableData]="matGridData10">
             <hb-mat-table-column name="string1"></hb-mat-table-column>
             <hb-mat-table-column name="string2"></hb-mat-table-column>
             <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
@@ -106,7 +106,7 @@
         <mat-expansion-panel-header>
             <mat-panel-title>Footer Row</mat-panel-title>
         </mat-expansion-panel-header>
-        <hb-mat-table [gridData]="matGridData11"
+        <hb-mat-table [tableData]="matGridData11"
                       [showFooter]="true">
             <hb-mat-table-column name="string1">
                 <div *hbMatTableFooterTemplate>Totals::</div>
@@ -125,7 +125,7 @@
             <mat-panel-title>Sticky Header Row</mat-panel-title>
         </mat-expansion-panel-header>
         <div style="max-height:200px; overflow:auto;">
-            <hb-mat-table [gridData]="matGridData12"
+            <hb-mat-table [tableData]="matGridData12"
                           [isHeaderSticky]="true">
                 <hb-mat-table-column name="string1"></hb-mat-table-column>
                 <hb-mat-table-column name="string2"></hb-mat-table-column>
@@ -141,7 +141,7 @@
             <mat-panel-title>Fixed Column(s)</mat-panel-title>
         </mat-expansion-panel-header>
         <div style="max-width: 450px; overflow: auto;">
-            <hb-mat-table [gridData]="matGridData13">
+            <hb-mat-table [tableData]="matGridData13">
                 <hb-mat-table-column name="string1" [isStickyStart]="true"></hb-mat-table-column>
                 <hb-mat-table-column name="string2"></hb-mat-table-column>
                 <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
@@ -150,11 +150,6 @@
                 <hb-mat-table-column name="dateString" dataType="date" [isStickyEnd]="true"></hb-mat-table-column>
             </hb-mat-table>
         </div>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title>Pagination</mat-panel-title>
-        </mat-expansion-panel-header>
     </mat-expansion-panel>
 </mat-accordion>
 

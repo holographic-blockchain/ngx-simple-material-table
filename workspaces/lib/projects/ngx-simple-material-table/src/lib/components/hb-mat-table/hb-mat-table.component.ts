@@ -11,28 +11,54 @@ import { HbMatTableColumn } from '../hb-mat-table-column/hb-mat-table-column.com
     styleUrls: ['./hb-mat-table.component.scss']
 })
 export class HbMatTable implements AfterViewInit {
+    /** Which columns should be rendered. These should correspond to the names in the hb-mat-table-column tags. */
     @Input() displayedColumns: string[] | undefined;
-    @Input() gridData: any;
+
+    /** The data used to populate the table. */
+    @Input() tableData: any;
+
+    /** Table-level flag to enable/disable sorting. Both this property and the column's canSort must be true to enable sorting on a column. */
     @Input() canSort: boolean = true;
+
+    /** Indicates if the footer row will be rendered. */
     @Input() showFooter: boolean = false;
+
+    /** Indicates if the header row is sticky. */
     @Input() isHeaderSticky: boolean = false;
+
+    /** The table's selection mode: none, single or multiple. */
     @Input() selectionMode: HbMatTableSelectionMode = 'none';
+
+    /** The color of the row selection checkbox. When not set will simply use the default material checkbox color set by the application. */
     @Input() selectionColor: HbMatTableSelectionColor | undefined = undefined;
-    @Input() rowKey: string[] | undefined = undefined; // the data's property names; when undefined, uses the entire row value as the key
+
+    /** The data's property names; when undefined, uses the entire row value as the key. */
+    @Input() rowKey: string[] | undefined = undefined;
+
+    /** The MatSort instance associated with this table. This will only be set if canSort is true. */
     @ViewChild(MatSort) sort!: MatSort;
+
+    /** The MatTable instance associated with this table. */
     @ViewChild(MatTable) table!: MatTable<any>;
+
     @ContentChildren(HbMatTableColumn) tableColumns!: QueryList<HbMatTableColumn>;
     @ContentChild(MatPaginator) contentPaginator: MatPaginator | undefined;
 
+    /** The selection model used with row selection. Use to get or set the currently selected row(s). */
     public selection: SelectionModel<any> = new SelectionModel<any>(false, []);
 
     constructor(private changeDetectorRef: ChangeDetectorRef) {
     }
 
     ngAfterViewInit(): void {
-        this.gridData.sort = this.sort;
-        if (this.contentPaginator) {
-            this.gridData.paginator = this.contentPaginator;
+        // if the sort property hasn't been set, set it (this allows the user to override if they want).
+        if (!this.tableData.sort) {
+            this.tableData.sort = this.sort;
+        }
+
+        // if we have a paginator and it hasn't been set then set it (this allows the user to override if they want).
+        if (this.contentPaginator && !this.tableData.paginator) {
+            this.tableData.paginator = this.contentPaginator;
         }
 
         // display all defined columns unless they have specified which columns to display
@@ -55,27 +81,34 @@ export class HbMatTable implements AfterViewInit {
         }
     }
 
+    /** Determines if all rows are selected. */
     isAllSelected(): boolean {
         const selectedRowCount = this.selection.selected.length;
-        if (this.gridData.length)
-            return selectedRowCount === this.gridData.length;
+        if (this.tableData.length)
+            return selectedRowCount === this.tableData.length;
 
-        if (this.gridData.data?.length)
-            return selectedRowCount === this.gridData.data.length;
+        if (this.tableData.data?.length)
+            return selectedRowCount === this.tableData.data.length;
 
         return false;
     }
 
+    /** Determines if the given row is selected. */
     isRowSelected(row: any): boolean {
         return this.selection.isSelected(this.buildRowKey(row));
     }
 
+    /** If all rows are currently selected, will unselect all rows. Otherwise will select all rows. */
     toggleAllRows(): void {
-        this.isAllSelected()
-            ? this.selection.clear()
-            : this.gridData.data.forEach((row: any) => this.selection.select(this.buildRowKey(row)));
+        if (this.isAllSelected())
+            this.selection.clear()
+        else if (this.tableData.data)
+            this.tableData.data.forEach((row: any) => this.selection.select(this.buildRowKey(row)));
+        else
+            this.tableData.forEach((row: any) => this.selection.select(this.buildRowKey(row)));
     }
 
+    /** Toggles the selection status of the given row. */
     toggleRowSelection(row: any): void {
         this.selection.toggle(this.buildRowKey(row));
     }

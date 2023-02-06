@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DataSourceExamplesComponent } from './pages/data-source-examples/data-source-examples.component';
 import { ExamplesComponent } from './pages/examples/examples.component';
 import { PaginationExamplesComponent } from './pages/pagination-examples/pagination-examples.component';
 import { SelectionExamplesComponent } from './pages/selection-examples/selection-examples.component';
@@ -10,6 +11,11 @@ const routes: Routes = [
         path: 'examples',
         component: ExamplesComponent,
         title: 'Examples',
+    },
+    {
+        path: 'data-sources',
+        component: DataSourceExamplesComponent,
+        title: 'Data Sources',
     },
     {
         path: 'pagination',

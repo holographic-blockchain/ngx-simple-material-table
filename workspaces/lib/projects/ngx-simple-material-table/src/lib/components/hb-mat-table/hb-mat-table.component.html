@@ -1,4 +1,4 @@
-<table mat-table [dataSource]="gridData" matSort>
+<table mat-table [dataSource]="tableData" matSort>
     <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: isHeaderSticky"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     <ng-container *ngIf="showFooter">
@@ -141,45 +141,6 @@
                 </ng-container>
             </ng-container>
         </ng-container>
-
-
-
-
-
-
-        <!--<ng-container [matColumnDef]="col.name">
-            <ng-container *ngIf="canSort && col.canSort; else noSortHeader">
-                <th mat-header-cell mat-sort-header *matHeaderCellDef>{{ col.caption ?? col.name | hbMatTableColumnHeader }}</th>
-            </ng-container>
-            <ng-template #noSortHeader>
-                <th mat-header-cell *matHeaderCellDef>{{ col.caption ?? col.name | hbMatTableColumnHeader }}</th>
-            </ng-template>
-
-            <td mat-cell *matCellDef="let rowData">
-                <ng-container *ngIf="col.cellTemplate">
-                    <ng-container *ngTemplateOutlet="col.cellTemplate.templateRef; context: { $implicit: rowData }"></ng-container>
-                </ng-container>
-                <ng-container *ngIf="!col.cellTemplate" [ngSwitch]="col.dataType">
-                    <ng-container *ngSwitchCase="'string'">
-                        {{ rowData[col.name] }}
-                    </ng-container>
-                    <ng-container *ngSwitchCase="'number'">
-                        {{ rowData[col.name] | number : col.dataFormat }}
-                    </ng-container>
-                    <ng-container *ngSwitchCase="'date'">
-                        {{ rowData[col.name] | date: col.dataFormat }}
-                    </ng-container>
-                </ng-container>
-            </td>
-
-            <ng-container *ngIf="showFooter">
-                <td mat-footer-cell *matFooterCellDef>
-                    <ng-container *ngIf="col.footerTemplate">
-                        <ng-container *ngTemplateOutlet="col.footerTemplate.templateRef"></ng-container>
-                    </ng-container>
-                </td>
-            </ng-container>
-        </ng-container>-->
     </ng-container>
 </table>
 

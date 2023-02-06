@@ -2,8 +2,6 @@
  * Public API Surface of ngx-simple-material-table
  */
 
-export * from './lib/ngx-simple-material-table.service';
-export * from './lib/ngx-simple-material-table.component';
 export * from './lib/ngx-simple-material-table.module';
 
 export * from './lib/components/hb-mat-table/hb-mat-table.component';

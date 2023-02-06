@@ -21,6 +21,7 @@ import { ExamplesComponent } from './pages/examples/examples.component';
 import { SelectionExamplesComponent } from './pages/selection-examples/selection-examples.component';
 import { SortingExamplesComponent } from './pages/sorting-examples/sorting-examples.component';
 import { PaginationExamplesComponent } from './pages/pagination-examples/pagination-examples.component';
+import { DataSourceExamplesComponent } from './pages/data-source-examples/data-source-examples.component';
 
 @NgModule({
     declarations: [
@@ -28,7 +29,8 @@ import { PaginationExamplesComponent } from './pages/pagination-examples/paginat
         ExamplesComponent,
         SelectionExamplesComponent,
         SortingExamplesComponent,
-        PaginationExamplesComponent
+        PaginationExamplesComponent,
+        DataSourceExamplesComponent
     ],
     imports: [
         BrowserModule,

@@ -10,7 +10,7 @@
         </p>
         <mat-tab-group>
             <mat-tab label="Example">
-                <hb-mat-table [gridData]="matGridData01">
+                <hb-mat-table [tableData]="matGridData01">
                     <hb-mat-table-column name="string1"></hb-mat-table-column>
                     <hb-mat-table-column name="string2"></hb-mat-table-column>
                     <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
@@ -23,7 +23,7 @@
             <mat-tab label="Html">
                 <code>
                     <pre>
-&lt;hb-mat-table [gridData]="matGridData"&gt;
+&lt;hb-mat-table [tableData]="matGridData"&gt;
     &lt;hb-mat-table-column name="string1"&gt;&lt;/hb-mat-table-column&gt;
     &lt;hb-mat-table-column name="string2"&gt;&lt;/hb-mat-table-column&gt;
     &lt;hb-mat-table-column name="stringWithALongName"&gt;&lt;/hb-mat-table-column&gt;
@@ -37,11 +37,11 @@
             <mat-tab label="TypeScript">
                 <code>
                     <pre>
-gridData: DataEntity[] = ...;
+tableData: DataEntity[] = ...;
 matGridData: MatTableDataSource&lt;DataEntity&gt;;
 
 constructor() {{ '{' }}
-    this.matGridData = new MatTableDataSource&lt;DataEntity&gt;(this.gridData);
+    this.matGridData = new MatTableDataSource&lt;DataEntity&gt;(this.tableData);
 }
 
 class DataEntity {{ '{' }}
@@ -66,7 +66,7 @@ class DataEntity {{ '{' }}
             To display something other than the straight property value, add a template to the column definition. The variable available contains
             the object for the row.
         </p>
-        <hb-mat-table [gridData]="matGridData02">
+        <hb-mat-table [tableData]="matGridData02">
             <hb-mat-table-column name="string1">
                 <div *hbMatTableColumnTemplate="let data">{{ data.string1 | uppercase }}</div>
             </hb-mat-table-column>
@@ -81,7 +81,7 @@ class DataEntity {{ '{' }}
         <mat-expansion-panel-header>
             <mat-panel-title>Completely Derived Column</mat-panel-title>
         </mat-expansion-panel-header>
-        <hb-mat-table [gridData]="matGridData03">
+        <hb-mat-table [tableData]="matGridData03">
             <hb-mat-table-column name="string1"></hb-mat-table-column>
             <hb-mat-table-column name="string2"></hb-mat-table-column>
             <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
@@ -97,7 +97,7 @@ class DataEntity {{ '{' }}
         <mat-expansion-panel-header>
             <mat-panel-title>Custom Number/Date Formatting</mat-panel-title>
         </mat-expansion-panel-header>
-        <hb-mat-table [gridData]="matGridData04">
+        <hb-mat-table [tableData]="matGridData04">
             <hb-mat-table-column name="string1"></hb-mat-table-column>
             <hb-mat-table-column name="string2"></hb-mat-table-column>
             <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
@@ -110,7 +110,7 @@ class DataEntity {{ '{' }}
         <mat-expansion-panel-header>
             <mat-panel-title>Only Display Some Columns</mat-panel-title>
         </mat-expansion-panel-header>
-        <hb-mat-table [gridData]="matGridData05"
+        <hb-mat-table [tableData]="matGridData05"
                       [displayedColumns]="gridBasicColumns">
             <hb-mat-table-column name="string1"></hb-mat-table-column>
             <hb-mat-table-column name="string2"></hb-mat-table-column>
@@ -124,7 +124,7 @@ class DataEntity {{ '{' }}
         <mat-expansion-panel-header>
             <mat-panel-title>Disable Sort on Single Column</mat-panel-title>
         </mat-expansion-panel-header>
-        <hb-mat-table [gridData]="matGridData06">
+        <hb-mat-table [tableData]="matGridData06">
             <hb-mat-table-column name="string1" [canSort]="false"></hb-mat-table-column>
             <hb-mat-table-column name="string2"></hb-mat-table-column>
             <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
@@ -137,7 +137,7 @@ class DataEntity {{ '{' }}
         <mat-expansion-panel-header>
             <mat-panel-title>Disable Sort on Whole Table</mat-panel-title>
         </mat-expansion-panel-header>
-        <hb-mat-table [gridData]="matGridData07"
+        <hb-mat-table [tableData]="matGridData07"
                       [canSort]="false">
             <hb-mat-table-column name="string1"></hb-mat-table-column>
             <hb-mat-table-column name="string2"></hb-mat-table-column>
@@ -151,7 +151,7 @@ class DataEntity {{ '{' }}
         <mat-expansion-panel-header>
             <mat-panel-title>Custom Header Text</mat-panel-title>
         </mat-expansion-panel-header>
-        <hb-mat-table [gridData]="matGridData08">
+        <hb-mat-table [tableData]="matGridData08">
             <hb-mat-table-column name="string1" caption="Custom String"></hb-mat-table-column>
             <hb-mat-table-column name="string2"></hb-mat-table-column>
             <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
@@ -164,7 +164,7 @@ class DataEntity {{ '{' }}
         <mat-expansion-panel-header>
             <mat-panel-title>Custom Sorting</mat-panel-title>
         </mat-expansion-panel-header>
-        <hb-mat-table [gridData]="matGridData09">
+        <hb-mat-table [tableData]="matGridData09">
             <hb-mat-table-column name="string1"></hb-mat-table-column>
             <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
             <hb-mat-table-column name="number1" dataType="number"></hb-mat-table-column>
@@ -184,7 +184,7 @@ class DataEntity {{ '{' }}
             <input matInput type="text" [(ngModel)]="gridFilter10" />
         </mat-form-field>
 
-        <hb-mat-table [gridData]="matGridData10">
+        <hb-mat-table [tableData]="matGridData10">
             <hb-mat-table-column name="string1"></hb-mat-table-column>
             <hb-mat-table-column name="string2"></hb-mat-table-column>
             <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
@@ -198,7 +198,7 @@ class DataEntity {{ '{' }}
             <mat-panel-title>Footer Row</mat-panel-title>
         </mat-expansion-panel-header>
         <p>no data passed to the footer. can use component variables</p>
-        <hb-mat-table [gridData]="matGridData11"
+        <hb-mat-table [tableData]="matGridData11"
                       [showFooter]="true">
             <hb-mat-table-column name="string1">
                 <div *hbMatTableFooterTemplate>Totals::</div>
@@ -217,7 +217,7 @@ class DataEntity {{ '{' }}
             <mat-panel-title>Sticky Header Row</mat-panel-title>
         </mat-expansion-panel-header>
         <div style="max-height:200px; overflow:auto;">
-            <hb-mat-table [gridData]="matGridData12"
+            <hb-mat-table [tableData]="matGridData12"
                           [isHeaderSticky]="true">
                 <hb-mat-table-column name="string1"></hb-mat-table-column>
                 <hb-mat-table-column name="string2"></hb-mat-table-column>
@@ -233,7 +233,7 @@ class DataEntity {{ '{' }}
             <mat-panel-title>Fixed Column(s)</mat-panel-title>
         </mat-expansion-panel-header>
         <div style="max-width: 450px; overflow: auto;">
-            <hb-mat-table [gridData]="matGridData13">
+            <hb-mat-table [tableData]="matGridData13">
                 <hb-mat-table-column name="string1" [isStickyStart]="true"></hb-mat-table-column>
                 <hb-mat-table-column name="string2"></hb-mat-table-column>
                 <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>

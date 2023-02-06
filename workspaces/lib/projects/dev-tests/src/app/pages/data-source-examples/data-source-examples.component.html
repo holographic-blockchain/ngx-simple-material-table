@@ -1,11 +1,10 @@
 <mat-accordion>
     <mat-expansion-panel>
         <mat-expansion-panel-header>
-            <mat-panel-title>Single Row Selection</mat-panel-title>
+            <mat-panel-title>Using a MatTableDataSource</mat-panel-title>
         </mat-expansion-panel-header>
-        <hb-mat-table #singleSelectTable
-                      [tableData]="matGridData01"
-                      selectionMode="single">
+        <hb-mat-table #table01
+                      [tableData]="matGridData01">
             <hb-mat-table-column name="string1"></hb-mat-table-column>
             <hb-mat-table-column name="string2"></hb-mat-table-column>
             <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
@@ -13,16 +12,14 @@
             <hb-mat-table-column name="dateDate" dataType="date"></hb-mat-table-column>
             <hb-mat-table-column name="dateString" dataType="date"></hb-mat-table-column>
         </hb-mat-table>
-        <h4>Selected Row:</h4>
-        <p>{{ table01?.selection?.selected }}</p>
+        <button mat-button (click)="addRecord01()">Add Record</button>
     </mat-expansion-panel>
     <mat-expansion-panel>
         <mat-expansion-panel-header>
-            <mat-panel-title>Mutliple Row Selection</mat-panel-title>
+            <mat-panel-title>Using Plain TypeScript Objects</mat-panel-title>
         </mat-expansion-panel-header>
-        <hb-mat-table #multiSelectTable
-                      [tableData]="matGridData02"
-                      selectionMode="multiple">
+        <hb-mat-table #table02
+                      [tableData]="gridData02">
             <hb-mat-table-column name="string1"></hb-mat-table-column>
             <hb-mat-table-column name="string2"></hb-mat-table-column>
             <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
@@ -30,17 +27,14 @@
             <hb-mat-table-column name="dateDate" dataType="date"></hb-mat-table-column>
             <hb-mat-table-column name="dateString" dataType="date"></hb-mat-table-column>
         </hb-mat-table>
-        <h4>Selected Rows: ({{ table02?.selection?.selected?.length }} selected) </h4>
-        <p>{{ table02?.selection?.selected }}</p>
+        <button mat-button (click)="addRecord02()">Add Record</button>
     </mat-expansion-panel>
     <mat-expansion-panel>
         <mat-expansion-panel-header>
-            <mat-panel-title>Custom Checkbox Color</mat-panel-title>
+            <mat-panel-title>Using an Observable</mat-panel-title>
         </mat-expansion-panel-header>
-        <hb-mat-table #customSelectColorTable
-                      [tableData]="matGridData03"
-                      selectionMode="single"
-                      selectionColor="primary">
+        <hb-mat-table #table03
+                      [tableData]="obsGridData03">
             <hb-mat-table-column name="string1"></hb-mat-table-column>
             <hb-mat-table-column name="string2"></hb-mat-table-column>
             <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
@@ -48,25 +42,6 @@
             <hb-mat-table-column name="dateDate" dataType="date"></hb-mat-table-column>
             <hb-mat-table-column name="dateString" dataType="date"></hb-mat-table-column>
         </hb-mat-table>
-        <h4>Selected Row:</h4>
-        <p>{{ table03?.selection?.selected }}</p>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title>Custom Row Key</mat-panel-title>
-        </mat-expansion-panel-header>
-        <hb-mat-table #customRowKeyTable
-                      [tableData]="matGridData04"
-                      selectionMode="single"
-                      [rowKey]="['id', 'string1']">
-            <hb-mat-table-column name="string1"></hb-mat-table-column>
-            <hb-mat-table-column name="string2"></hb-mat-table-column>
-            <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
-            <hb-mat-table-column name="number1" dataType="number"></hb-mat-table-column>
-            <hb-mat-table-column name="dateDate" dataType="date"></hb-mat-table-column>
-            <hb-mat-table-column name="dateString" dataType="date"></hb-mat-table-column>
-        </hb-mat-table>
-        <h4>Selected Row:</h4>
-        <p>{{ table04?.selection?.selected }}</p>
+        <button mat-button (click)="addRecord03()">Add Record</button>
     </mat-expansion-panel>
 </mat-accordion>

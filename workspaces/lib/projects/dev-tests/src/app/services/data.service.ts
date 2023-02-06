@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DateTime } from 'luxon';
+import { Observable, of } from 'rxjs';
 import { DataTypesEntity } from '../models/data-types-entity';
 import { GeneralDataEntity } from '../models/general-data-entity';
 
@@ -270,4 +271,5 @@ export class DataService {
         },
 
     ];
+    observableGridData: Observable<DataTypesEntity[]> = of(this.gridData);
 }
