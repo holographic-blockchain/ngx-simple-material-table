@@ -7,9 +7,10 @@ describe('HbMatTableColumn', () => {
     let fixture: ComponentFixture<HbMatTableColumn>;
 
     beforeEach(async () => {
-        await TestBed.configureTestingModule({
-            declarations: [HbMatTableColumn]
-        })
+        await TestBed
+            .configureTestingModule({
+                declarations: [HbMatTableColumn]
+            })
             .compileComponents();
 
         fixture = TestBed.createComponent(HbMatTableColumn);

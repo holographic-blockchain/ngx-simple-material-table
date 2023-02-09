@@ -8,6 +8,7 @@
     "build-dev": "ng build dev-tests --configuration development",
     "watch": "ng build dev-tests --watch --configuration development",
     "test": "ng test",
+    "test-lib": "ng test ngx-simple-material-table",
     "build-lib-dev": "ng build ngx-simple-material-table --configuration development",
     "build-lib": "ng build ngx-simple-material-table"
   },
