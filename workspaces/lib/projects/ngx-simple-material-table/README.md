@@ -1,24 +1,15 @@
 # NgxSimpleMaterialTable
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.0.
+Provides a simpler and more intuitive way of using the Angular Material table component. A basic usage would look like this:
 
-## Code scaffolding
+    <hb-mat-table [tableData]="yourData">
+        <hb-mat-table-column name="firstName"></hb-mat-table-column>
+        <hb-mat-table-column name="lastName"></hb-mat-table-column>
+        <hb-mat-table-column name="age" dataType="number"></hb-mat-table-column>
+        <hb-mat-table-column name="birthDate" dataType="date"></hb-mat-table-column>
+    </hb-mat-table>
 
-Run `ng generate component component-name --project ngx-simple-material-table` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngx-simple-material-table`.
-> Note: Don't forget to add `--project ngx-simple-material-table` or else it will be added to the default project in your `angular.json` file. 
+Supports sorting, pagination and row selection based on the material library implementations, as well as partial support
+for fixed row/column and footer row.
 
-## Build
-
-Run `ng build ngx-simple-material-table` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Publishing
-
-After building your library with `ng build ngx-simple-material-table`, go to the dist folder `cd dist/ngx-simple-material-table` and run `npm publish`.
-
-## Running unit tests
-
-Run `ng test ngx-simple-material-table` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+See the repository [home page](https://github.com/holographic-blockchain/ngx-simple-material-table) for more documentation.

@@ -1,6 +1,9 @@
 {
     "name": "ngx-simple-material-table",
-    "version": "0.0.1",
+    "version": "0.0.1-prerelease03",
+    "homepage": "https://github.com/holographic-blockchain/ngx-simple-material-table",
+    "keywords": [ "angular", "material", "table" ],
+    "license": "MIT",
     "peerDependencies": {
         "@angular/animations": "15.1.0",
         "@angular/cdk": "15.1.0",
