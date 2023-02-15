@@ -81,7 +81,9 @@ If the cell should display something other than a single property in your object
 template.
 
     <hb-mat-table-column name="derived">
-        <div *hbMatTableColumnTemplate="let data">{{ data.myString }} :: {{ data.myNumber | number }}</div>
+        <div *hbMatTableColumnTemplate="let data">
+            {{ data.myString }} :: {{ data.myNumber | number }}
+        </div>
     </hb-mat-table-column>
 
 The 'data' variable will be the row's data instance, so you have access to all the properties of the specific row.
@@ -254,3 +256,12 @@ In the TypeScript, hook up the filter text to the data source:
         this._filterText = value;
         this.yourData.filter = value;
     }
+
+### Sorting
+
+Sorting is enabled by default. To disable sorting on all columns, set the 'canSort' property to false.
+
+    <hb-mat-table [tableData]="yourData"
+                  [canSort]="false">
+        ...
+    </hb-mat-table>
