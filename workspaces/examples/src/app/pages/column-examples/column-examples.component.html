@@ -1,0 +1,536 @@
+
+<mat-accordion>
+    <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+            <mat-panel-title>Basic Table Displaying Object Properties</mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>
+            This shows the default behavior. The columns will bind to a property of the same name.
+        </p>
+        <p>
+            For values that should be sent to an Angular pipe, use the <code>dataType</code> property. The following are currently
+            supported:
+        </p>
+        <ul>
+            <li><code>number</code> - will use the <code>DecimalPipe</code></li>
+            <li><code>date</code> - will use the <code>DatePipe</code></li>
+        </ul>
+
+        <mat-tab-group>
+            <mat-tab label="Example">
+                <hb-mat-table [tableData]="matGridData01">
+                    <hb-mat-table-column name="firstName"></hb-mat-table-column>
+                    <hb-mat-table-column name="lastName"></hb-mat-table-column>
+                    <hb-mat-table-column name="age" dataType="number"></hb-mat-table-column>
+                    <hb-mat-table-column name="birthDate" dataType="date"></hb-mat-table-column>
+                </hb-mat-table>
+            </mat-tab>
+            <mat-tab label="Html">
+                <code>
+                    <pre>
+&lt;hb-mat-table [tableData]="matGridData"&gt;
+    &lt;hb-mat-table-column name="firstName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="lastName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="age" dataType="number"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="birthDate" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
+&lt;/hb-mat-table&gt;
+</pre>
+                </code>
+            </mat-tab>
+            <mat-tab label="TypeScript">
+                <code>
+                    <pre>
+tableData: UserInfo[] = ...;
+matGridData: MatTableDataSource&lt;UserInfo&gt;;
+
+constructor() {{ '{' }}
+    this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
+}
+
+class UserInfo {{ '{' }}
+    userId: number | null = null;
+    firstName: string | null = null;
+    lastName: string | null = null;
+    age: number | null = null;
+    birthDate: Date | null = null;
+}
+</pre>
+                </code>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Custom Column Rendering</mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>
+            If the data to be rendered in a column needs custom formatting, use a column template. The <code>data</code> variable
+            exposed in this example contains the instance of the data for that row. You can also access
+            other methods or properties defined in your component.
+        </p>
+        <p>
+            Note that when using a column template, if the rendered value is different than the data source's property value, you will
+            need to define custom sorting or it will not work properly on that column. The sorting will continue to sort based on the
+            original property value.
+        </p>
+
+        <mat-tab-group>
+            <mat-tab label="Example">
+                <hb-mat-table [tableData]="matGridData02">
+                    <hb-mat-table-column name="firstName">
+                        <div *hbMatTableColumnTemplate="let data">{{ data.firstName | uppercase }}</div>
+                    </hb-mat-table-column>
+                    <hb-mat-table-column name="lastName"></hb-mat-table-column>
+                    <hb-mat-table-column name="age" dataType="number"></hb-mat-table-column>
+                    <hb-mat-table-column name="birthDate" dataType="date"></hb-mat-table-column>
+                </hb-mat-table>
+            </mat-tab>
+            <mat-tab label="Html">
+                <code>
+                    <pre>
+&lt;hb-mat-table [tableData]="matGridData"&gt;
+    &lt;hb-mat-table-column name="firstName"&gt;
+        &lt;div *hbMatTableColumnTemplate="let data"&gt;{{ '{{' }} data.firstName | uppercase }}&lt;/div&gt;
+    &lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="lastName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="age" dataType="number"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="birthDate" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
+&lt;/hb-mat-table&gt;
+</pre>
+                </code>
+            </mat-tab>
+            <mat-tab label="TypeScript">
+                <code>
+                    <pre>
+tableData: UserInfo[] = ...;
+matGridData: MatTableDataSource&lt;UserInfo&gt;;
+
+constructor() {{ '{' }}
+    this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
+}
+
+class UserInfo {{ '{' }}
+    userId: number | null = null;
+    firstName: string | null = null;
+    lastName: string | null = null;
+    age: number | null = null;
+    birthDate: Date | null = null;
+}
+</pre>
+                </code>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Completely Derived Column</mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>
+            If the data to be rendered in a column is not directly available in a single property, or it needs custom formatting, use a column
+            template. The <code>data</code> variable exposed in this example contains the instance of the data for that row. You can also access
+            other methods or properties defined in your component.
+        </p>
+        <p>
+            Note that when using a column template, you will need to define custom sorting or it will not work on that column.
+        </p>
+
+        <mat-tab-group>
+            <mat-tab label="Example">
+                <hb-mat-table [tableData]="matGridData03">
+                    <hb-mat-table-column name="firstName"></hb-mat-table-column>
+                    <hb-mat-table-column name="lastName"></hb-mat-table-column>
+                    <hb-mat-table-column name="fullName">
+                        <div *hbMatTableColumnTemplate="let data">{{ data.lastName }}, {{ data.firstName }}</div>
+                    </hb-mat-table-column>
+                    <hb-mat-table-column name="age" dataType="number"></hb-mat-table-column>
+                    <hb-mat-table-column name="birthDate" dataType="date"></hb-mat-table-column>
+                </hb-mat-table>
+            </mat-tab>
+            <mat-tab label="Html">
+                <code>
+                    <pre>
+&lt;hb-mat-table [tableData]="matGridData"&gt;
+    &lt;hb-mat-table-column name="firstName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="lastName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="fullName"&gt;
+        &lt;div *hbMatTableColumnTemplate="let data"&gt;{{ '{{' }} data.lastName }}, {{ '{{' }} data.firstName }}&lt;/div&gt;
+    &lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="age" dataType="number"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="birthDate" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
+&lt;/hb-mat-table&gt;
+</pre>
+                </code>
+            </mat-tab>
+            <mat-tab label="TypeScript">
+                <code>
+                    <pre>
+tableData: UserInfo[] = ...;
+matGridData: MatTableDataSource&lt;UserInfo&gt;;
+
+constructor() {{ '{' }}
+    this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
+}
+
+class UserInfo {{ '{' }}
+    userId: number | null = null;
+    firstName: string | null = null;
+    lastName: string | null = null;
+    age: number | null = null;
+    birthDate: Date | null = null;
+}
+</pre>
+                </code>
+            </mat-tab>
+        </mat-tab-group>
+
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Custom Number/Date Formatting</mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>
+            When setting a <code>dataType</code>, a <code>dataFormat</code> property can also be set. This will be passed to the
+            Angular pipe for formatting. The locale used by the pipe will always be the value set globally in your application. If
+            you are unable to set the <code>LOCALE_ID</code> globally, you would need to use a column template.
+        </p>
+        <ul>
+            <li><code>number</code> - will be the <code>digitsInfo</code> parameter of the <code>DecimalPipe</code></li>
+            <li><code>date</code> - will be the <code>format</code> parameter of the <code>DatePipe</code></li>
+        </ul>
+
+        <mat-tab-group>
+            <mat-tab label="Example">
+                <hb-mat-table [tableData]="matGridData04">
+                    <hb-mat-table-column name="firstName"></hb-mat-table-column>
+                    <hb-mat-table-column name="lastName"></hb-mat-table-column>
+                    <hb-mat-table-column name="age" dataType="number" dataFormat="1.1-1"></hb-mat-table-column>
+                    <hb-mat-table-column name="birthDate" dataType="date" dataFormat="shortDate"></hb-mat-table-column>
+                </hb-mat-table>
+            </mat-tab>
+            <mat-tab label="Html">
+                <code>
+                    <pre>
+&lt;hb-mat-table [tableData]="matGridData"&gt;
+    &lt;hb-mat-table-column name="firstName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="lastName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="age" dataType="number" dataFormat="1.1-1"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="birthDate" dataType="date" dataFormat="shortDate"&gt;&lt;/hb-mat-table-column&gt;
+&lt;/hb-mat-table&gt;
+</pre>
+                </code>
+            </mat-tab>
+            <mat-tab label="TypeScript">
+                <code>
+                    <pre>
+tableData: UserInfo[] = ...;
+matGridData: MatTableDataSource&lt;UserInfo&gt;;
+
+constructor() {{ '{' }}
+    this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
+}
+
+class UserInfo {{ '{' }}
+    userId: number | null = null;
+    firstName: string | null = null;
+    lastName: string | null = null;
+    age: number | null = null;
+    birthDate: Date | null = null;
+}
+</pre>
+                </code>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Only Display Some Columns, Column Display Order</mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>
+            By default, all columns defined will be displayed in the order they are defined. If you want to hide certain columns, or
+            change the order the columns are displayed in, you will need to set the <code>displayedColumns</code> property. This is a
+            string array of column names.
+        </p>
+        <p>
+            In the example, both the <code>userId</code> and <code>age</code> columns are not displayed. And the order of the
+            <code>firstName</code> and <code>lastName</code> columns are switched.
+        </p>
+
+        <mat-tab-group>
+            <mat-tab label="Example">
+                <hb-mat-table [tableData]="matGridData05"
+                              [displayedColumns]="customColumnDisplay">
+                    <hb-mat-table-column name="userId"></hb-mat-table-column>
+                    <hb-mat-table-column name="firstName"></hb-mat-table-column>
+                    <hb-mat-table-column name="lastName"></hb-mat-table-column>
+                    <hb-mat-table-column name="age" dataType="number"></hb-mat-table-column>
+                    <hb-mat-table-column name="birthDate" dataType="date"></hb-mat-table-column>
+                </hb-mat-table>
+            </mat-tab>
+            <mat-tab label="Html">
+                <code>
+                    <pre>
+&lt;hb-mat-table [tableData]="matGridData"
+              [displayedColumns]="customColumnDisplay"&gt;
+    &lt;hb-mat-table-column name="userId"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="firstName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="lastName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="age" dataType="number"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="birthDate" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
+&lt;/hb-mat-table&gt;
+</pre>
+                </code>
+            </mat-tab>
+            <mat-tab label="TypeScript">
+                <code>
+                    <pre>
+tableData: UserInfo[] = ...;
+matGridData: MatTableDataSource&lt;UserInfo&gt;;
+customColumnDisplay: string[] = ['lastName', 'firstName', 'birthDate'];
+
+constructor() {{ '{' }}
+    this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
+}
+
+class UserInfo {{ '{' }}
+    userId: number | null = null;
+    firstName: string | null = null;
+    lastName: string | null = null;
+    age: number | null = null;
+    birthDate: Date | null = null;
+}
+</pre>
+                </code>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Custom Header Text</mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>
+            The column's header text will default to the column name, splitting it by capital letters. A column named 'firstName' displays
+            as 'First Name' in the header row. If the header text should be something else, set the <code>caption</code> property on the column.
+            This does <em>not</em> affect the default sorting behavior.
+        </p>
+
+        <mat-tab-group>
+            <mat-tab label="Example">
+                <hb-mat-table [tableData]="matGridData06">
+                    <hb-mat-table-column name="firstName"></hb-mat-table-column>
+                    <hb-mat-table-column name="lastName" caption="Family Name"></hb-mat-table-column>
+                    <hb-mat-table-column name="age" dataType="number"></hb-mat-table-column>
+                    <hb-mat-table-column name="birthDate" dataType="date"></hb-mat-table-column>
+                </hb-mat-table>
+            </mat-tab>
+            <mat-tab label="Html">
+                <code>
+                    <pre>
+&lt;hb-mat-table [tableData]="matGridData"&gt;
+    &lt;hb-mat-table-column name="firstName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="lastName" caption="Family Name"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="age" dataType="number"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="birthDate" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
+&lt;/hb-mat-table&gt;
+</pre>
+                </code>
+            </mat-tab>
+            <mat-tab label="TypeScript">
+                <code>
+                    <pre>
+tableData: UserInfo[] = ...;
+matGridData: MatTableDataSource&lt;UserInfo&gt;;
+
+constructor() {{ '{' }}
+    this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
+}
+
+class UserInfo {{ '{' }}
+    userId: number | null = null;
+    firstName: string | null = null;
+    lastName: string | null = null;
+    age: number | null = null;
+    birthDate: Date | null = null;
+}
+</pre>
+                </code>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Footer Row</mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>
+            To add a footer row to the table, set the <code>showFooter</code> property and define a footer template for each
+            relevant column. Only a single footer row is supported.
+        </p>
+
+        <mat-tab-group>
+            <mat-tab label="Example">
+                <hb-mat-table [tableData]="matGridData07"
+                              [showFooter]="true">
+                    <hb-mat-table-column name="firstName">
+                        <div *hbMatTableFooterTemplate>Average ::</div>
+                    </hb-mat-table-column>
+                    <hb-mat-table-column name="lastName"></hb-mat-table-column>
+                    <hb-mat-table-column name="age" dataType="number">
+                        <div *hbMatTableFooterTemplate>{{ sampleFooterValue | number }}</div>
+                    </hb-mat-table-column>
+                    <hb-mat-table-column name="birthDate" dataType="date"></hb-mat-table-column>
+                </hb-mat-table>
+            </mat-tab>
+            <mat-tab label="Html">
+                <code>
+                    <pre>
+&lt;hb-mat-table [tableData]="matGridData"
+              [showFooter]="true"&gt;
+    &lt;hb-mat-table-column name="firstName"&gt;
+        &lt;div *hbMatTableFooterTemplate&gt;Average ::&lt;/div&gt;
+    &lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="lastName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="age" dataType="number"&gt;
+        &lt;div *hbMatTableFooterTemplate&gt;{{ '{{' }} sampleFooterValue | number }}&lt;/div&gt;
+    &lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="birthDate" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
+&lt;/hb-mat-table&gt;
+</pre>
+                </code>
+            </mat-tab>
+            <mat-tab label="TypeScript">
+                <code>
+                    <pre>
+tableData: UserInfo[] = ...;
+matGridData: MatTableDataSource&lt;UserInfo&gt;;
+sampleFooterValue: number = 27.3;
+
+constructor() {{ '{' }}
+    this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
+}
+
+class UserInfo {{ '{' }}
+    userId: number | null = null;
+    firstName: string | null = null;
+    lastName: string | null = null;
+    age: number | null = null;
+    birthDate: Date | null = null;
+}
+</pre>
+                </code>
+            </mat-tab>
+        </mat-tab-group>
+
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Sticky Header Row</mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>
+            To make the header row sticky so it is always visible, set the <code>isHeaderSticky</code> property.
+        </p>
+
+        <mat-tab-group>
+            <mat-tab label="Example">
+                <div style="max-height:200px; overflow:auto;">
+                    <hb-mat-table [tableData]="matGridData08"
+                                  [isHeaderSticky]="true">
+                        <hb-mat-table-column name="firstName"></hb-mat-table-column>
+                        <hb-mat-table-column name="lastName"></hb-mat-table-column>
+                        <hb-mat-table-column name="age" dataType="number"></hb-mat-table-column>
+                        <hb-mat-table-column name="birthDate" dataType="date"></hb-mat-table-column>
+                    </hb-mat-table>
+                </div>
+            </mat-tab>
+            <mat-tab label="Html">
+                <code>
+                    <pre>
+&lt;hb-mat-table [tableData]="matGridData"
+              [isHeaderSticky]="true"&gt;
+    &lt;hb-mat-table-column name="firstName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="lastName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="age" dataType="number"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="birthDate" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
+&lt;/hb-mat-table&gt;
+</pre>
+                </code>
+            </mat-tab>
+            <mat-tab label="TypeScript">
+                <code>
+                    <pre>
+tableData: UserInfo[] = ...;
+matGridData: MatTableDataSource&lt;UserInfo&gt;;
+
+constructor() {{ '{' }}
+    this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
+}
+
+class UserInfo {{ '{' }}
+    userId: number | null = null;
+    firstName: string | null = null;
+    lastName: string | null = null;
+    age: number | null = null;
+    birthDate: Date | null = null;
+}
+</pre>
+                </code>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Fixed Column(s)</mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>
+            To make columns sticky, apply the <code>isStickyStart</code> or <code>isStickyEnd</code> properties to the column.
+        </p>
+
+        <mat-tab-group>
+            <mat-tab label="Example">
+                <div style="max-width: 300px; overflow: auto;">
+                    <hb-mat-table [tableData]="matGridData09">
+                        <hb-mat-table-column name="userId" [isStickyStart]="true"></hb-mat-table-column>
+                        <hb-mat-table-column name="firstName"></hb-mat-table-column>
+                        <hb-mat-table-column name="lastName"></hb-mat-table-column>
+                        <hb-mat-table-column name="age" dataType="number"></hb-mat-table-column>
+                        <hb-mat-table-column name="birthDate" dataType="date" [isStickyEnd]="true"></hb-mat-table-column>
+                    </hb-mat-table>
+                </div>
+            </mat-tab>
+            <mat-tab label="Html">
+                <code>
+                    <pre>
+&lt;hb-mat-table [tableData]="matGridData"&gt;
+    &lt;hb-mat-table-column name="userId" [isStickyStart]="true"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="firstName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="lastName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="age" dataType="number"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="birthDate" dataType="date" [isStickyEnd]="true"&gt;&lt;/hb-mat-table-column&gt;
+&lt;/hb-mat-table&gt;
+</pre>
+                </code>
+            </mat-tab>
+            <mat-tab label="TypeScript">
+                <code>
+                    <pre>
+tableData: UserInfo[] = ...;
+matGridData: MatTableDataSource&lt;UserInfo&gt;;
+
+constructor() {{ '{' }}
+    this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
+}
+
+class UserInfo {{ '{' }}
+    userId: number | null = null;
+    firstName: string | null = null;
+    lastName: string | null = null;
+    age: number | null = null;
+    birthDate: Date | null = null;
+}
+</pre>
+                </code>
+            </mat-tab>
+        </mat-tab-group>
+
+    </mat-expansion-panel>
+</mat-accordion>
+
+
