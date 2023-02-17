@@ -1,0 +1,250 @@
+<mat-card appearance="outlined">
+    <mat-card-header>
+        <mat-card-title>
+            Sorting
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        Sorting is automatically added to all tables, using Material's matSort directive. This requires the use of a <code>MatTableDataSource</code>
+        or other compatible <code>DataSource</code>.
+    </mat-card-content>
+</mat-card>
+
+<mat-accordion>
+    <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+            <mat-panel-title>Basic Table</mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>
+            This shows the default behavior. With no extra settings or code, each column will be sortable. This requires you to use
+            a <code>MatTableDataSource</code> and leverages its built-in sorting.
+        </p>
+        <mat-tab-group>
+            <mat-tab label="Example">
+                <hb-mat-table [tableData]="matGridData01">
+                    <hb-mat-table-column name="firstName"></hb-mat-table-column>
+                    <hb-mat-table-column name="lastName"></hb-mat-table-column>
+                    <hb-mat-table-column name="age" dataType="number"></hb-mat-table-column>
+                    <hb-mat-table-column name="birthDate" dataType="date"></hb-mat-table-column>
+                </hb-mat-table>
+            </mat-tab>
+            <mat-tab label="Html">
+                <code>
+                    <pre>
+&lt;hb-mat-table [tableData]="matGridData"&gt;
+    &lt;hb-mat-table-column name="firstName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="lastName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="age" dataType="number"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="birthDate" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
+&lt;/hb-mat-table&gt;
+</pre>
+                </code>
+            </mat-tab>
+            <mat-tab label="TypeScript">
+                <code>
+                    <pre>
+tableData: UserInfo[] = ...;
+matGridData: MatTableDataSource&lt;UserInfo&gt;;
+
+constructor() {{ '{' }}
+    this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
+}
+
+class UserInfo {{ '{' }}
+    userId: number | null = null;
+    firstName: string | null = null;
+    lastName: string | null = null;
+    age: number | null = null;
+    birthDate: Date | null = null;
+}
+</pre>
+                </code>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Disable Sort on Single Column</mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>
+            Add <code>[canSort]="false"</code> to any column which should not be sortable. In this example, the First Name column is
+            not sortable.
+        </p>
+        <mat-tab-group>
+            <mat-tab label="Example">
+                <hb-mat-table [tableData]="matGridData02">
+                    <hb-mat-table-column name="firstName" [canSort]="false"></hb-mat-table-column>
+                    <hb-mat-table-column name="lastName"></hb-mat-table-column>
+                    <hb-mat-table-column name="age" dataType="number"></hb-mat-table-column>
+                    <hb-mat-table-column name="birthDate" dataType="date"></hb-mat-table-column>
+                </hb-mat-table>
+            </mat-tab>
+            <mat-tab label="Html">
+                <code>
+                    <pre>
+&lt;hb-mat-table [tableData]="matGridData"&gt;
+    &lt;hb-mat-table-column name="firstName" [canSort]="false"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="lastName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="age" dataType="number"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="birthDate" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
+&lt;/hb-mat-table&gt;
+</pre>
+                </code>
+            </mat-tab>
+            <mat-tab label="TypeScript">
+                <code>
+                    <pre>
+tableData: UserInfo[] = ...;
+matGridData: MatTableDataSource&lt;UserInfo&gt;;
+
+constructor() {{ '{' }}
+    this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
+}
+
+class UserInfo {{ '{' }}
+    userId: number | null = null;
+    firstName: string | null = null;
+    lastName: string | null = null;
+    age: number | null = null;
+    birthDate: Date | null = null;
+}
+</pre>
+                </code>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Disable Sort on Whole Table</mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>
+            To disable the sorting on all columns, add the <code>[canSort]="false"</code> to the table element.
+        </p>
+
+        <mat-tab-group>
+            <mat-tab label="Example">
+                <hb-mat-table [tableData]="matGridData03"
+                              [canSort]="false">
+                    <hb-mat-table-column name="firstName"></hb-mat-table-column>
+                    <hb-mat-table-column name="lastName"></hb-mat-table-column>
+                    <hb-mat-table-column name="age" dataType="number"></hb-mat-table-column>
+                    <hb-mat-table-column name="birthDate" dataType="date"></hb-mat-table-column>
+                </hb-mat-table>
+            </mat-tab>
+            <mat-tab label="Html">
+                <code>
+                    <pre>
+&lt;hb-mat-table [tableData]="matGridData"
+              [canSort]="false"&gt;
+    &lt;hb-mat-table-column name="firstName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="lastName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="age" dataType="number"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="birthDate" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
+&lt;/hb-mat-table&gt;
+</pre>
+                </code>
+            </mat-tab>
+            <mat-tab label="TypeScript">
+                <code>
+                    <pre>
+tableData: UserInfo[] = ...;
+matGridData: MatTableDataSource&lt;UserInfo&gt;;
+
+constructor() {{ '{' }}
+    this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
+}
+
+class UserInfo {{ '{' }}
+    userId: number | null = null;
+    firstName: string | null = null;
+    lastName: string | null = null;
+    age: number | null = null;
+    birthDate: Date | null = null;
+}
+</pre>
+                </code>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Custom Sorting</mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>
+            If a column should be sorted differently than the default, or you are using a column template, you'll need to define the
+            sorting for each column in the table by defining a custom <code>sortingDataAccessor</code> on the <code>MatTableDataSource</code>.
+            For columns which do not require custom sorting, you can return the property value.
+        </p>
+        <p>
+            Here, the Full Name column is defined via a column template, so we define the sorting on that column, and pass back the value
+            of the other columns.
+        </p>
+
+        <mat-tab-group>
+            <mat-tab label="Example">
+                <hb-mat-table [tableData]="matGridData04">
+                    <hb-mat-table-column name="firstName"></hb-mat-table-column>
+                    <hb-mat-table-column name="lastName"></hb-mat-table-column>
+                    <hb-mat-table-column name="fullName">
+                        <div *hbMatTableColumnTemplate="let data">{{ data.lastName }}, {{ data.firstName }}</div>
+                    </hb-mat-table-column>
+                    <hb-mat-table-column name="age" dataType="number"></hb-mat-table-column>
+                    <hb-mat-table-column name="birthDate" dataType="date"></hb-mat-table-column>
+                </hb-mat-table>
+            </mat-tab>
+            <mat-tab label="Html">
+                <code>
+                    <pre>
+&lt;hb-mat-table [tableData]="matGridData"&gt;
+    &lt;hb-mat-table-column name="firstName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="lastName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="fullName"&gt;
+        &lt;div *hbMatTableColumnTemplate="let data"&gt;{{ '{{' }} data.lastName }}, {{ '{{' }} data.firstName }}&lt;/div&gt;
+    &lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="age" dataType="number"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="birthDate" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
+&lt;/hb-mat-table&gt;
+</pre>
+                </code>
+            </mat-tab>
+            <mat-tab label="TypeScript">
+                <code>
+                    <pre>
+tableData: UserInfo[] = ...;
+matGridData: MatTableDataSource&lt;UserInfo&gt;;
+
+constructor() {{ '{' }}
+    this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
+    this.matGridData.sortingDataAccessor = (data: UserInfo, sortHeaderId: string): string | number => {{ '{' }}
+        // the sortHeaderId is the name of the column, not the header text
+        switch (sortHeaderId) {{ '{' }}
+            case 'userId': return data.userId ?? 0;
+            case 'firstName': return data.firstName ?? '';
+            case 'lastName': return data.lastName ?? '';
+            case 'age': return data.age ?? 0;
+            case 'birthDate':
+                if (data.birthDate == null) return 0;
+                return data.birthDate.valueOf();
+            case 'fullName':
+                return `${{ '{' }}data.lastName} ${{ '{' }}data.firstName}`;
+        }
+
+        return '';
+    };
+}
+
+class UserInfo {{ '{' }}
+    userId: number | null = null;
+    firstName: string | null = null;
+    lastName: string | null = null;
+    age: number | null = null;
+    birthDate: Date | null = null;
+}
+</pre>
+                </code>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-expansion-panel>
+</mat-accordion>
+
+
