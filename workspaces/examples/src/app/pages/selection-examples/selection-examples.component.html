@@ -1,0 +1,450 @@
+<mat-accordion>
+    <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+            <mat-panel-title>Single Row Selection</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <p>
+            Allow a single row selection. A column named 'select' will be added to the column list, so make sure not to
+            define that column.
+        </p>
+
+        <mat-tab-group>
+            <mat-tab label="Example">
+                <hb-mat-table #singleSelectTable
+                              [tableData]="matGridData01"
+                              selectionMode="single">
+                    <hb-mat-table-column name="firstName"></hb-mat-table-column>
+                    <hb-mat-table-column name="lastName"></hb-mat-table-column>
+                    <hb-mat-table-column name="age" dataType="number"></hb-mat-table-column>
+                    <hb-mat-table-column name="birthDate" dataType="date"></hb-mat-table-column>
+                </hb-mat-table>
+                <h4>Selected Row:</h4>
+                <p>{{ table01?.selection?.selected?.length == 0 ? 'None' : table01?.selection?.selected }}</p>
+            </mat-tab>
+            <mat-tab label="Html">
+                <code>
+                    <pre>
+&lt;hb-mat-table #table
+              [tableData]="matGridData"
+              selectionMode="single"&gt;
+    &lt;hb-mat-table-column name="firstName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="lastName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="age" dataType="number"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="birthDate" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
+&lt;/hb-mat-table&gt;
+&lt;h4&gt;Selected Row:&lt;/h4&gt;
+&lt;p&gt;{{ '{{' }} hbTable?.selection?.selected?.length == 0 ? 'None' : hbTable?.selection?.selected }}&lt;/p&gt;
+</pre>
+                </code>
+            </mat-tab>
+            <mat-tab label="TypeScript">
+                <code>
+                    <pre>
+tableData: UserInfo[] = ...;
+matGridData: MatTableDataSource&lt;UserInfo&gt;;
+@ViewChild('table') hbTable: HbMatTable | undefined;
+
+constructor() {{ '{' }}
+    this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
+}
+
+ngAfterViewInit(): void {{ '{' }}
+    // the view child properties are undefined initially, and referencing the
+    // selection directly causes an Expression Changed error without this.
+    this.changeDetectorRef.detectChanges();
+}
+
+class UserInfo {{ '{' }}
+    userId: number | null = null;
+    firstName: string | null = null;
+    lastName: string | null = null;
+    age: number | null = null;
+    birthDate: Date | null = null;
+}
+</pre>
+                </code>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Mutliple Row Selection</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <p>
+            Allow multiple row selection. A column named 'select' will be added to the column list, so make sure not to
+            define that column.
+        </p>
+
+        <mat-tab-group>
+            <mat-tab label="Example">
+                <hb-mat-table #multiSelectTable
+                              [tableData]="matGridData02"
+                              selectionMode="multiple">
+                    <hb-mat-table-column name="firstName"></hb-mat-table-column>
+                    <hb-mat-table-column name="lastName"></hb-mat-table-column>
+                    <hb-mat-table-column name="age" dataType="number"></hb-mat-table-column>
+                    <hb-mat-table-column name="birthDate" dataType="date"></hb-mat-table-column>
+                </hb-mat-table>
+                <h4>Selected Rows:</h4>
+                <p>{{ table02?.selection?.selected?.length == 0 ? 'None' : table02?.selection?.selected }}</p>
+            </mat-tab>
+            <mat-tab label="Html">
+                <code>
+                    <pre>
+&lt;hb-mat-table #table
+              [tableData]="matGridData"
+              selectionMode="multiple"&gt;
+    &lt;hb-mat-table-column name="firstName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="lastName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="age" dataType="number"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="birthDate" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
+&lt;/hb-mat-table&gt;
+&lt;h4&gt;Selected Rows:&lt;/h4&gt;
+&lt;p&gt;{{ '{{' }} hbTable?.selection?.selected?.length == 0 ? 'None' : hbTable?.selection?.selected }}&lt;/p&gt;
+</pre>
+                </code>
+            </mat-tab>
+            <mat-tab label="TypeScript">
+                <code>
+                    <pre>
+tableData: UserInfo[] = ...;
+matGridData: MatTableDataSource&lt;UserInfo&gt;;
+@ViewChild('table') hbTable: HbMatTable | undefined;
+
+constructor() {{ '{' }}
+    this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
+}
+
+ngAfterViewInit(): void {{ '{' }}
+    // the view child properties are undefined initially, and referencing the
+    // selection directly causes an Expression Changed error without this.
+    this.changeDetectorRef.detectChanges();
+}
+
+class UserInfo {{ '{' }}
+    userId: number | null = null;
+    firstName: string | null = null;
+    lastName: string | null = null;
+    age: number | null = null;
+    birthDate: Date | null = null;
+}
+</pre>
+                </code>
+            </mat-tab>
+        </mat-tab-group>
+
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Custom Checkbox Color</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <p>
+            The checkbox is a Material checkbox, and will inherit any defaults you have defined for checkboxes. If you'd like
+            to alter the Material theme for only these checkboxes, set the <code>selectionColor</code> property.
+        </p>
+
+        <mat-tab-group>
+            <mat-tab label="Example">
+                <hb-mat-table #customSelectColorTable
+                              [tableData]="matGridData03"
+                              selectionMode="single"
+                              selectionColor="primary">
+                    <hb-mat-table-column name="firstName"></hb-mat-table-column>
+                    <hb-mat-table-column name="lastName"></hb-mat-table-column>
+                    <hb-mat-table-column name="age" dataType="number"></hb-mat-table-column>
+                    <hb-mat-table-column name="birthDate" dataType="date"></hb-mat-table-column>
+                </hb-mat-table>
+                <h4>Selected Row:</h4>
+                <p>{{ table03?.selection?.selected?.length == 0 ? 'None' : table03?.selection?.selected }}</p>
+            </mat-tab>
+            <mat-tab label="Html">
+                <code>
+                    <pre>
+&lt;hb-mat-table #table
+              [tableData]="matGridData"
+              selectionMode="single"
+              selectionColor="primary"&gt;
+    &lt;hb-mat-table-column name="firstName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="lastName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="age" dataType="number"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="birthDate" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
+&lt;/hb-mat-table&gt;
+&lt;h4&gt;Selected Row:&lt;/h4&gt;
+&lt;p&gt;{{ '{{' }} hbTable?.selection?.selected?.length == 0 ? 'None' : hbTable?.selection?.selected }}&lt;/p&gt;
+</pre>
+                </code>
+            </mat-tab>
+            <mat-tab label="TypeScript">
+                <code>
+                    <pre>
+tableData: UserInfo[] = ...;
+matGridData: MatTableDataSource&lt;UserInfo&gt;;
+@ViewChild('table') hbTable: HbMatTable | undefined;
+
+constructor() {{ '{' }}
+    this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
+}
+
+ngAfterViewInit(): void {{ '{' }}
+    // the view child properties are undefined initially, and referencing the
+    // selection directly causes an Expression Changed error without this.
+    this.changeDetectorRef.detectChanges();
+}
+
+class UserInfo {{ '{' }}
+    userId: number | null = null;
+    firstName: string | null = null;
+    lastName: string | null = null;
+    age: number | null = null;
+    birthDate: Date | null = null;
+}
+</pre>
+                </code>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Custom Row Key</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <p>
+            By default, the key will be the entire row's data. If you wish to only use specific column(s), set the <code>rowKey</code>
+            property. This is a string array of the column names.
+        </p>
+
+        <mat-tab-group>
+            <mat-tab label="Example">
+                <hb-mat-table #customRowKeyTable
+                              [tableData]="matGridData04"
+                              selectionMode="single"
+                              [rowKey]="['userId', 'lastName']">
+                    <hb-mat-table-column name="firstName"></hb-mat-table-column>
+                    <hb-mat-table-column name="lastName"></hb-mat-table-column>
+                    <hb-mat-table-column name="age" dataType="number"></hb-mat-table-column>
+                    <hb-mat-table-column name="birthDate" dataType="date"></hb-mat-table-column>
+                </hb-mat-table>
+                <h4>Selected Row:</h4>
+                <p>{{ table04?.selection?.selected?.length == 0 ? 'None' : table04?.selection?.selected }}</p>
+            </mat-tab>
+            <mat-tab label="Html">
+                <code>
+                    <pre>
+&lt;hb-mat-table #table
+              [tableData]="matGridData"
+              selectionMode="single"
+              [rowKey]="['userId', 'lastName']"&gt;
+    &lt;hb-mat-table-column name="firstName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="lastName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="age" dataType="number"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="birthDate" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
+&lt;/hb-mat-table&gt;
+&lt;h4&gt;Selected Row:&lt;/h4&gt;
+&lt;p&gt;{{ '{{' }} hbTable?.selection?.selected?.length == 0 ? 'None' : hbTable?.selection?.selected }}&lt;/p&gt;
+</pre>
+                </code>
+            </mat-tab>
+            <mat-tab label="TypeScript">
+                <code>
+                    <pre>
+tableData: UserInfo[] = ...;
+matGridData: MatTableDataSource&lt;UserInfo&gt;;
+@ViewChild('table') hbTable: HbMatTable | undefined;
+
+constructor() {{ '{' }}
+    this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
+}
+
+ngAfterViewInit(): void {{ '{' }}
+    // the view child properties are undefined initially, and referencing the
+    // selection directly causes an Expression Changed error without this.
+    this.changeDetectorRef.detectChanges();
+}
+
+class UserInfo {{ '{' }}
+    userId: number | null = null;
+    firstName: string | null = null;
+    lastName: string | null = null;
+    age: number | null = null;
+    birthDate: Date | null = null;
+}
+</pre>
+                </code>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Accessing the Selected Row Key Properties</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <p>
+            The selected row key will be a string of json. To access the data programmatically, first parse it into an object.
+        </p>
+
+        <mat-tab-group>
+            <mat-tab label="Example">
+                <hb-mat-table #singleRowKeyPropertyTable
+                              [tableData]="matGridData05"
+                              selectionMode="single">
+                    <hb-mat-table-column name="firstName"></hb-mat-table-column>
+                    <hb-mat-table-column name="lastName"></hb-mat-table-column>
+                    <hb-mat-table-column name="age" dataType="number"></hb-mat-table-column>
+                    <hb-mat-table-column name="birthDate" dataType="date"></hb-mat-table-column>
+                </hb-mat-table>
+                <h4>Selected Row:</h4>
+                <p>{{ table05?.selection?.selected?.length == 0 ? 'None' : table05?.selection?.selected }}</p>
+                <h4>Selected Row, Parsed and Displayed with JsonPipe:</h4>
+                <p>{{ table05_selectedJson | json  }}</p>
+                <h4>Selected Row, Parsed and Displaying the 'userId' Property:</h4>
+                <p>{{ table05_selectedJson?.userId  }}</p>
+            </mat-tab>
+            <mat-tab label="Html">
+                <code>
+                    <pre>
+&lt;hb-mat-table #table
+              [tableData]="matGridData"
+              selectionMode="single"&gt;
+    &lt;hb-mat-table-column name="firstName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="lastName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="age" dataType="number"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="birthDate" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
+&lt;/hb-mat-table&gt;
+&lt;h4&gt;Selected Row:&lt;/h4&gt;
+&lt;p&gt;{{ '{{' }} hbTable?.selection?.selected?.length == 0 ? 'None' : hbTable?.selection?.selected }}&lt;/p&gt;
+&lt;h4&gt;Selected Row, Parsed and Displayed with JsonPipe:&lt;/h4&gt;
+&lt;p&gt;{{ '{{' }} selectedJson | json  }}&lt;/p&gt;
+&lt;h4&gt;Selected Row, Parsed and Displaying the 'userId' Property:&lt;/h4&gt;
+&lt;p&gt;{{ '{{' }} selectedJson?.userId  }}&lt;/p&gt;
+</pre>
+                </code>
+            </mat-tab>
+            <mat-tab label="TypeScript">
+                <code>
+                    <pre>
+tableData: UserInfo[] = ...;
+matGridData: MatTableDataSource&lt;UserInfo&gt;;
+@ViewChild('table') hbTable: HbMatTable | undefined;
+
+get selectedJson(): any | null {{ '{' }}
+    if (this.hbTable?.selection && this.hbTable.selection.selected.length > 0)
+        return JSON.parse(this.hbTable.selection.selected[0]);
+
+    return null;
+}
+
+constructor() {{ '{' }}
+    this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
+}
+
+ngAfterViewInit(): void {{ '{' }}
+    // the view child properties are undefined initially, and referencing the
+    // selection directly causes an Expression Changed error without this.
+    this.changeDetectorRef.detectChanges();
+}
+
+class UserInfo {{ '{' }}
+    userId: number | null = null;
+    firstName: string | null = null;
+    lastName: string | null = null;
+    age: number | null = null;
+    birthDate: Date | null = null;
+}
+</pre>
+                </code>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Accessing Multiple Selected Row Key Properties</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <p>
+            The selected row key will be a string of json. To access the data programmatically, first parse it into an object.
+        </p>
+
+        <mat-tab-group>
+            <mat-tab label="Example">
+                <hb-mat-table #multiRowKeyPropertyTable
+                              [tableData]="matGridData06"
+                              selectionMode="multiple">
+                    <hb-mat-table-column name="firstName"></hb-mat-table-column>
+                    <hb-mat-table-column name="lastName"></hb-mat-table-column>
+                    <hb-mat-table-column name="age" dataType="number"></hb-mat-table-column>
+                    <hb-mat-table-column name="birthDate" dataType="date"></hb-mat-table-column>
+                </hb-mat-table>
+                <h4>Selected Row:</h4>
+                <p>{{ table06?.selection?.selected?.length == 0 ? 'None' : table06?.selection?.selected }}</p>
+                <h4>Selected Row, Parsed and Displayed with JsonPipe:</h4>
+                <p>{{ table06_selectedJson | json  }}</p>
+                <h4>Selected Row, Parsed and Displaying the 'userId' Property:</h4>
+                <p>{{ table06_selectedJson?.length > 1 ? table06_selectedJson[1].userId : null  }}</p>
+            </mat-tab>
+            <mat-tab label="Html">
+                <code>
+                    <pre>
+&lt;hb-mat-table #table
+              [tableData]="matGridData"
+              selectionMode="single"&gt;
+    &lt;hb-mat-table-column name="firstName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="lastName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="age" dataType="number"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="birthDate" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
+&lt;/hb-mat-table&gt;
+&lt;h4&gt;Selected Row:&lt;/h4&gt;
+&lt;p&gt;{{ '{{' }} hbTable?.selection?.selected?.length == 0 ? 'None' : hbTable?.selection?.selected }}&lt;/p&gt;
+&lt;h4&gt;Selected Row, Parsed and Displayed with JsonPipe:&lt;/h4&gt;
+&lt;p&gt;{{ '{{' }} selectedJson | json  }}&lt;/p&gt;
+&lt;h4&gt;Selected Row, Parsed and Displaying the 'userId' Property:&lt;/h4&gt;
+&lt;p&gt;{{ '{{' }} selectedJson?.length > 1 ? selectedJson[1].userId : null  }}&lt;/p&gt;
+
+</pre>
+                </code>
+            </mat-tab>
+            <mat-tab label="TypeScript">
+                <code>
+                    <pre>
+tableData: UserInfo[] = ...;
+matGridData: MatTableDataSource&lt;UserInfo&gt;;
+@ViewChild('table') hbTable: HbMatTable | undefined;
+
+get selectedJson(): any | null {{ '{' }}
+    if (this.hbTable?.selection && this.hbTable.selection.selected.length > 0) {{ '{' }}
+        // the selected value is an array of strings. Parse all of them to get an array of objects.
+        let selectedObjects: UserInfo[] = this.hbTable.selection.selected.map((val: any) => {{ '{' }}
+            return JSON.parse(val);
+        });
+
+        return selectedObjects;
+    }
+
+    return null;
+}
+
+constructor() {{ '{' }}
+    this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
+}
+
+ngAfterViewInit(): void {{ '{' }}
+    // the view child properties are undefined initially, and referencing the
+    // selection directly causes an Expression Changed error without this.
+    this.changeDetectorRef.detectChanges();
+}
+
+class UserInfo {{ '{' }}
+    userId: number | null = null;
+    firstName: string | null = null;
+    lastName: string | null = null;
+    age: number | null = null;
+    birthDate: Date | null = null;
+}
+</pre>
+                </code>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-expansion-panel>
+</mat-accordion>

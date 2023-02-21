@@ -20,13 +20,15 @@ import { NgxSimpleMaterialTableModule } from 'ngx-simple-material-table';
 import { ExamplesComponent } from './pages/examples/examples.component';
 import { SortingExamplesComponent } from './pages/sorting-examples/sorting-examples.component';
 import { ColumnExamplesComponent } from './pages/column-examples/column-examples.component';
+import { SelectionExamplesComponent } from './pages/selection-examples/selection-examples.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         ExamplesComponent,
         SortingExamplesComponent,
-        ColumnExamplesComponent
+        ColumnExamplesComponent,
+        SelectionExamplesComponent
     ],
     imports: [
         BrowserModule,
