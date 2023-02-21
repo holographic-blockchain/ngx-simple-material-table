@@ -21,6 +21,8 @@ import { ExamplesComponent } from './pages/examples/examples.component';
 import { SortingExamplesComponent } from './pages/sorting-examples/sorting-examples.component';
 import { ColumnExamplesComponent } from './pages/column-examples/column-examples.component';
 import { SelectionExamplesComponent } from './pages/selection-examples/selection-examples.component';
+import { HomeComponent } from './pages/home/home.component';
+import { PaginationExamplesComponent } from './pages/pagination-examples/pagination-examples.component';
 
 @NgModule({
     declarations: [
@@ -28,7 +30,9 @@ import { SelectionExamplesComponent } from './pages/selection-examples/selection
         ExamplesComponent,
         SortingExamplesComponent,
         ColumnExamplesComponent,
-        SelectionExamplesComponent
+        SelectionExamplesComponent,
+        HomeComponent,
+        PaginationExamplesComponent
     ],
     imports: [
         BrowserModule,

@@ -1,0 +1,17 @@
+.card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+
+    .mat-mdc-card {
+        flex-grow: 1;
+        width: 47%;
+        min-height: 7rem;
+
+        &:hover {
+            cursor: pointer;
+            background-color: #d8edff;
+        }
+    }
+}

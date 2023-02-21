@@ -1,0 +1,122 @@
+<mat-accordion>
+    <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+            <mat-panel-title>Basic Table with Pagination</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <p>
+            Pagination is supported with the <code>MatPaginator</code> component. It can be placed inside the <code>hb-mat-table</code>
+            component to have it automatically hooked up. This requires the use of a <code>MatTableDataSource</code>. The paginator will
+            be placed immediately below the table. For more information on the <code>MatPaginator</code> please see
+            <a href="https://material.angular.io/components/paginator/overview">https://material.angular.io/components/paginator/overview</a>.
+        </p>
+
+        <mat-tab-group>
+            <mat-tab label="Example">
+                <hb-mat-table [tableData]="matGridData01">
+                    <hb-mat-table-column name="firstName"></hb-mat-table-column>
+                    <hb-mat-table-column name="lastName"></hb-mat-table-column>
+                    <hb-mat-table-column name="age" dataType="number"></hb-mat-table-column>
+                    <hb-mat-table-column name="birthDate" dataType="date"></hb-mat-table-column>
+                    <mat-paginator [pageSizeOptions]="[5, 10, 25]"></mat-paginator>
+                </hb-mat-table>
+            </mat-tab>
+            <mat-tab label="Html">
+                <code>
+                    <pre>
+&lt;hb-mat-table [tableData]="matGridData"&gt;
+    &lt;hb-mat-table-column name="firstName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="lastName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="age" dataType="number"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="birthDate" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;mat-paginator [pageSizeOptions]="[5, 10, 25]"&gt;&lt;/mat-paginator&gt;
+&lt;/hb-mat-table&gt;
+</pre>
+                </code>
+            </mat-tab>
+            <mat-tab label="TypeScript">
+                <code>
+                    <pre>
+tableData: UserInfo[] = ...;
+matGridData: MatTableDataSource&lt;UserInfo&gt;;
+
+constructor() {{ '{' }}
+    this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
+}
+
+class UserInfo {{ '{' }}
+    userId: number | null = null;
+    firstName: string | null = null;
+    lastName: string | null = null;
+    age: number | null = null;
+    birthDate: Date | null = null;
+}
+</pre>
+                </code>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Basic Table, Pagination Handled Outside of Component</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <p>
+            For more control over the layout of the paginator, it can be added outside of the <code>hb-mat-table</code> component
+            and attached manually. In the below example, the paginator is placed above the table.
+        </p>
+
+        <mat-tab-group>
+            <mat-tab label="Example">
+                <mat-paginator #externalPaginator
+                               [pageSizeOptions]="[5, 10, 25]"></mat-paginator>
+                <hb-mat-table [tableData]="matGridData02">
+                    <hb-mat-table-column name="firstName"></hb-mat-table-column>
+                    <hb-mat-table-column name="lastName"></hb-mat-table-column>
+                    <hb-mat-table-column name="age" dataType="number"></hb-mat-table-column>
+                    <hb-mat-table-column name="birthDate" dataType="date"></hb-mat-table-column>
+                </hb-mat-table>
+            </mat-tab>
+            <mat-tab label="Html">
+                <code>
+                    <pre>
+&lt;mat-paginator #paginator
+               [pageSizeOptions]="[5, 10, 25]"&gt;&lt;/mat-paginator&gt;
+&lt;hb-mat-table [tableData]="matGridData"&gt;
+    &lt;hb-mat-table-column name="firstName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="lastName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="age" dataType="number"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="birthDate" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
+&lt;/hb-mat-table&gt;
+</pre>
+                </code>
+            </mat-tab>
+            <mat-tab label="TypeScript">
+                <code>
+                    <pre>
+tableData: UserInfo[] = ...;
+matGridData: MatTableDataSource&lt;UserInfo&gt;;
+
+@ViewChild('paginator') matPaginator!: MatPaginator;
+
+constructor() {{ '{' }}
+    this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
+}
+
+ngAfterViewInit(): void {{ '{' }}
+    this.matGridData.paginator = this.matPaginator;
+}
+
+class UserInfo {{ '{' }}
+    userId: number | null = null;
+    firstName: string | null = null;
+    lastName: string | null = null;
+    age: number | null = null;
+    birthDate: Date | null = null;
+}
+</pre>
+                </code>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-expansion-panel>
+</mat-accordion>
