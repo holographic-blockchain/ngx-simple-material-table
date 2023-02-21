@@ -1,0 +1,153 @@
+<mat-accordion>
+    <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+            <mat-panel-title>Table-level Filtering</mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>
+            This shows one way of implementing filtering at the table-level, utilizing the filter property of the <code>MatTableDataSource</code>.
+            This searches all data in the record, including data not displayed.
+        </p>
+        <p>
+            This searches the raw data of the source data, not the text which is displayed to the end user. For example, if you search for days
+            of the week ('mon', 'tue', 'wed', etc), you will find matches because the raw date value includes that information.
+        </p>
+
+        <mat-tab-group>
+            <mat-tab label="Example">
+                <mat-form-field>
+                    <mat-label>Filter Data</mat-label>
+                    <input matInput type="text" [(ngModel)]="gridFilter01" />
+                </mat-form-field>
+                <hb-mat-table [tableData]="matGridData01">
+                    <hb-mat-table-column name="firstName"></hb-mat-table-column>
+                    <hb-mat-table-column name="lastName"></hb-mat-table-column>
+                    <hb-mat-table-column name="age" dataType="number"></hb-mat-table-column>
+                    <hb-mat-table-column name="birthDate" dataType="date"></hb-mat-table-column>
+                </hb-mat-table>
+            </mat-tab>
+            <mat-tab label="Html">
+                <code>
+                    <pre>
+&lt;mat-form-field&gt;
+    &lt;mat-label&gt;Filter Data&lt;/mat-label&gt;
+    &lt;input matInput type="text" [(ngModel)]="gridFilter" /&gt;
+&lt;/mat-form-field&gt;
+&lt;hb-mat-table [tableData]="matGridData"&gt;
+    &lt;hb-mat-table-column name="firstName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="lastName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="age" dataType="number"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="birthDate" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
+&lt;/hb-mat-table&gt;
+</pre>
+                </code>
+            </mat-tab>
+            <mat-tab label="TypeScript">
+                <code>
+                    <pre>
+tableData: UserInfo[] = ...;
+matGridData: MatTableDataSource&lt;UserInfo&gt;;
+
+private _gridFilter: string = '';
+get gridFilter(): string {{ '{' }}
+    return this._gridFilter;
+}
+set gridFilter(value: string) {{ '{' }}
+    this._gridFilter = value;
+    this.matGridData.filter = value;
+}
+
+constructor() {{ '{' }}
+    this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
+}
+
+class UserInfo {{ '{' }}
+    userId: number | null = null;
+    firstName: string | null = null;
+    lastName: string | null = null;
+    age: number | null = null;
+    birthDate: Date | null = null;
+}
+</pre>
+                </code>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Custom Table-level Filtering</mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>
+            If the built-in filtering logic does not work, you can define your own. In the <code>MatTableDataSource</code>, define a new
+            <code>filterPredicate</code> method with your custom logic. In the below example, it is only searching the Last Name column.
+        </p>
+
+        <mat-tab-group>
+            <mat-tab label="Example">
+                <mat-form-field>
+                    <mat-label>Filter Data</mat-label>
+                    <input matInput type="text" [(ngModel)]="gridFilter02" />
+                </mat-form-field>
+                <hb-mat-table [tableData]="matGridData02">
+                    <hb-mat-table-column name="firstName"></hb-mat-table-column>
+                    <hb-mat-table-column name="lastName"></hb-mat-table-column>
+                    <hb-mat-table-column name="age" dataType="number"></hb-mat-table-column>
+                    <hb-mat-table-column name="birthDate" dataType="date"></hb-mat-table-column>
+                </hb-mat-table>
+            </mat-tab>
+            <mat-tab label="Html">
+                <code>
+                    <pre>
+&lt;mat-form-field&gt;
+    &lt;mat-label&gt;Filter Data&lt;/mat-label&gt;
+    &lt;input matInput type="text" [(ngModel)]="gridFilter" /&gt;
+&lt;/mat-form-field&gt;
+&lt;hb-mat-table [tableData]="matGridData"&gt;
+    &lt;hb-mat-table-column name="firstName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="lastName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="age" dataType="number"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="birthDate" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
+&lt;/hb-mat-table&gt;
+</pre>
+                </code>
+            </mat-tab>
+            <mat-tab label="TypeScript">
+                <code>
+                    <pre>
+tableData: UserInfo[] = ...;
+matGridData: MatTableDataSource&lt;UserInfo&gt;;
+
+private _gridFilter: string = '';
+get gridFilter(): string {{ '{' }}
+    return this._gridFilter;
+}
+set gridFilter(value: string) {{ '{' }}
+    this._gridFilter = value;
+    this.matGridData.filter = value;
+}
+
+constructor() {{ '{' }}
+    this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
+}
+
+ngAfterViewInit(): void {{ '{' }}
+    this.matGridData.filterPredicate = (data, filter) => {{ '{' }}
+        if (data.lastName?.toLocaleLowerCase().includes(filter.toLocaleLowerCase()))
+            return true;
+
+        return false;
+    };
+}
+
+class UserInfo {{ '{' }}
+    userId: number | null = null;
+    firstName: string | null = null;
+    lastName: string | null = null;
+    age: number | null = null;
+    birthDate: Date | null = null;
+}
+</pre>
+                </code>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-expansion-panel>
+</mat-accordion>
