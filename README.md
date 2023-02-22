@@ -29,7 +29,7 @@ workspaces/examples application. This readme only contains more common examples.
 - [Table Options](#table-options)
 - [API](#api)
 
-## Setup {#setup}
+## Setup
 
 Your application will need to include the following packages in its package.json file:
 
@@ -47,7 +47,7 @@ In your module, you will need to import the following modules:
 - import { MatSortModule } from '@angular/material/sort'; 
 - import { NgxSimpleMaterialTableModule } from 'ngx-simple-material-table';
 
-## Column Options {#column-options}
+## Column Options
 
 The 'hb-mat-table-column' element will define a column for the table. A basic use looks like this:
 
@@ -130,7 +130,7 @@ to each column. Note the table option 'showFooter' which also needs to be set to
 The footer template does not have access to any specific table data through a variable. You will need to defined
 your own variable or method in the consuming component.
 
-## Table Options {#table-options}
+## Table Options
 
 The table-level element is 'hb-mat-table'. The following are the available table-level options.
 
@@ -271,7 +271,7 @@ Sorting is enabled by default. To disable sorting on all columns, set the 'canSo
         ...
     </hb-mat-table>
 
-## API {#api}
+## API
 
 The following defines the objects available.
 
@@ -317,8 +317,7 @@ Defines a single column.
 | --- | --- | --- |
 | name | string | The name of the column. By default, the table data property with the same name will be displayed. |
 | dataType | HbMatTableColumnDataType | The general type of data contained by the column. Default is 'string'. |
-| dataFormat | string | The custom format to display the data. For 'number' data types, this is the 'digitsInfo' parameter passed to the
-DecimalPipe. For 'date' data types, this is the 'format' parameter for the DatePipe. |
+| dataFormat | string | The custom format to display the data. For 'number' data types, this is the 'digitsInfo' parameter passed to the DecimalPipe. For 'date' data types, this is the 'format' parameter for the DatePipe. |
 | canSort | boolean | Indicates if this column can be sorted. The table-level canSort property must also be true. Default is true. |
 | caption | string | A custom caption for the column. Otherwise will create the caption from the name property. |
 | isStickyStart | boolean | Indicates if this column should be sticky and located at the start of the columns. Default is false. |
