@@ -282,6 +282,7 @@ The primary element when defining a table.
 #### Input Parameters
 
 | Name | Data Type | Description |
+| --- | --- | --- |
 | displayedColumns | string[] | Which columns should be rendered. These should correspond to the names in the hb-mat-table-column tags. When not defined, will render all columns. |
 | tableData | any | The data used to populate the table. |
 | canSort | boolean | Table-level flag to enable/disable sorting. Both this property and the column's canSort must be true to enable sorting on a column. Default is true. |
@@ -294,6 +295,7 @@ The primary element when defining a table.
 #### Properties
 
 | Name | Data Type | Description |
+| --- | --- | --- |
 | table | MatTable | The MatTable instance associated with this table. Available starting in the AfterViewInit lifecycle method. |
 | sort | MatSort | The MatSort instance associated with this table. This will only be set if canSort is true. Available starting in the AfterViewInit lifecycle method. |
 | selection | SelectionModel | The selection model used with row selection. Use to get or set the currently selected row(s). |
@@ -301,6 +303,7 @@ The primary element when defining a table.
 #### Types
 
 | Name | Description | Values |
+| --- | --- | --- |
 | HbMatTableSelectionMode | Defines the selection mode of the table. | 'none' &#124; 'single' &#124; 'multiple' |
 | HbMatTableSelectionColor | Defines the theme of the selection checkbox. | 'primary' &#124; 'accent' &#124; 'warn' |
 
@@ -311,6 +314,7 @@ Defines a single column.
 #### Input Parameters
 
 | Name | Data Type | Description |
+| --- | --- | --- |
 | name | string | The name of the column. By default, the table data property with the same name will be displayed. |
 | dataType | HbMatTableColumnDataType | The general type of data contained by the column. Default is 'string'. |
 | dataFormat | string | The custom format to display the data. For 'number' data types, this is the 'digitsInfo' parameter passed to the
@@ -323,5 +327,6 @@ DecimalPipe. For 'date' data types, this is the 'format' parameter for the DateP
 #### Types
 
 | Name | Description | Values |
+| --- | --- | --- |
 | HbMatTableColumnDataType | The data type of column. | 'string' &#124; 'number' &#124; 'date' |
 
