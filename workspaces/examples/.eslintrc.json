@@ -1,0 +1,90 @@
+// see https://typescript-eslint.io/rules/
+{
+    "root": true,
+    "ignorePatterns": [
+        //"projects/**/*"
+    ],
+    "overrides": [
+        {
+            "files": [
+                "*.ts"
+            ],
+            "parserOptions": {
+                "project": [
+                    "tsconfig.json",
+                    "e2e/tsconfig.json"
+                ],
+                "createDefaultProgram": true
+            },
+            "extends": [
+                "plugin:@angular-eslint/recommended",
+                "plugin:@angular-eslint/template/process-inline-templates"
+            ],
+            "rules": {
+                "@angular-eslint/component-selector": [
+                    "error",
+                    {
+                        "prefix": "app",
+                        "style": "kebab-case",
+                        "type": "element"
+                    }
+                ],
+                "@angular-eslint/directive-selector": [
+                    "error",
+                    {
+                        "prefix": "app",
+                        "style": "camelCase",
+                        "type": "attribute"
+                    }
+                ],
+                "@typescript-eslint/explicit-function-return-type": [
+                    "error",
+                    {
+                        "allowExpressions": true
+                    }
+                ],
+                "@typescript-eslint/naming-convention": [
+                    "error",
+                    {
+                        "selector": "default",
+                        "format": [ "camelCase" ]
+                    },
+                    {
+                        "selector": "typeLike",
+                        "format": [ "PascalCase" ]
+                    },
+                    {
+                        "selector": "enumMember",
+                        "format": [ "PascalCase" ]
+                    },
+                    {
+                        "selector": "classProperty",
+                        "modifiers": [ "public", "static", "readonly" ],
+                        "format": [ "UPPER_CASE" ]
+                    },
+                    {
+                        "selector": "classProperty",
+                        "modifiers": [ "private" ],
+                        "format": [ "camelCase" ],
+                        "leadingUnderscore": "require"
+                    },
+                    {
+                        "selector": "variable",
+                        "modifiers": [ "exported", "const" ],
+                        "format": [ "UPPER_CASE", "camelCase" ]
+                    }
+                ],
+                "@typescript-eslint/member-ordering": "error"
+            }
+        },
+        {
+            "files": [
+                "*.html"
+            ],
+            "extends": [
+                "plugin:@angular-eslint/template/recommended"
+            ],
+            "rules": {}
+        }
+    ]
+}

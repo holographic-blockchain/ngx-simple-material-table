@@ -20,7 +20,7 @@
                     <hb-mat-table-column name="birthDate" dataType="date"></hb-mat-table-column>
                 </hb-mat-table>
                 <h4>Selected Row:</h4>
-                <p>{{ table01?.selection?.selected?.length == 0 ? 'None' : table01?.selection?.selected }}</p>
+                <p>{{ table01?.selection?.selected?.length === 0 ? 'None' : table01?.selection?.selected }}</p>
             </mat-tab>
             <mat-tab label="Html">
                 <code>
@@ -88,7 +88,7 @@ class UserInfo {{ '{' }}
                     <hb-mat-table-column name="birthDate" dataType="date"></hb-mat-table-column>
                 </hb-mat-table>
                 <h4>Selected Rows:</h4>
-                <p>{{ table02?.selection?.selected?.length == 0 ? 'None' : table02?.selection?.selected }}</p>
+                <p>{{ table02?.selection?.selected?.length === 0 ? 'None' : table02?.selection?.selected }}</p>
             </mat-tab>
             <mat-tab label="Html">
                 <code>
@@ -158,7 +158,7 @@ class UserInfo {{ '{' }}
                     <hb-mat-table-column name="birthDate" dataType="date"></hb-mat-table-column>
                 </hb-mat-table>
                 <h4>Selected Row:</h4>
-                <p>{{ table03?.selection?.selected?.length == 0 ? 'None' : table03?.selection?.selected }}</p>
+                <p>{{ table03?.selection?.selected?.length === 0 ? 'None' : table03?.selection?.selected }}</p>
             </mat-tab>
             <mat-tab label="Html">
                 <code>
@@ -228,7 +228,7 @@ class UserInfo {{ '{' }}
                     <hb-mat-table-column name="birthDate" dataType="date"></hb-mat-table-column>
                 </hb-mat-table>
                 <h4>Selected Row:</h4>
-                <p>{{ table04?.selection?.selected?.length == 0 ? 'None' : table04?.selection?.selected }}</p>
+                <p>{{ table04?.selection?.selected?.length === 0 ? 'None' : table04?.selection?.selected }}</p>
             </mat-tab>
             <mat-tab label="Html">
                 <code>
@@ -296,11 +296,11 @@ class UserInfo {{ '{' }}
                     <hb-mat-table-column name="birthDate" dataType="date"></hb-mat-table-column>
                 </hb-mat-table>
                 <h4>Selected Row:</h4>
-                <p>{{ table05?.selection?.selected?.length == 0 ? 'None' : table05?.selection?.selected }}</p>
+                <p>{{ table05?.selection?.selected?.length === 0 ? 'None' : table05?.selection?.selected }}</p>
                 <h4>Selected Row, Parsed and Displayed with JsonPipe:</h4>
-                <p>{{ table05_selectedJson | json  }}</p>
+                <p>{{ table05selectedJson | json  }}</p>
                 <h4>Selected Row, Parsed and Displaying the 'userId' Property:</h4>
-                <p>{{ table05_selectedJson?.userId  }}</p>
+                <p>{{ table05selectedJson?.userId  }}</p>
             </mat-tab>
             <mat-tab label="Html">
                 <code>
@@ -378,11 +378,11 @@ class UserInfo {{ '{' }}
                     <hb-mat-table-column name="birthDate" dataType="date"></hb-mat-table-column>
                 </hb-mat-table>
                 <h4>Selected Row:</h4>
-                <p>{{ table06?.selection?.selected?.length == 0 ? 'None' : table06?.selection?.selected }}</p>
+                <p>{{ table06?.selection?.selected?.length === 0 ? 'None' : table06?.selection?.selected }}</p>
                 <h4>Selected Row, Parsed and Displayed with JsonPipe:</h4>
-                <p>{{ table06_selectedJson | json  }}</p>
+                <p>{{ table06selectedJson | json  }}</p>
                 <h4>Selected Row, Parsed and Displaying the 'userId' Property:</h4>
-                <p>{{ table06_selectedJson?.length > 1 ? table06_selectedJson[1].userId : null  }}</p>
+                <p>{{ table06selectedJson?.length > 1 ? table06_selectedJson[1].userId : null  }}</p>
             </mat-tab>
             <mat-tab label="Html">
                 <code>

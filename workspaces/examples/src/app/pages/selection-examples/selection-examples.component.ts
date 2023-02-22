@@ -10,13 +10,6 @@ import { DataService } from '../../services/data.service';
     styleUrls: ['./selection-examples.component.scss']
 })
 export class SelectionExamplesComponent implements AfterViewInit {
-    matGridData01: MatTableDataSource<UserInfo>;
-    matGridData02: MatTableDataSource<UserInfo>;
-    matGridData03: MatTableDataSource<UserInfo>;
-    matGridData04: MatTableDataSource<UserInfo>;
-    matGridData05: MatTableDataSource<UserInfo>;
-    matGridData06: MatTableDataSource<UserInfo>;
-
     @ViewChild('singleSelectTable') table01: HbMatTable | undefined;
     @ViewChild('multiSelectTable') table02: HbMatTable | undefined;
     @ViewChild('customSelectColorTable') table03: HbMatTable | undefined;
@@ -24,14 +17,31 @@ export class SelectionExamplesComponent implements AfterViewInit {
     @ViewChild('singleRowKeyPropertyTable') table05: HbMatTable | undefined;
     @ViewChild('multiRowKeyPropertyTable') table06: HbMatTable | undefined;
 
-    get table05_selectedJson(): any | null {
+    matGridData01: MatTableDataSource<UserInfo>;
+    matGridData02: MatTableDataSource<UserInfo>;
+    matGridData03: MatTableDataSource<UserInfo>;
+    matGridData04: MatTableDataSource<UserInfo>;
+    matGridData05: MatTableDataSource<UserInfo>;
+    matGridData06: MatTableDataSource<UserInfo>;
+
+    constructor(private dataService: DataService,
+        private changeDetectorRef: ChangeDetectorRef) {
+        this.matGridData01 = new MatTableDataSource<UserInfo>(this.dataService.gridData);
+        this.matGridData02 = new MatTableDataSource<UserInfo>(this.dataService.gridData);
+        this.matGridData03 = new MatTableDataSource<UserInfo>(this.dataService.gridData);
+        this.matGridData04 = new MatTableDataSource<UserInfo>(this.dataService.gridData);
+        this.matGridData05 = new MatTableDataSource<UserInfo>(this.dataService.gridData);
+        this.matGridData06 = new MatTableDataSource<UserInfo>(this.dataService.gridData);
+    }
+
+    get table05selectedJson(): any | null {
         if (this.table05?.selection && this.table05.selection.selected.length > 0) {
             return JSON.parse(this.table05.selection.selected[0]);
         }
         return null;
     }
 
-    get table06_selectedJson(): any | null {
+    get table06selectedJson(): any | null {
         if (this.table06?.selection && this.table06.selection.selected.length > 0) {
 
             // the selected value is an array of strings. Parse all of them to get an array of objects.
@@ -42,16 +52,6 @@ export class SelectionExamplesComponent implements AfterViewInit {
             return selectedObjects;
         }
         return null;
-    }
-
-    constructor(private dataService: DataService,
-        private changeDetectorRef: ChangeDetectorRef) {
-        this.matGridData01 = new MatTableDataSource<UserInfo>(this.dataService.gridData);
-        this.matGridData02 = new MatTableDataSource<UserInfo>(this.dataService.gridData);
-        this.matGridData03 = new MatTableDataSource<UserInfo>(this.dataService.gridData);
-        this.matGridData04 = new MatTableDataSource<UserInfo>(this.dataService.gridData);
-        this.matGridData05 = new MatTableDataSource<UserInfo>(this.dataService.gridData);
-        this.matGridData06 = new MatTableDataSource<UserInfo>(this.dataService.gridData);
     }
 
     ngAfterViewInit(): void {
