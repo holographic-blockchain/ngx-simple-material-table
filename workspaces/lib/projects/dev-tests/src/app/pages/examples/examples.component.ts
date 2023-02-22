@@ -29,13 +29,6 @@ export class ExamplesComponent {
     sampleFooterValue: number = 33432432;
 
     private _gridFilter10: string = '';
-    get gridFilter10(): string {
-        return this._gridFilter10;
-    }
-    set gridFilter10(value: string) {
-        this._gridFilter10 = value;
-        this.matGridData10.filter = value;
-    }
 
     constructor(private dataService: DataService) {
         this.matGridData01 = new MatTableDataSource<DataTypesEntity>(this.dataService.gridData);
@@ -54,6 +47,14 @@ export class ExamplesComponent {
         this.matGridData14 = new MatTableDataSource<DataTypesEntity>(this.dataService.gridData);
         this.matGridData15 = new MatTableDataSource<DataTypesEntity>(this.dataService.gridData);
         this.matGridData16 = new MatTableDataSource<DataTypesEntity>(this.dataService.gridData);
+    }
+
+    get gridFilter10(): string {
+        return this._gridFilter10;
+    }
+    set gridFilter10(value: string) {
+        this._gridFilter10 = value;
+        this.matGridData10.filter = value;
     }
 }
 

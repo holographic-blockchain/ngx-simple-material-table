@@ -21,10 +21,16 @@
                 "plugin:@angular-eslint/template/process-inline-templates"
             ],
             "rules": {
+                "@angular-eslint/component-class-suffix": [
+                    "error",
+                    {
+                        "suffixes": [ "" ]
+                    }
+                ],
                 "@angular-eslint/component-selector": [
                     "error",
                     {
-                        "prefix": "app",
+                        "prefix": "hb",
                         "style": "kebab-case",
                         "type": "element"
                     }
@@ -32,15 +38,9 @@
                 "@angular-eslint/directive-selector": [
                     "error",
                     {
-                        "prefix": "app",
+                        "prefix": "hb",
                         "style": "camelCase",
                         "type": "attribute"
-                    }
-                ],
-                "@typescript-eslint/explicit-function-return-type": [
-                    "error",
-                    {
-                        "allowExpressions": true
                     }
                 ],
                 "@typescript-eslint/naming-convention": [
@@ -61,12 +61,6 @@
                         "selector": "classProperty",
                         "modifiers": [ "public", "static", "readonly" ],
                         "format": [ "UPPER_CASE" ]
-                    },
-                    {
-                        "selector": "classProperty",
-                        "modifiers": [ "private" ],
-                        "format": [ "camelCase" ],
-                        "leadingUnderscore": "require"
                     },
                     {
                         "selector": "variable",

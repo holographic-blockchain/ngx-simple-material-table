@@ -10,16 +10,16 @@ import { DataService } from '../../services/data.service';
   styleUrls: ['./selection-examples.component.scss']
 })
 export class SelectionExamplesComponent implements AfterViewInit {
+    @ViewChild('singleSelectTable') table01: HbMatTable | undefined;
+    @ViewChild('multiSelectTable') table02: HbMatTable | undefined;
+    @ViewChild('customSelectColorTable') table03: HbMatTable | undefined;
+    @ViewChild('customRowKeyTable') table04: HbMatTable | undefined;
+
     matGridData01: MatTableDataSource<DataTypesEntity>;
     matGridData02: MatTableDataSource<DataTypesEntity>;
     matGridData03: MatTableDataSource<DataTypesEntity>;
     matGridData04: MatTableDataSource<DataTypesEntity>;
     matGridData05: MatTableDataSource<DataTypesEntity>;
-
-    @ViewChild('singleSelectTable') table01: HbMatTable | undefined;
-    @ViewChild('multiSelectTable') table02: HbMatTable | undefined;
-    @ViewChild('customSelectColorTable') table03: HbMatTable | undefined;
-    @ViewChild('customRowKeyTable') table04: HbMatTable | undefined;
 
     constructor(private dataService: DataService,
         private changeDetectorRef: ChangeDetectorRef) {

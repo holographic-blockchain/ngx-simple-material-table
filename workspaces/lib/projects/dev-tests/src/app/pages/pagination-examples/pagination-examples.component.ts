@@ -10,13 +10,13 @@ import { DataService } from '../../services/data.service';
     styleUrls: ['./pagination-examples.component.scss']
 })
 export class PaginationExamplesComponent implements AfterViewInit {
+    @ViewChild('basicPaginator') matPaginator02!: MatPaginator
+
     matGridData01: MatTableDataSource<GeneralDataEntity>;
     matGridData02: MatTableDataSource<GeneralDataEntity>;
     matGridData03: MatTableDataSource<GeneralDataEntity>;
     matGridData04: MatTableDataSource<GeneralDataEntity>;
     matGridData05: MatTableDataSource<GeneralDataEntity>;
-
-    @ViewChild('basicPaginator') matPaginator02!: MatPaginator
 
     constructor(private dataService: DataService) {
         this.matGridData01 = new MatTableDataSource<GeneralDataEntity>(this.dataService.pagedGridData);
