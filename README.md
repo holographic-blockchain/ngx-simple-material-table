@@ -298,7 +298,7 @@ The primary element when defining a table.
 | --- | --- | --- |
 | table | MatTable | The MatTable instance associated with this table. Available starting in the AfterViewInit lifecycle method. |
 | sort | MatSort | The MatSort instance associated with this table. This will only be set if canSort is true. Available starting in the AfterViewInit lifecycle method. |
-| selection | SelectionModel | The selection model used with row selection. Use to get or set the currently selected row(s). |
+| selection | SelectionModel | The selection model used with row selection. Use to get or set the currently selected row(s). See [https://material.angular.io/cdk/collections/overview#selectionmodel](https://material.angular.io/cdk/collections/overview#selectionmodel). |
 
 #### Types
 
