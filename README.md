@@ -24,6 +24,11 @@ components.
 For additional and more detailed examples than those below, download this repository and run the 
 workspaces/examples application. This readme only contains more common examples.
 
+- [Setup](#setup)
+- [Column Options](#column-options)
+- [Table Options](#table-options)
+- [API](#api)
+
 ## Setup
 
 Your application will need to include the following packages in its package.json file:
@@ -265,3 +270,62 @@ Sorting is enabled by default. To disable sorting on all columns, set the 'canSo
                   [canSort]="false">
         ...
     </hb-mat-table>
+
+## API
+
+The following defines the objects available.
+
+### HbMatTable
+
+The primary element when defining a table.
+
+#### Input Parameters
+
+| Name | Data Type | Description |
+| --- | --- | --- |
+| displayedColumns | string[] | Which columns should be rendered. These should correspond to the names in the hb-mat-table-column tags. When not defined, will render all columns. |
+| tableData | any | The data used to populate the table. |
+| canSort | boolean | Table-level flag to enable/disable sorting. Both this property and the column's canSort must be true to enable sorting on a column. Default is true. |
+| showFooter | boolean | Indicates if the footer row will be rendered. Default is false. |
+| isHeaderSticky | boolean | Indicates if the header row is sticky. Default is false. |
+| selectionMode | HbMatTableSelectionMode | The table's selection mode: none, single or multiple. Default is 'none'. |
+| selectionColor | HbMatTableSelectionColor | The color of the row selection checkbox. When not set will simply use the default material checkbox color set by the application. |
+| rowKey | string[] | The data's property names; when undefined, uses the entire row value as the key. |
+
+#### Properties
+
+| Name | Data Type | Description |
+| --- | --- | --- |
+| table | MatTable | The MatTable instance associated with this table. Available starting in the AfterViewInit lifecycle method. |
+| sort | MatSort | The MatSort instance associated with this table. This will only be set if canSort is true. Available starting in the AfterViewInit lifecycle method. |
+| selection | SelectionModel | The selection model used with row selection. Use to get or set the currently selected row(s). See [https://material.angular.io/cdk/collections/overview#selectionmodel](https://material.angular.io/cdk/collections/overview#selectionmodel). |
+
+#### Types
+
+| Name | Description | Values |
+| --- | --- | --- |
+| HbMatTableSelectionMode | Defines the selection mode of the table. | 'none' &#124; 'single' &#124; 'multiple' |
+| HbMatTableSelectionColor | Defines the theme of the selection checkbox. | 'primary' &#124; 'accent' &#124; 'warn' |
+
+### HbMatTableColumn
+
+Defines a single column.
+
+#### Input Parameters
+
+| Name | Data Type | Description |
+| --- | --- | --- |
+| name | string | The name of the column. By default, the table data property with the same name will be displayed. |
+| dataType | HbMatTableColumnDataType | The general type of data contained by the column. Default is 'string'. |
+| dataFormat | string | The custom format to display the data. For 'number' data types, this is the 'digitsInfo' parameter passed to the DecimalPipe. For 'date' data types, this is the 'format' parameter for the DatePipe. |
+| canSort | boolean | Indicates if this column can be sorted. The table-level canSort property must also be true. Default is true. |
+| caption | string | A custom caption for the column. Otherwise will create the caption from the name property. |
+| isStickyStart | boolean | Indicates if this column should be sticky and located at the start of the columns. Default is false. |
+| isStickyEnd | boolean | Indicates if this column should be sticky and located at the end of the columns. |
+
+#### Types
+
+| Name | Description | Values |
+| --- | --- | --- |
+| HbMatTableColumnDataType | The data type of column. | 'string' &#124; 'number' &#124; 'date' |
+
