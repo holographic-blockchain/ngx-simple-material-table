@@ -18,7 +18,7 @@ For a basic table, the following markup will render the four columns:
     </hb-mat-table>
 
 If your data source is a MatTableDataSource (or a compatible DataSource implementation) then the table will automatically
-have sorting enabled. Additionally, pagination and row selection is also available using the existing Material
+have sorting enabled. Additionally, pagination and row selection are also available using the existing Material
 components.
 
 For additional and more detailed examples than those below, download this repository and run the 
