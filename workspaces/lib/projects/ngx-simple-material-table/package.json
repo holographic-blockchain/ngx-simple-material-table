@@ -1,6 +1,7 @@
 {
     "name": "ngx-simple-material-table",
     "version": "15.0.0",
+    "description": "A simpler and more intuitive implementation of the Angular Material table component",
     "homepage": "https://github.com/holographic-blockchain/ngx-simple-material-table",
     "keywords": [ "angular", "material", "table" ],
     "license": "MIT",
