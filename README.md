@@ -67,6 +67,13 @@ When using one of the non-string data types, you can also specify a 'dataFormat'
 the pipe. For a number, this is the 'digitsInfo' parameter of the DecimalPipe. For a date, this is the 'format'
 parameter of the DatePipe. For a percent, this is the 'digitsInfo' parameter of the PercentPipe. The 'dataFormat' property is optional.
 
+| DataType | Corresponding Pipe | Pipe Parameter for 'dataFormat' | Pipe Reference |
+| --- | --- | --- | --- |
+| string | none | | |
+| number | DecimalPipe | digitsInfo | [https://angular.io/api/common/DecimalPipe](https://angular.io/api/common/DecimalPipe) |
+| date | DatePipe | format | [https://angular.io/api/common/DatePipe](https://angular.io/api/common/DatePipe) |
+| percent | PercentPipe | digitsInfo | [https://angular.io/api/common/PercentPipe](https://angular.io/api/common/PercentPipe) |
+
     <hb-mat-table-column name="myNumber" dataType="number" dataFormat="1.1-1"></hb-mat-table-column>
     <hb-mat-table-column name="myDefaultNumber" dataType="number"></hb-mat-table-column>
     <hb-mat-table-column name="myDate" dataType="date" dataFormat="medium"></hb-mat-table-column>
