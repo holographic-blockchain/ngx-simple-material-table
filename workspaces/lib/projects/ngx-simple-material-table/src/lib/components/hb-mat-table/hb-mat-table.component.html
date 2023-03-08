@@ -59,6 +59,9 @@
                         <ng-container *ngSwitchCase="'date'">
                             {{ rowData[col.name] | date: col.dataFormat }}
                         </ng-container>
+                        <ng-container *ngSwitchCase="'percent'">
+                            {{ rowData[col.name] | percent: col.dataFormat }}
+                        </ng-container>
                     </ng-container>
                 </td>
 
@@ -94,6 +97,9 @@
                         <ng-container *ngSwitchCase="'date'">
                             {{ rowData[col.name] | date: col.dataFormat }}
                         </ng-container>
+                        <ng-container *ngSwitchCase="'percent'">
+                            {{ rowData[col.name] | percent: col.dataFormat }}
+                        </ng-container>
                     </ng-container>
                 </td>
 
@@ -128,6 +134,9 @@
                         </ng-container>
                         <ng-container *ngSwitchCase="'date'">
                             {{ rowData[col.name] | date: col.dataFormat }}
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'percent'">
+                            {{ rowData[col.name] | percent: col.dataFormat }}
                         </ng-container>
                     </ng-container>
                 </td>

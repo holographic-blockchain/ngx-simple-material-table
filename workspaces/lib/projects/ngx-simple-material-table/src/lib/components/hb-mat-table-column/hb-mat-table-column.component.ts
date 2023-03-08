@@ -35,4 +35,4 @@ export class HbMatTableColumn {
     @ContentChild(HbMatTableFooterTemplateDirective) footerTemplate: HbMatTableFooterTemplateDirective | undefined = undefined;
 }
 
-export declare type HbMatTableColumnDataType = 'string' | 'number' | 'date';
+export declare type HbMatTableColumnDataType = 'string' | 'number' | 'date' | 'percent';
