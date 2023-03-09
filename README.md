@@ -29,6 +29,16 @@ workspaces/examples application. This readme only contains more common examples.
 - [Table Options](#table-options)
 - [API](#api)
 
+## Release Notes
+
+### Release 16.x
+
+- Added support for 'percent' column data type
+
+### Release 15.x
+
+The initial release.
+
 ## Setup
 
 Your application will need to include the following packages in its package.json file:
@@ -58,19 +68,28 @@ This will create a column with header text of 'First Name' and simply output the
 
 ### DataType and DataFormat
 
-A column can have a 'dataType'. The options are: 'string' | 'number' | 'date'. The default is 'string', which does
+A column can have a 'dataType'. The options are: 'string' | 'number' | 'date' | 'percent'. The default is 'string', which does
 nothing extra. The other data types will have their output sent to the appropriate Angular pipe - the DecimalPipe
-for 'number' and the DatePipe for 'date'. If you are setting the Angular LOCALE_ID globally, it will automatically
-be applied. 
+for 'number', the DatePipe for 'date', and the PercentPipe for 'percent'. If you are setting the Angular LOCALE_ID globally, 
+it will automatically be applied. 
 
 When using one of the non-string data types, you can also specify a 'dataFormat' value. This will get passed to
 the pipe. For a number, this is the 'digitsInfo' parameter of the DecimalPipe. For a date, this is the 'format'
-parameter of the DatePipe. The 'dataFormat' property is optional.
+parameter of the DatePipe. For a percent, this is the 'digitsInfo' parameter of the PercentPipe. The 'dataFormat' property is optional.
+
+| DataType | Corresponding Pipe | Pipe Parameter for 'dataFormat' | Pipe Reference |
+| --- | --- | --- | --- |
+| string | none | | |
+| number | DecimalPipe | digitsInfo | [https://angular.io/api/common/DecimalPipe](https://angular.io/api/common/DecimalPipe) |
+| date | DatePipe | format | [https://angular.io/api/common/DatePipe](https://angular.io/api/common/DatePipe) |
+| percent | PercentPipe | digitsInfo | [https://angular.io/api/common/PercentPipe](https://angular.io/api/common/PercentPipe) |
 
     <hb-mat-table-column name="myNumber" dataType="number" dataFormat="1.1-1"></hb-mat-table-column>
     <hb-mat-table-column name="myDefaultNumber" dataType="number"></hb-mat-table-column>
     <hb-mat-table-column name="myDate" dataType="date" dataFormat="medium"></hb-mat-table-column>
     <hb-mat-table-column name="myDefaultDate" dataType="date"></hb-mat-table-column>
+    <hb-mat-table-column name="myDecimalNumber" dataType="percent" dataFormat="1.1-1"></hb-mat-table-column>
+    <hb-mat-table-column name="myDefaultDecimalNumber" dataType="percent"></hb-mat-table-column>
 
 ### Captions
 
