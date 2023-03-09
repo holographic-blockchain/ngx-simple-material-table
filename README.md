@@ -29,6 +29,16 @@ workspaces/examples application. This readme only contains more common examples.
 - [Table Options](#table-options)
 - [API](#api)
 
+## Release Notes
+
+### Release 16.x
+
+- Added support for 'percent' column data type
+
+### Release 15.x
+
+The initial release.
+
 ## Setup
 
 Your application will need to include the following packages in its package.json file:
