@@ -153,6 +153,32 @@
             </hb-mat-table>
         </div>
     </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Custom Styles (setting class)</mat-panel-title>
+        </mat-expansion-panel-header>
+        <hb-mat-table [tableData]="matGridData14" class="custom-hb-table">
+            <hb-mat-table-column name="string1"></hb-mat-table-column>
+            <hb-mat-table-column name="string2"></hb-mat-table-column>
+            <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
+            <hb-mat-table-column name="number1" dataType="number"></hb-mat-table-column>
+            <hb-mat-table-column name="dateDate" dataType="date"></hb-mat-table-column>
+            <hb-mat-table-column name="dateString" dataType="date"></hb-mat-table-column>
+        </hb-mat-table>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Custom Styles (with tableClass)</mat-panel-title>
+        </mat-expansion-panel-header>
+        <hb-mat-table [tableData]="matGridData15" tableClass="custom-table">
+            <hb-mat-table-column name="string1"></hb-mat-table-column>
+            <hb-mat-table-column name="string2"></hb-mat-table-column>
+            <hb-mat-table-column name="stringWithALongName"></hb-mat-table-column>
+            <hb-mat-table-column name="number1" dataType="number"></hb-mat-table-column>
+            <hb-mat-table-column name="dateDate" dataType="date"></hb-mat-table-column>
+            <hb-mat-table-column name="dateString" dataType="date"></hb-mat-table-column>
+        </hb-mat-table>
+    </mat-expansion-panel>
 </mat-accordion>
 
 

@@ -8,32 +8,35 @@ import { HbMatTableColumn } from '../hb-mat-table-column/hb-mat-table-column.com
 @Component({
     selector: 'hb-mat-table',
     templateUrl: './hb-mat-table.component.html',
-    styleUrls: ['./hb-mat-table.component.scss']
+    styleUrls: ['./hb-mat-table.component.scss'],
 })
 export class HbMatTable implements AfterViewInit {
-    /** Which columns should be rendered. These should correspond to the names in the hb-mat-table-column tags. */
-    @Input() displayedColumns: string[] | undefined;
-
-    /** The data used to populate the table. */
-    @Input() tableData: any;
-
     /** Table-level flag to enable/disable sorting. Both this property and the column's canSort must be true to enable sorting on a column. */
     @Input() canSort: boolean = true;
 
-    /** Indicates if the footer row will be rendered. */
-    @Input() showFooter: boolean = false;
+    /** Which columns should be rendered. These should correspond to the names in the hb-mat-table-column tags. */
+    @Input() displayedColumns: string[] | undefined;
 
     /** Indicates if the header row is sticky. */
     @Input() isHeaderSticky: boolean = false;
 
-    /** The table's selection mode: none, single or multiple. */
-    @Input() selectionMode: HbMatTableSelectionMode = 'none';
+    /** The data's property names; when undefined, uses the entire row value as the key. */
+    @Input() rowKey: string[] | undefined = undefined;
 
     /** The color of the row selection checkbox. When not set will simply use the default material checkbox color set by the application. */
     @Input() selectionColor: HbMatTableSelectionColor | undefined = undefined;
 
-    /** The data's property names; when undefined, uses the entire row value as the key. */
-    @Input() rowKey: string[] | undefined = undefined;
+    /** The table's selection mode: none, single or multiple. */
+    @Input() selectionMode: HbMatTableSelectionMode = 'none';
+
+    /** Indicates if the footer row will be rendered. */
+    @Input() showFooter: boolean = false;
+
+    /** The CSS class value which should be applied directly to the table element. */
+    @Input() tableClass: string | undefined;
+
+    /** The data used to populate the table. */
+    @Input() tableData: any;
 
     /** The MatSort instance associated with this table. This will only be set if canSort is true. */
     @ViewChild(MatSort) sort!: MatSort;
