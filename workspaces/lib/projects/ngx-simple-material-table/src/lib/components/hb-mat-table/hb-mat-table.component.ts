@@ -33,7 +33,7 @@ export class HbMatTable implements AfterViewInit {
     @Input() showFooter: boolean = false;
 
     /** The CSS class value which should be applied directly to the table element. */
-    @Input() tableClass: string | undefined;
+    @Input() tableClass: string | undefined = undefined;
 
     /** The data used to populate the table. */
     @Input() tableData: any;
