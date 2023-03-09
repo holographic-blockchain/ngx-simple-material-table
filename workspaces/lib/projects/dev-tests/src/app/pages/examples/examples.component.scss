@@ -1,0 +1,26 @@
+.examples-accordion {
+    table.custom-table {
+        background-color: #33c;
+
+        th {
+            color: #fff;
+        }
+
+        td {
+            color: #ccc;
+        }
+
+        th.custom-column {
+            background-color: #cc0;
+        }
+
+        td.custom-column {
+            background-color: #0094ff;
+            color: #000;
+        }
+    }
+
+    .custom-hb-table table {
+        background-color: #cfc;
+    }
+}

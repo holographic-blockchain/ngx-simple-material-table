@@ -27,6 +27,7 @@ workspaces/examples application. This readme only contains more common examples.
 - [Setup](#setup)
 - [Column Options](#column-options)
 - [Table Options](#table-options)
+- [Styling](#styling)
 - [API](#api)
 
 ## Release Notes
@@ -34,6 +35,7 @@ workspaces/examples application. This readme only contains more common examples.
 ### Release 16.x
 
 - Added support for 'percent' column data type
+- Added support for 'tableClass' and 'columnClass' properties to add CSS classes directly to the table or cell elements
 
 ### Release 15.x
 
@@ -290,6 +292,45 @@ Sorting is enabled by default. To disable sorting on all columns, set the 'canSo
         ...
     </hb-mat-table>
 
+## Stying
+
+The Material table will add many of its own CSS classes to the various table elements. These can be used to define a global
+style for all your tables. If you need your tables to have different looks, or be themeable, you have two options:
+
+- Adding a class directly to the hb-mat-table element
+- Using the tableClass and columnClass properties
+
+In both cases, if you define your styles in your component, you will need to set the encapsulation to None.
+
+    @Component({
+        ...
+        encapsulation: ViewEncapsulation.None,
+    })
+
+If you do this, it is strongly recommended to have a more specific selector so that your styles will only apply to that
+one component. 
+
+If you define your styles in your global stylesheet(s), then you will not need to modify your component's encapsulation.
+
+
+### Adding a class directly to the hb-mat-table element
+
+When setting the class attribute on the hb-mat-table element, it will be included in the rendered HTML. The table itself
+will be directly underneath the component. If you add a 'my-class' class to the component, this selector will not work:
+
+    table.my-class
+
+It should instead be defined like this:
+
+    .my-class table
+
+### Using the tableClass and columnClass properties
+
+If you are mixing this component with direct usage of the Material table, you may want to add the classes directly to the tables
+or columns so your global styles are easier to maintain. To do this, use the 'tableClass' property on the hb-mat-table component
+or the 'columnClass' property on the hb-mat-table-column component. The 'tableClass' property value will be added to the table's
+'class' attribute, and the 'columnClass' property value will be added to that column's th and td (both body and footer) elements.
+
 ## API
 
 The following defines the objects available.
@@ -302,14 +343,15 @@ The primary element when defining a table.
 
 | Name | Data Type | Description |
 | --- | --- | --- |
-| displayedColumns | string[] | Which columns should be rendered. These should correspond to the names in the hb-mat-table-column tags. When not defined, will render all columns. |
-| tableData | any | The data used to populate the table. |
 | canSort | boolean | Table-level flag to enable/disable sorting. Both this property and the column's canSort must be true to enable sorting on a column. Default is true. |
-| showFooter | boolean | Indicates if the footer row will be rendered. Default is false. |
+| displayedColumns | string[] | Which columns should be rendered. These should correspond to the names in the hb-mat-table-column tags. When not defined, will render all columns. |
 | isHeaderSticky | boolean | Indicates if the header row is sticky. Default is false. |
-| selectionMode | HbMatTableSelectionMode | The table's selection mode: none, single or multiple. Default is 'none'. |
-| selectionColor | HbMatTableSelectionColor | The color of the row selection checkbox. When not set will simply use the default material checkbox color set by the application. |
 | rowKey | string[] | The data's property names; when undefined, uses the entire row value as the key. |
+| selectionColor | HbMatTableSelectionColor | The color of the row selection checkbox. When not set will simply use the default material checkbox color set by the application. |
+| selectionMode | HbMatTableSelectionMode | The table's selection mode: none, single or multiple. Default is 'none'. |
+| showFooter | boolean | Indicates if the footer row will be rendered. Default is false. |
+| tableClass | string | The CSS class value which should be applied directly to the table element. |
+| tableData | any | The data used to populate the table. |
 
 #### Properties
 
@@ -334,13 +376,14 @@ Defines a single column.
 
 | Name | Data Type | Description |
 | --- | --- | --- |
-| name | string | The name of the column. By default, the table data property with the same name will be displayed. |
-| dataType | HbMatTableColumnDataType | The general type of data contained by the column. Default is 'string'. |
-| dataFormat | string | The custom format to display the data. For 'number' data types, this is the 'digitsInfo' parameter passed to the DecimalPipe. For 'date' data types, this is the 'format' parameter for the DatePipe. |
 | canSort | boolean | Indicates if this column can be sorted. The table-level canSort property must also be true. Default is true. |
 | caption | string | A custom caption for the column. Otherwise will create the caption from the name property. |
-| isStickyStart | boolean | Indicates if this column should be sticky and located at the start of the columns. Default is false. |
+| columnClass | string | The CSS class value which should be applied directly to the cell elements. Will be applied to header, body and footer. |
+| dataFormat | string | The custom format to display the data. For 'number' data types, this is the 'digitsInfo' parameter passed to the DecimalPipe. For 'date' data types, this is the 'format' parameter for the DatePipe. |
+| dataType | HbMatTableColumnDataType | The general type of data contained by the column. Default is 'string'. |
 | isStickyEnd | boolean | Indicates if this column should be sticky and located at the end of the columns. |
+| isStickyStart | boolean | Indicates if this column should be sticky and located at the start of the columns. Default is false. |
+| name | string | The name of the column. By default, the table data property with the same name will be displayed. |
 
 #### Types
 

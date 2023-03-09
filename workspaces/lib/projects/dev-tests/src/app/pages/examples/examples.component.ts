@@ -1,12 +1,13 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { DataTypesEntity } from '../../models/data-types-entity';
 import { DataService } from '../../services/data.service';
 
 @Component({
-  selector: 'app-examples',
-  templateUrl: './examples.component.html',
-  styleUrls: ['./examples.component.scss']
+    selector: 'app-examples',
+    templateUrl: './examples.component.html',
+    styleUrls: ['./examples.component.scss'],
+    encapsulation: ViewEncapsulation.None,
 })
 export class ExamplesComponent {
     matGridData01: MatTableDataSource<DataTypesEntity>;
