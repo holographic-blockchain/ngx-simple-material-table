@@ -4,4 +4,5 @@ export class UserInfo {
     lastName: string | null = null;
     age: number | null = null;
     birthDate: Date | null = null;
+    skillAssessment: number | null = null;
 }

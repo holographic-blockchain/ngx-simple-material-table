@@ -14,6 +14,7 @@
         <ul>
             <li><code>number</code> - will use the <code>DecimalPipe</code></li>
             <li><code>date</code> - will use the <code>DatePipe</code></li>
+            <li><code>percent</code> - will use the <code>PercentPipe</code></li>
         </ul>
 
         <mat-tab-group>
@@ -23,6 +24,7 @@
                     <hb-mat-table-column name="lastName"></hb-mat-table-column>
                     <hb-mat-table-column name="age" dataType="number"></hb-mat-table-column>
                     <hb-mat-table-column name="birthDate" dataType="date"></hb-mat-table-column>
+                    <hb-mat-table-column name="skillAssessment" dataType="percent"></hb-mat-table-column>
                 </hb-mat-table>
             </mat-tab>
             <mat-tab label="Html">
@@ -33,6 +35,7 @@
     &lt;hb-mat-table-column name="lastName"&gt;&lt;/hb-mat-table-column&gt;
     &lt;hb-mat-table-column name="age" dataType="number"&gt;&lt;/hb-mat-table-column&gt;
     &lt;hb-mat-table-column name="birthDate" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="skillAssessment" dataType="percent"&gt;&lt;/hb-mat-table-column&gt;
 &lt;/hb-mat-table&gt;
 </pre>
                 </code>
@@ -53,6 +56,7 @@ class UserInfo {{ '{' }}
     lastName: string | null = null;
     age: number | null = null;
     birthDate: Date | null = null;
+    skillAssessment: number | null = null;
 }
 </pre>
                 </code>
@@ -196,6 +200,7 @@ class UserInfo {{ '{' }}
         <ul>
             <li><code>number</code> - will be the <code>digitsInfo</code> parameter of the <code>DecimalPipe</code></li>
             <li><code>date</code> - will be the <code>format</code> parameter of the <code>DatePipe</code></li>
+            <li><code>percent</code> - will be the <code>digitsInfo</code> parameter of the <code>PercentPipe</code></li>
         </ul>
 
         <mat-tab-group>
@@ -205,6 +210,7 @@ class UserInfo {{ '{' }}
                     <hb-mat-table-column name="lastName"></hb-mat-table-column>
                     <hb-mat-table-column name="age" dataType="number" dataFormat="1.1-1"></hb-mat-table-column>
                     <hb-mat-table-column name="birthDate" dataType="date" dataFormat="shortDate"></hb-mat-table-column>
+                    <hb-mat-table-column name="skillAssessment" dataType="percent" dataFormat="1.1-1"></hb-mat-table-column>
                 </hb-mat-table>
             </mat-tab>
             <mat-tab label="Html">
@@ -215,6 +221,7 @@ class UserInfo {{ '{' }}
     &lt;hb-mat-table-column name="lastName"&gt;&lt;/hb-mat-table-column&gt;
     &lt;hb-mat-table-column name="age" dataType="number" dataFormat="1.1-1"&gt;&lt;/hb-mat-table-column&gt;
     &lt;hb-mat-table-column name="birthDate" dataType="date" dataFormat="shortDate"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="skillAssessment" dataType="percent" dataFormat="1.1-1"&gt;&lt;/hb-mat-table-column&gt;
 &lt;/hb-mat-table&gt;
 </pre>
                 </code>
@@ -235,6 +242,7 @@ class UserInfo {{ '{' }}
     lastName: string | null = null;
     age: number | null = null;
     birthDate: Date | null = null;
+    skillAssessment: number | null = null;
 }
 </pre>
                 </code>

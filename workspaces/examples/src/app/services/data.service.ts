@@ -13,6 +13,7 @@ export class DataService {
             lastName: 'Smith',
             age: 26,
             birthDate: new Date(1996, 8, 3),
+            skillAssessment: 0.32,
         },
         {
             userId: 2,
@@ -20,6 +21,7 @@ export class DataService {
             lastName: 'McClain',
             age: 37,
             birthDate: new Date(1985, 5, 30),
+            skillAssessment: 0.783,
         },
         {
             userId: 3,
@@ -27,6 +29,7 @@ export class DataService {
             lastName: 'Garza',
             age: 33,
             birthDate: new Date(1989, 4, 29),
+            skillAssessment: 0.564,
         },
         {
             userId: 4,
@@ -34,6 +37,7 @@ export class DataService {
             lastName: 'Watkins',
             age: 30,
             birthDate: new Date(1992, 3, 7),
+            skillAssessment: 0.596,
         },
         {
             userId: 5,
@@ -41,6 +45,7 @@ export class DataService {
             lastName: 'Torres',
             age: 47,
             birthDate: new Date(1975, 10, 25),
+            skillAssessment: 0.99,
         },
         {
             userId: 6,
@@ -48,6 +53,7 @@ export class DataService {
             lastName: 'Pruitt',
             age: 59,
             birthDate: new Date(1963, 9, 13),
+            skillAssessment: 1,
         },
         {
             userId: 7,
@@ -55,6 +61,7 @@ export class DataService {
             lastName: 'Wong',
             age: 19,
             birthDate: new Date(2003, 3, 5),
+            skillAssessment: 0,
         },
         {
             userId: 8,
@@ -62,6 +69,7 @@ export class DataService {
             lastName: 'Watkins',
             age: 20,
             birthDate: new Date(2002, 5, 11),
+            skillAssessment: 0.5,
         },
     ];
 }
