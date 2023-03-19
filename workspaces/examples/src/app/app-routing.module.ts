@@ -6,6 +6,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { PaginationExamplesComponent } from './pages/pagination-examples/pagination-examples.component';
 import { SelectionExamplesComponent } from './pages/selection-examples/selection-examples.component';
 import { SortingExamplesComponent } from './pages/sorting-examples/sorting-examples.component';
+import { StyleExamplesComponent } from './pages/style-examples/style-examples.component';
 
 const routes: Routes = [
     {
@@ -40,6 +41,11 @@ const routes: Routes = [
                 path: 'sorting',
                 component: SortingExamplesComponent,
                 title: 'Sorting Examples',
+            },
+            {
+                path: 'styling',
+                component: StyleExamplesComponent,
+                title: 'Styling Examples',
             },
         ]
     },

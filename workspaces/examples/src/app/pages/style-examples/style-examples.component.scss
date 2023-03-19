@@ -1,0 +1,33 @@
+.example01 {
+    .mat-mdc-header-row {
+        background-color: #fcc;
+    }
+
+    .mat-mdc-cell {
+        background-color: #cfc;
+    }
+
+    .mat-column-lastName {
+        font-weight: bold;
+    }
+}
+
+.example02 {
+    table thead th {
+        font-weight: bold;
+    }
+
+    table tbody td {
+        background-color: #eee;
+    }
+}
+
+.example04 {
+    td.column-number {
+        text-align: right;
+    }
+
+    th.column-number .mat-sort-header-container {
+        justify-content: flex-end;
+    }
+}

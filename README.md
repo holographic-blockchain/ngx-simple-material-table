@@ -389,5 +389,5 @@ Defines a single column.
 
 | Name | Description | Values |
 | --- | --- | --- |
-| HbMatTableColumnDataType | The data type of column. | 'string' &#124; 'number' &#124; 'date' |
+| HbMatTableColumnDataType | The data type of column. | 'string' &#124; 'number' &#124; 'date' &#124; 'percent' |
 

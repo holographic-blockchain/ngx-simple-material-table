@@ -1,0 +1,294 @@
+<mat-accordion>
+    <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+            <mat-panel-title>Built-in Material Style Classes</mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>
+            Because this wraps the <code>MatTable</code>, all of the style classes added by the Material table will be available. For all
+            classes, please see the Material documentation. You can also inspect the table to view the classes added to various elements.
+            The table below is a partial list of the classes.
+        </p>
+        <p>
+            <hb-mat-table [tableData]="matStyleGridData">
+                <hb-mat-table-column name="htmlElement"></hb-mat-table-column>
+                <hb-mat-table-column name="cssClasses"></hb-mat-table-column>
+            </hb-mat-table>
+        </p>
+        <p>
+            When applying custom styles defined in the component, make sure to set the component's encapsulation to None. You should also
+            use a more targeted selector, such as using a wrapper class or setting a class on the <code>hb-mat-table</code> element, so the styles
+            don't inadvertently apply to other components. If you define your styles globally, you will not need to make changes to the
+            component's encapsulation.
+        </p>
+        <mat-tab-group>
+            <mat-tab label="Example">
+                <hb-mat-table [tableData]="matGridData01" class="example01">
+                    <hb-mat-table-column name="firstName"></hb-mat-table-column>
+                    <hb-mat-table-column name="lastName"></hb-mat-table-column>
+                    <hb-mat-table-column name="age" dataType="number"></hb-mat-table-column>
+                    <hb-mat-table-column name="birthDate" dataType="date"></hb-mat-table-column>
+                </hb-mat-table>
+            </mat-tab>
+            <mat-tab label="Html">
+                <code>
+                    <pre>
+&lt;hb-mat-table [tableData]="matGridData"&gt;
+    &lt;hb-mat-table-column name="firstName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="lastName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="age" dataType="number"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="birthDate" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
+&lt;/hb-mat-table&gt;
+</pre>
+                </code>
+            </mat-tab>
+            <mat-tab label="TypeScript">
+                <code>
+                    <pre>
+tableData: UserInfo[] = ...;
+matGridData: MatTableDataSource&lt;UserInfo&gt;;
+
+constructor() {{ '{' }}
+    this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
+}
+
+class UserInfo {{ '{' }}
+    userId: number | null = null;
+    firstName: string | null = null;
+    lastName: string | null = null;
+    age: number | null = null;
+    birthDate: Date | null = null;
+}
+</pre>
+                </code>
+            </mat-tab>
+            <mat-tab label="Css">
+                <code>
+                    <pre>
+.mat-mdc-header-row {{ '{' }}
+    background-color: #fcc;
+}
+
+.mat-mdc-cell {{ '{' }}
+    background-color: #cfc;
+}
+
+.mat-column-lastName {{ '{' }}
+    font-weight: bold;
+}
+</pre>
+                </code>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Adding a Class to the Component</mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>
+            Setting the <code>attribute</code> on the component is a good way to localize styles that are specific to that one instance.
+            The component's class can then be used with the built-in Material css classes (see above) or with the html elements to define
+            your custom styles for the table.
+        </p>
+        <p>
+            When applying custom styles defined in the component, make sure to set the component's encapsulation to None. If you define
+            your styles globally, you will not need to make changes to the component's encapsulation.
+        </p>
+        <mat-tab-group>
+            <mat-tab label="Example">
+                <hb-mat-table [tableData]="matGridData02" class="example02">
+                    <hb-mat-table-column name="firstName"></hb-mat-table-column>
+                    <hb-mat-table-column name="lastName"></hb-mat-table-column>
+                    <hb-mat-table-column name="age" dataType="number"></hb-mat-table-column>
+                    <hb-mat-table-column name="birthDate" dataType="date"></hb-mat-table-column>
+                </hb-mat-table>
+            </mat-tab>
+            <mat-tab label="Html">
+                <code>
+                    <pre>
+&lt;hb-mat-table [tableData]="matGridData" class="custom-class"&gt;
+    &lt;hb-mat-table-column name="firstName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="lastName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="age" dataType="number"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="birthDate" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
+&lt;/hb-mat-table&gt;
+</pre>
+                </code>
+            </mat-tab>
+            <mat-tab label="TypeScript">
+                <code>
+                    <pre>
+tableData: UserInfo[] = ...;
+matGridData: MatTableDataSource&lt;UserInfo&gt;;
+
+constructor() {{ '{' }}
+    this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
+}
+
+class UserInfo {{ '{' }}
+    userId: number | null = null;
+    firstName: string | null = null;
+    lastName: string | null = null;
+    age: number | null = null;
+    birthDate: Date | null = null;
+}
+</pre>
+                </code>
+            </mat-tab>
+            <mat-tab label="Css">
+                <code>
+                    <pre>
+.custom-class {{ '{' }}
+    table thead th {{ '{' }}
+        font-weight: bold;
+    }
+
+    table tbody td {{ '{' }}
+        background-color: #eee;
+    }
+}
+</pre>
+                </code>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Setting the TableClass Property</mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>
+            If you have other tables, such as directly using the Material table component or creating your own tables, you may want
+            to add a css class directly to the table and define global styles across your application. To do this, set the <code>tableClass</code>
+            property on the component. The css class(es) will be added directly to the table html element.
+        </p>
+        <p>
+            If the styles associated with the css class are defined in the component, make sure to set the component's encapsulation to
+            None. If you define your styles globally, you will not need to make changes to the component's encapsulation.
+        </p>
+        <mat-tab-group>
+            <mat-tab label="Example">
+                <hb-mat-table [tableData]="matGridData03" tableClass="example03">
+                    <hb-mat-table-column name="firstName"></hb-mat-table-column>
+                    <hb-mat-table-column name="lastName"></hb-mat-table-column>
+                    <hb-mat-table-column name="age" dataType="number"></hb-mat-table-column>
+                    <hb-mat-table-column name="birthDate" dataType="date"></hb-mat-table-column>
+                </hb-mat-table>
+            </mat-tab>
+            <mat-tab label="Html">
+                <code>
+                    <pre>
+&lt;hb-mat-table [tableData]="matGridData" tableClass="custom-class"&gt;
+    &lt;hb-mat-table-column name="firstName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="lastName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="age" dataType="number"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="birthDate" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
+&lt;/hb-mat-table&gt;
+</pre>
+                </code>
+            </mat-tab>
+            <mat-tab label="TypeScript">
+                <code>
+                    <pre>
+tableData: UserInfo[] = ...;
+matGridData: MatTableDataSource&lt;UserInfo&gt;;
+
+constructor() {{ '{' }}
+    this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
+}
+
+class UserInfo {{ '{' }}
+    userId: number | null = null;
+    firstName: string | null = null;
+    lastName: string | null = null;
+    age: number | null = null;
+    birthDate: Date | null = null;
+}
+</pre>
+                </code>
+            </mat-tab>
+            <mat-tab label="Css">
+                <code>
+                    <pre>
+table.custom-class {{ '{' }}
+    thead th {{ '{' }}
+        font-weight: bold;
+    }
+
+    tbody td {{ '{' }}
+        background-color: #eee;
+    }
+}
+</pre>
+                </code>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Setting the ColumnClass Property</mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>
+            For styling individual columns, set the <code>columnClass</code> property. While the Material table component will automatically
+            add a class based on the column's name, you may want more common styles applied to specific columns. In the example below,
+            a class is added to the age column to right-align it. This class could be defined globally and applied to all number columns.
+        </p>
+        <p>
+            If the styles associated with the css class are defined in the component, make sure to set the component's encapsulation to
+            None. If you define your styles globally, you will not need to make changes to the component's encapsulation.
+        </p>
+        <mat-tab-group>
+            <mat-tab label="Example">
+                <hb-mat-table [tableData]="matGridData04" class="example04">
+                    <hb-mat-table-column name="firstName"></hb-mat-table-column>
+                    <hb-mat-table-column name="lastName"></hb-mat-table-column>
+                    <hb-mat-table-column name="age" dataType="number" columnClass="column-number"></hb-mat-table-column>
+                    <hb-mat-table-column name="birthDate" dataType="date"></hb-mat-table-column>
+                </hb-mat-table>
+            </mat-tab>
+            <mat-tab label="Html">
+                <code>
+                    <pre>
+&lt;hb-mat-table [tableData]="matGridData"&gt;
+    &lt;hb-mat-table-column name="firstName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="lastName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="age" dataType="number" columnClass="column-number"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="birthDate" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
+&lt;/hb-mat-table&gt;
+</pre>
+                </code>
+            </mat-tab>
+            <mat-tab label="TypeScript">
+                <code>
+                    <pre>
+tableData: UserInfo[] = ...;
+matGridData: MatTableDataSource&lt;UserInfo&gt;;
+
+constructor() {{ '{' }}
+    this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
+}
+
+class UserInfo {{ '{' }}
+    userId: number | null = null;
+    firstName: string | null = null;
+    lastName: string | null = null;
+    age: number | null = null;
+    birthDate: Date | null = null;
+}
+</pre>
+                </code>
+            </mat-tab>
+            <mat-tab label="Css">
+                <code>
+                    <pre>
+td.column-number {{ '{' }}
+    text-align: right;
+}
+
+th.column-number .mat-sort-header-container {{ '{' }}
+    justify-content: flex-end;
+}
+</pre>
+                </code>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-expansion-panel>
+</mat-accordion>
