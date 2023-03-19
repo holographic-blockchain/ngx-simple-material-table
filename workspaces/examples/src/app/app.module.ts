@@ -24,6 +24,7 @@ import { SelectionExamplesComponent } from './pages/selection-examples/selection
 import { HomeComponent } from './pages/home/home.component';
 import { PaginationExamplesComponent } from './pages/pagination-examples/pagination-examples.component';
 import { FilteringExamplesComponent } from './pages/filtering-examples/filtering-examples.component';
+import { StyleExamplesComponent } from './pages/style-examples/style-examples.component';
 
 @NgModule({
     declarations: [
@@ -33,7 +34,8 @@ import { FilteringExamplesComponent } from './pages/filtering-examples/filtering
         SelectionExamplesComponent,
         HomeComponent,
         PaginationExamplesComponent,
-        FilteringExamplesComponent
+        FilteringExamplesComponent,
+        StyleExamplesComponent
     ],
     imports: [
         BrowserModule,
