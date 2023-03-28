@@ -54,6 +54,7 @@ export class HbMatTable implements AfterViewInit {
     }
 
     ngAfterViewInit(): void {
+        console.debug('table after view init');
         // if the sort property hasn't been set, set it (this allows the user to override if they want).
         if (!this.tableData.sort) {
             this.tableData.sort = this.sort;
