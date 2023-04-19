@@ -22,6 +22,16 @@
     }
 }
 
+table.example03 {
+    thead th {
+        font-weight: bold;
+    }
+
+    tbody td {
+        background-color: #eee;
+    }
+}
+
 .example04 {
     td.column-number {
         text-align: right;
