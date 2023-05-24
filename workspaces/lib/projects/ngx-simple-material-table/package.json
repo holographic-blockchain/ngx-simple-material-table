@@ -1,6 +1,6 @@
 {
     "name": "ngx-simple-material-table",
-    "version": "16.0.0",
+    "version": "16.0.1",
     "description": "A simpler implementation of the Angular Material table component",
     "homepage": "https://github.com/holographic-blockchain/ngx-simple-material-table",
     "keywords": [ "angular", "material", "table" ],
