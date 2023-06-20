@@ -1,27 +1,9 @@
-# SimpleMaterialTable
+# Build and Publish Steps
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. Open a command prompt the '\workspaces\lib\projects' directory.
+1. Run the command 'npm run test-lib' - verify all tests pass.
+1. Run the command 'npm run lint-lib' - verify there are no errors.
+1. Run the command 'npm run build-lib'
+1. Navigate to the 'dist\ngx-simple-material-table' directory.
+1. Run the command 'npm publish --dry-run' - verify the output is as expected.
+1. Run the command 'npm publish'.

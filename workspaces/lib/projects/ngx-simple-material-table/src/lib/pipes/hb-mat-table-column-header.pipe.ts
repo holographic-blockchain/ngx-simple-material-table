@@ -10,9 +10,9 @@ export class HbMatTableColumnHeaderPipe implements PipeTransform {
         if (!value)
             return '';
 
-        let titleSegments: string[] = [];
+        const titleSegments: string[] = [];
 
-        let regExp: RegExp = new RegExp(/[A-Z_]/, 'g');
+        const regExp: RegExp = new RegExp(/[A-Z_]/, 'g');
         let match;
         let currentIndex: number = 0;
 
@@ -24,7 +24,7 @@ export class HbMatTableColumnHeaderPipe implements PipeTransform {
         // push either the last segment (if there are matches) or the entire value when there are no matches
         titleSegments.push(value.substring(currentIndex, value.length));
 
-        let title: string = titleSegments.join(' ');
+        const title: string = titleSegments.join(' ');
 
         return new TitleCasePipe().transform(title);
     }
