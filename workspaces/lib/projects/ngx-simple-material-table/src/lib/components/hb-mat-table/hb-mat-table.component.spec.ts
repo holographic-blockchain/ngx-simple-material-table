@@ -41,7 +41,7 @@ describe('HbMatTable', () => {
     });
 
     it('basic table', () => {
-        let fixture = TestBed.createComponent(MockBasicTableOneRow);
+        const fixture = TestBed.createComponent(MockBasicTableOneRow);
         fixture.detectChanges();
 
         const tableElement = fixture.nativeElement.querySelector('table')!;
@@ -55,7 +55,7 @@ describe('HbMatTable', () => {
     });
 
     it('long column name is split into words', () => {
-        let fixture = TestBed.createComponent(MockBasicTableOneRowLongColumnName);
+        const fixture = TestBed.createComponent(MockBasicTableOneRowLongColumnName);
         fixture.detectChanges();
 
         const tableElement = fixture.nativeElement.querySelector('table')!;
@@ -69,7 +69,7 @@ describe('HbMatTable', () => {
     });
 
     it('column data types format the cell value', () => {
-        let fixture = TestBed.createComponent(MockBasicTableOneRowColumnDataTypes);
+        const fixture = TestBed.createComponent(MockBasicTableOneRowColumnDataTypes);
         fixture.detectChanges();
 
         const tableElement = fixture.nativeElement.querySelector('table')!;
@@ -93,7 +93,7 @@ describe('HbMatTable', () => {
     });
 
     it('custom column template', () => {
-        let fixture = TestBed.createComponent(MockBasicTableOneRowCustomColumnRendering);
+        const fixture = TestBed.createComponent(MockBasicTableOneRowCustomColumnRendering);
         fixture.detectChanges();
 
         const tableElement = fixture.nativeElement.querySelector('table')!;
