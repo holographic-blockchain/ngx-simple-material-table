@@ -16,7 +16,7 @@
             <mat-tab label="Example">
                 <mat-form-field>
                     <mat-label>Filter Data</mat-label>
-                    <input matInput type="text" [(ngModel)]="gridFilter01" />
+                    <input matInput type="text" [(ngModel)]="gridFilter01" autocomplete="off" />
                 </mat-form-field>
                 <hb-mat-table [tableData]="matGridData01">
                     <hb-mat-table-column name="firstName"></hb-mat-table-column>
@@ -30,7 +30,7 @@
                     <pre>
 &lt;mat-form-field&gt;
     &lt;mat-label&gt;Filter Data&lt;/mat-label&gt;
-    &lt;input matInput type="text" [(ngModel)]="gridFilter" /&gt;
+    &lt;input matInput type="text" [(ngModel)]="gridFilter" autocomplete="off" /&gt;
 &lt;/mat-form-field&gt;
 &lt;hb-mat-table [tableData]="matGridData"&gt;
     &lt;hb-mat-table-column name="firstName"&gt;&lt;/hb-mat-table-column&gt;
@@ -85,7 +85,7 @@ class UserInfo {{ '{' }}
             <mat-tab label="Example">
                 <mat-form-field>
                     <mat-label>Filter Data</mat-label>
-                    <input matInput type="text" [(ngModel)]="gridFilter02" />
+                    <input matInput type="text" [(ngModel)]="gridFilter02" autocomplete="off" />
                 </mat-form-field>
                 <hb-mat-table [tableData]="matGridData02">
                     <hb-mat-table-column name="firstName"></hb-mat-table-column>
@@ -99,7 +99,7 @@ class UserInfo {{ '{' }}
                     <pre>
 &lt;mat-form-field&gt;
     &lt;mat-label&gt;Filter Data&lt;/mat-label&gt;
-    &lt;input matInput type="text" [(ngModel)]="gridFilter" /&gt;
+    &lt;input matInput type="text" [(ngModel)]="gridFilter" autocomplete="off" /&gt;
 &lt;/mat-form-field&gt;
 &lt;hb-mat-table [tableData]="matGridData"&gt;
     &lt;hb-mat-table-column name="firstName"&gt;&lt;/hb-mat-table-column&gt;
