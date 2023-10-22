@@ -32,6 +32,10 @@ workspaces/examples application. This readme only contains more common examples.
 
 ## Release Notes
 
+### Release 17.x
+
+- Added support for an initial sort definition.
+
 ### Release 16.x
 
 - Added support for 'percent' column data type
@@ -292,6 +296,17 @@ Sorting is enabled by default. To disable sorting on all columns, set the 'canSo
         ...
     </hb-mat-table>
 
+To apply an initial sort to the table's data add an hb-mat-table-sort element to the table.
+
+    <hb-mat-table [tableData]="yourData">
+        ...
+        <hb-mat-table-sort>
+            <hb-mat-table-sort-column name="theColumnName" />
+        </hb-mat-table-sort>
+    </hb-mat-table>
+
+An optional 'direction' attribute can also be specified ('asc' or 'desc').
+
 ## Stying
 
 The Material table will add many of its own CSS classes to the various table elements. These can be used to define a global
@@ -390,4 +405,26 @@ Defines a single column.
 | Name | Description | Values |
 | --- | --- | --- |
 | HbMatTableColumnDataType | The data type of column. | 'string' &#124; 'number' &#124; 'date' &#124; 'percent' |
+
+### HbMatTableSort
+
+An object containing a collection of HbMatTableSortColumns. As the Material sort components only allow for a single-column sort,
+only the first column defined will be processed.
+
+### HbMatTableSortColumn
+
+Defines a single column's initial sort definition.
+
+#### Input Parameters
+
+| Name | Data Type | Description |
+| --- | --- | --- |
+| name | string | The name of the column. This should match the name property of the HbMatTableColumn element. |
+| direction | HbMatTableSortColumnDirection | Which direction to sort, asc or desc. Defaults to asc. |
+
+#### Types
+
+| Name | Description | Values |
+| --- | --- | --- |
+| HbMatTableSortColumnDirection | Defines the sort direction to be applied. | 'acs' &#124; 'desc' |
 
