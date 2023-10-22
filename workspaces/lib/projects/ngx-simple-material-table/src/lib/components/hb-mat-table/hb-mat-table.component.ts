@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { HbMatTableColumn } from '../hb-mat-table-column/hb-mat-table-column.component';
+import { HbMatTableSort } from '../hb-mat-table-sort/hb-mat-table-sort.component';
 
 @Component({
     selector: 'hb-mat-table',
@@ -45,6 +46,7 @@ export class HbMatTable implements AfterViewInit {
     @ViewChild(MatTable) table!: MatTable<any>;
 
     @ContentChildren(HbMatTableColumn) tableColumns!: QueryList<HbMatTableColumn>;
+    @ContentChild(HbMatTableSort) initialTableSort: HbMatTableSort | undefined;
     @ContentChild(MatPaginator) contentPaginator: MatPaginator | undefined;
 
     /** The selection model used with row selection. Use to get or set the currently selected row(s). */
@@ -81,6 +83,20 @@ export class HbMatTable implements AfterViewInit {
             this.selection = new SelectionModel<any>((this.selectionMode === 'multiple'), []);
 
             this.changeDetectorRef.detectChanges();
+        }
+
+        // For sortable tables, apply the initial sort if it is defined
+        if (this.canSort && this.tableData.sort && this.initialTableSort) {
+            if (!this.initialTableSort.sortColumns || !this.initialTableSort.sortColumns.first) {
+                console.warn('An HbMatTableSort element was found, but does not contain any HbMatTableSortColumn elements. No default sorting will be applied.');
+            } else {
+                (this.tableData.sort as MatSort).sort({
+                    id: this.initialTableSort.sortColumns.first.name,
+                    start: this.initialTableSort.sortColumns.first.direction,
+                    disableClear: false
+                });
+                this.changeDetectorRef.detectChanges();
+            }
         }
     }
 

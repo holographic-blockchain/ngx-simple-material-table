@@ -13,6 +13,8 @@ import { HbMatTableColumn } from './components/hb-mat-table-column/hb-mat-table-
 import { HbMatTableColumnHeaderPipe } from './pipes/hb-mat-table-column-header.pipe';
 import { HbMatTableColumnTemplateDirective } from './directives/hb-mat-table-column-template.directive';
 import { HbMatTableFooterTemplateDirective } from './directives/hb-mat-table-footer-template.directive';
+import { HbMatTableSort } from './components/hb-mat-table-sort/hb-mat-table-sort.component';
+import { HbMatTableSortColumn } from './components/hb-mat-table-sort-column/hb-mat-table-sort-column.component';
 
 @NgModule({
     declarations: [
@@ -21,6 +23,8 @@ import { HbMatTableFooterTemplateDirective } from './directives/hb-mat-table-foo
         HbMatTableColumnHeaderPipe,
         HbMatTableColumnTemplateDirective,
         HbMatTableFooterTemplateDirective,
+        HbMatTableSort,
+        HbMatTableSortColumn,
     ],
     imports: [
         CommonModule,
@@ -36,6 +40,8 @@ import { HbMatTableFooterTemplateDirective } from './directives/hb-mat-table-foo
         HbMatTableColumn,
         HbMatTableColumnTemplateDirective,
         HbMatTableFooterTemplateDirective,
+        HbMatTableSort,
+        HbMatTableSortColumn,
     ]
 })
 export class NgxSimpleMaterialTableModule { }
