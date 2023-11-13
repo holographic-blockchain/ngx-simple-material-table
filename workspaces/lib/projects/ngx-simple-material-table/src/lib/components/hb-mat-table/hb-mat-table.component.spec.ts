@@ -177,7 +177,7 @@ describe('HbMatTable', () => {
     `,
 })
 class MockBasicTableOneRow {
-    componentData: MatTableDataSource<any> = new MatTableDataSource<any>([{
+    componentData: MatTableDataSource<any> = new MatTableDataSource<any>([{ // eslint-disable-line @typescript-eslint/no-explicit-any
         'column1': 'row01 cell01',
         'column2': 'row01 cell02',
     }]);
@@ -192,7 +192,7 @@ class MockBasicTableOneRow {
     `,
 })
 class MockBasicTableOneRowLongColumnName {
-    componentData: MatTableDataSource<any> = new MatTableDataSource<any>([{
+    componentData: MatTableDataSource<any> = new MatTableDataSource<any>([{ // eslint-disable-line @typescript-eslint/no-explicit-any
         'column1': 'row01 cell01',
         'thisIsColumnTwo': 'row01 cell02',
     }]);
@@ -212,7 +212,7 @@ class MockBasicTableOneRowLongColumnName {
 class MockBasicTableOneRowColumnDataTypes {
     testDate = new Date(2020, 3, 9, 4, 12, 24, 356);
 
-    componentData: MatTableDataSource<any> = new MatTableDataSource<any>([{
+    componentData: MatTableDataSource<any> = new MatTableDataSource<any>([{ // eslint-disable-line @typescript-eslint/no-explicit-any
         'stringColumn': 'row01 cell01',
         'numberColumn': 12345.6789,
         'dateIsoColumn': DateTime.fromJSDate(this.testDate).toISO(),
@@ -232,7 +232,7 @@ class MockBasicTableOneRowColumnDataTypes {
     `,
 })
 class MockBasicTableOneRowCustomColumnRendering {
-    componentData: MatTableDataSource<any> = new MatTableDataSource<any>([{
+    componentData: MatTableDataSource<any> = new MatTableDataSource<any>([{ // eslint-disable-line @typescript-eslint/no-explicit-any
         'column1': 'row01 cell01',
         'column2': 'row01 cell02',
     }]);
@@ -250,7 +250,7 @@ class MockBasicTableOneRowCustomColumnRendering {
     `,
 })
 class MockBasicTableInitialSortImpliedDirection {
-    componentData: MatTableDataSource<any> = new MatTableDataSource<any>([
+    componentData: MatTableDataSource<any> = new MatTableDataSource<any>([ // eslint-disable-line @typescript-eslint/no-explicit-any
         {
             'column1': 'row01 cell01',
             'column2': 'abc',
@@ -282,7 +282,7 @@ class MockBasicTableInitialSortImpliedDirection {
     `,
 })
 class MockBasicTableInitialSortAsc {
-    componentData: MatTableDataSource<any> = new MatTableDataSource<any>([
+    componentData: MatTableDataSource<any> = new MatTableDataSource<any>([ // eslint-disable-line @typescript-eslint/no-explicit-any
         {
             'column1': 'row01 cell01',
             'column2': 'abc',
@@ -314,7 +314,7 @@ class MockBasicTableInitialSortAsc {
     `,
 })
 class MockBasicTableInitialSortDesc {
-    componentData: MatTableDataSource<any> = new MatTableDataSource<any>([
+    componentData: MatTableDataSource<any> = new MatTableDataSource<any>([ // eslint-disable-line @typescript-eslint/no-explicit-any
         {
             'column1': 'row01 cell01',
             'column2': 'abc',
@@ -389,7 +389,7 @@ function getActualTableContent(tableElement: Element): string[][] {
     return actualTableContent.map(row => row.map(cell => cell.textContent!.trim()));
 }
 
-export function expectTableToMatchContent(tableElement: Element, expected: any[]) {
+export function expectTableToMatchContent(tableElement: Element, expected: any[]) { // eslint-disable-line @typescript-eslint/no-explicit-any
     const missedExpectations: string[] = [];
     function checkCellContent(actualCell: string, expectedCell: string) {
         if (actualCell !== expectedCell) {

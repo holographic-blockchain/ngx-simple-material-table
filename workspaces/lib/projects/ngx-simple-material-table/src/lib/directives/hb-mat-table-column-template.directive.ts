@@ -13,5 +13,5 @@ export class HbMatTableColumnTemplateDirective {
 }
 
 class HbMatTableColumnTemplateContext {
-    $implicit: any;
+    $implicit: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 }

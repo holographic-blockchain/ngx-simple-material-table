@@ -10,9 +10,8 @@ export class HbMatTableFooterTemplateDirective {
     static ngTemplateContextGuard(directive: HbMatTableFooterTemplateDirective, context: unknown): context is HbMatTableFooterTemplateContext {
         return true;
     }
-
 }
 
 class HbMatTableFooterTemplateContext {
-    $implicit: any;
+    $implicit: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
