@@ -48,7 +48,7 @@ matGridData: MatTableDataSource&lt;UserInfo&gt;;
 
 constructor() {{ '{' }}
     this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
-&#125;
+{{ '}' }}
 
 class UserInfo {{ '{' }}
     userId: number | null = null;
@@ -56,7 +56,7 @@ class UserInfo {{ '{' }}
     lastName: string | null = null;
     age: number | null = null;
     birthDate: Date | null = null;
-&#125;
+{{ '}' }}
 </pre>
                 </code>
             </mat-tab>
@@ -99,7 +99,7 @@ matGridData: MatTableDataSource&lt;UserInfo&gt;;
 
 constructor() {{ '{' }}
     this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
-&#125;
+{{ '}' }}
 
 class UserInfo {{ '{' }}
     userId: number | null = null;
@@ -107,7 +107,7 @@ class UserInfo {{ '{' }}
     lastName: string | null = null;
     age: number | null = null;
     birthDate: Date | null = null;
-&#125;
+{{ '}' }}
 </pre>
                 </code>
             </mat-tab>
@@ -152,7 +152,7 @@ matGridData: MatTableDataSource&lt;UserInfo&gt;;
 
 constructor() {{ '{' }}
     this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
-&#125;
+{{ '}' }}
 
 class UserInfo {{ '{' }}
     userId: number | null = null;
@@ -160,7 +160,7 @@ class UserInfo {{ '{' }}
     lastName: string | null = null;
     age: number | null = null;
     birthDate: Date | null = null;
-&#125;
+{{ '}' }}
 </pre>
                 </code>
             </mat-tab>
@@ -199,7 +199,7 @@ class UserInfo {{ '{' }}
     &lt;hb-mat-table-column name="firstName"&gt;&lt;/hb-mat-table-column&gt;
     &lt;hb-mat-table-column name="lastName"&gt;&lt;/hb-mat-table-column&gt;
     &lt;hb-mat-table-column name="fullName"&gt;
-        &lt;div *hbMatTableColumnTemplate="let data"&gt;{{ '{{' }} data.lastName &#125;&#125;, {{ '{{' }} data.firstName &#125;&#125;&lt;/div&gt;
+        &lt;div *hbMatTableColumnTemplate="let data"&gt;{{ '{{' }} data.lastName {{ '}' }}{{ '}' }}, {{ '{{' }} data.firstName {{ '}' }}{{ '}' }}&lt;/div&gt;
     &lt;/hb-mat-table-column&gt;
     &lt;hb-mat-table-column name="age" dataType="number"&gt;&lt;/hb-mat-table-column&gt;
     &lt;hb-mat-table-column name="birthDate" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
@@ -226,12 +226,12 @@ constructor() {{ '{' }}
                 if (data.birthDate == null) return 0;
                 return data.birthDate.valueOf();
             case 'fullName':
-                return `${{ '{' }}data.lastName&#125; ${{ '{' }}data.firstName&#125;`;
-        &#125;
+                return `${{ '{' }}data.lastName{{ '}' }} ${{ '{' }}data.firstName{{ '}' }}`;
+        {{ '}' }}
 
         return '';
-    &#125;;
-&#125;
+    {{ '}' }};
+{{ '}' }}
 
 class UserInfo {{ '{' }}
     userId: number | null = null;
@@ -239,7 +239,7 @@ class UserInfo {{ '{' }}
     lastName: string | null = null;
     age: number | null = null;
     birthDate: Date | null = null;
-&#125;
+{{ '}' }}
 </pre>
                 </code>
             </mat-tab>
