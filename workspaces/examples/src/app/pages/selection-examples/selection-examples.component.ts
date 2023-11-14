@@ -34,18 +34,18 @@ export class SelectionExamplesComponent implements AfterViewInit {
         this.matGridData06 = new MatTableDataSource<UserInfo>(this.dataService.gridData);
     }
 
-    get table05selectedJson(): any | null {
+    get table05selectedJson(): any | null { // eslint-disable-line @typescript-eslint/no-explicit-any
         if (this.table05?.selection && this.table05.selection.selected.length > 0) {
             return JSON.parse(this.table05.selection.selected[0]);
         }
         return null;
     }
 
-    get table06selectedJson(): any | null {
+    get table06selectedJson(): any | null { // eslint-disable-line @typescript-eslint/no-explicit-any
         if (this.table06?.selection && this.table06.selection.selected.length > 0) {
 
             // the selected value is an array of strings. Parse all of them to get an array of objects.
-            const selectedObjects: UserInfo[] = this.table06.selection.selected.map((val: any) => {
+            const selectedObjects: UserInfo[] = this.table06.selection.selected.map((val: any) => { // eslint-disable-line @typescript-eslint/no-explicit-any
                 return JSON.parse(val);
             });
 

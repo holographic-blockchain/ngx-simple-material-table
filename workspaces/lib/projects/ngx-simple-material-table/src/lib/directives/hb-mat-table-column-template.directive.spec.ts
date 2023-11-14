@@ -1,4 +1,4 @@
-import { HbMatTableColumnTemplateDirective } from './hb-mat-table-column-template.directive';
+//import { HbMatTableColumnTemplateDirective } from './hb-mat-table-column-template.directive';
 
 //describe('HbMatTableColumnTemplateDirective', () => {
 //    it('should create an instance', () => {

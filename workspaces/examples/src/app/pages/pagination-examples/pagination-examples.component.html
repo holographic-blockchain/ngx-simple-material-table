@@ -42,7 +42,7 @@ matGridData: MatTableDataSource&lt;UserInfo&gt;;
 
 constructor() {{ '{' }}
     this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
-}
+&#125;
 
 class UserInfo {{ '{' }}
     userId: number | null = null;
@@ -50,7 +50,7 @@ class UserInfo {{ '{' }}
     lastName: string | null = null;
     age: number | null = null;
     birthDate: Date | null = null;
-}
+&#125;
 </pre>
                 </code>
             </mat-tab>
@@ -97,15 +97,15 @@ class UserInfo {{ '{' }}
 tableData: UserInfo[] = ...;
 matGridData: MatTableDataSource&lt;UserInfo&gt;;
 
-@ViewChild('paginator') matPaginator!: MatPaginator;
+&#64;ViewChild('paginator') matPaginator!: MatPaginator;
 
 constructor() {{ '{' }}
     this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
-}
+&#125;
 
 ngAfterViewInit(): void {{ '{' }}
     this.matGridData.paginator = this.matPaginator;
-}
+&#125;
 
 class UserInfo {{ '{' }}
     userId: number | null = null;
@@ -113,7 +113,7 @@ class UserInfo {{ '{' }}
     lastName: string | null = null;
     age: number | null = null;
     birthDate: Date | null = null;
-}
+&#125;
 </pre>
                 </code>
             </mat-tab>

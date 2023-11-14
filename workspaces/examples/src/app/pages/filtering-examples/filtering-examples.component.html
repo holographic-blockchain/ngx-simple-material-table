@@ -50,15 +50,15 @@ matGridData: MatTableDataSource&lt;UserInfo&gt;;
 private _gridFilter: string = '';
 get gridFilter(): string {{ '{' }}
     return this._gridFilter;
-}
+&#125;
 set gridFilter(value: string) {{ '{' }}
     this._gridFilter = value;
     this.matGridData.filter = value;
-}
+&#125;
 
 constructor() {{ '{' }}
     this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
-}
+&#125;
 
 class UserInfo {{ '{' }}
     userId: number | null = null;
@@ -66,7 +66,7 @@ class UserInfo {{ '{' }}
     lastName: string | null = null;
     age: number | null = null;
     birthDate: Date | null = null;
-}
+&#125;
 </pre>
                 </code>
             </mat-tab>
@@ -119,15 +119,15 @@ matGridData: MatTableDataSource&lt;UserInfo&gt;;
 private _gridFilter: string = '';
 get gridFilter(): string {{ '{' }}
     return this._gridFilter;
-}
+&#125;
 set gridFilter(value: string) {{ '{' }}
     this._gridFilter = value;
     this.matGridData.filter = value;
-}
+&#125;
 
 constructor() {{ '{' }}
     this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
-}
+&#125;
 
 ngAfterViewInit(): void {{ '{' }}
     this.matGridData.filterPredicate = (data, filter) => {{ '{' }}
@@ -135,8 +135,8 @@ ngAfterViewInit(): void {{ '{' }}
             return true;
 
         return false;
-    };
-}
+    &#125;;
+&#125;
 
 class UserInfo {{ '{' }}
     userId: number | null = null;
@@ -144,7 +144,7 @@ class UserInfo {{ '{' }}
     lastName: string | null = null;
     age: number | null = null;
     birthDate: Date | null = null;
-}
+&#125;
 </pre>
                 </code>
             </mat-tab>

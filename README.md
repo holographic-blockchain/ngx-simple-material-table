@@ -426,5 +426,5 @@ Defines a single column's initial sort definition.
 
 | Name | Description | Values |
 | --- | --- | --- |
-| HbMatTableSortColumnDirection | Defines the sort direction to be applied. | 'acs' &#124; 'desc' |
+| HbMatTableSortColumnDirection | Defines the sort direction to be applied. | 'asc' &#124; 'desc' |
 

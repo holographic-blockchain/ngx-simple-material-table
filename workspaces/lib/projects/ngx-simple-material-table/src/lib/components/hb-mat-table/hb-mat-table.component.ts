@@ -37,20 +37,20 @@ export class HbMatTable implements AfterViewInit {
     @Input() tableClass: string | undefined = undefined;
 
     /** The data used to populate the table. */
-    @Input() tableData: any;
+    @Input() tableData: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 
     /** The MatSort instance associated with this table. This will only be set if canSort is true. */
     @ViewChild(MatSort) sort!: MatSort;
 
     /** The MatTable instance associated with this table. */
-    @ViewChild(MatTable) table!: MatTable<any>;
+    @ViewChild(MatTable) table!: MatTable<any>; // eslint-disable-line @typescript-eslint/no-explicit-any
 
     @ContentChildren(HbMatTableColumn) tableColumns!: QueryList<HbMatTableColumn>;
     @ContentChild(HbMatTableSort) initialTableSort: HbMatTableSort | undefined;
     @ContentChild(MatPaginator) contentPaginator: MatPaginator | undefined;
 
     /** The selection model used with row selection. Use to get or set the currently selected row(s). */
-    public selection: SelectionModel<any> = new SelectionModel<any>(false, []);
+    public selection: SelectionModel<any> = new SelectionModel<any>(false, []); // eslint-disable-line @typescript-eslint/no-explicit-any
 
     constructor(private changeDetectorRef: ChangeDetectorRef) {
     }
@@ -80,7 +80,7 @@ export class HbMatTable implements AfterViewInit {
 
             this.displayedColumns.unshift('select');
 
-            this.selection = new SelectionModel<any>((this.selectionMode === 'multiple'), []);
+            this.selection = new SelectionModel<any>((this.selectionMode === 'multiple'), []); // eslint-disable-line @typescript-eslint/no-explicit-any
 
             this.changeDetectorRef.detectChanges();
         }
@@ -113,7 +113,7 @@ export class HbMatTable implements AfterViewInit {
     }
 
     /** Determines if the given row is selected. */
-    isRowSelected(row: any): boolean {
+    isRowSelected(row: any): boolean { // eslint-disable-line @typescript-eslint/no-explicit-any
         return this.selection.isSelected(this.buildRowKey(row));
     }
 
@@ -122,20 +122,20 @@ export class HbMatTable implements AfterViewInit {
         if (this.isAllSelected())
             this.selection.clear()
         else if (this.tableData.data)
-            this.tableData.data.forEach((row: any) => this.selection.select(this.buildRowKey(row)));
+            this.tableData.data.forEach((row: any) => this.selection.select(this.buildRowKey(row))); // eslint-disable-line @typescript-eslint/no-explicit-any
         else
-            this.tableData.forEach((row: any) => this.selection.select(this.buildRowKey(row)));
+            this.tableData.forEach((row: any) => this.selection.select(this.buildRowKey(row))); // eslint-disable-line @typescript-eslint/no-explicit-any
     }
 
     /** Toggles the selection status of the given row. */
-    toggleRowSelection(row: any): void {
+    toggleRowSelection(row: any): void { // eslint-disable-line @typescript-eslint/no-explicit-any
         this.selection.toggle(this.buildRowKey(row));
     }
 
     /** Builds the row's key used by the selection model. Objects are by reference, so stringify the key to allow for comparisons. */
-    private buildRowKey(row: any): any {
+    private buildRowKey(row: any): any { // eslint-disable-line @typescript-eslint/no-explicit-any
         if (this.rowKey) {
-            const key: any = {};
+            const key: any = {}; // eslint-disable-line @typescript-eslint/no-explicit-any
             this.rowKey.forEach(propName => {
                 key[propName] = row[propName];
             });
