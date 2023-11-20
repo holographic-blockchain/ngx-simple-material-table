@@ -34,7 +34,7 @@
     &lt;hb-mat-table-column name="birthDate" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
 &lt;/hb-mat-table&gt;
 &lt;h4&gt;Selected Row:&lt;/h4&gt;
-&lt;p&gt;{{ '{{' }} hbTable?.selection?.selected?.length == 0 ? 'None' : hbTable?.selection?.selected }}&lt;/p&gt;
+&lt;p&gt;{{ '{{' }} hbTable?.selection?.selected?.length == 0 ? 'None' : hbTable?.selection?.selected &#125;&#125;&lt;/p&gt;
 </pre>
                 </code>
             </mat-tab>
@@ -43,17 +43,17 @@
                     <pre>
 tableData: UserInfo[] = ...;
 matGridData: MatTableDataSource&lt;UserInfo&gt;;
-@ViewChild('table') hbTable: HbMatTable | undefined;
+&#64;ViewChild('table') hbTable: HbMatTable | undefined;
 
 constructor() {{ '{' }}
     this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
-}
+&#125;
 
 ngAfterViewInit(): void {{ '{' }}
     // the view child properties are undefined initially, and referencing the
     // selection directly causes an Expression Changed error without this.
     this.changeDetectorRef.detectChanges();
-}
+&#125;
 
 class UserInfo {{ '{' }}
     userId: number | null = null;
@@ -61,7 +61,7 @@ class UserInfo {{ '{' }}
     lastName: string | null = null;
     age: number | null = null;
     birthDate: Date | null = null;
-}
+&#125;
 </pre>
                 </code>
             </mat-tab>
@@ -102,7 +102,7 @@ class UserInfo {{ '{' }}
     &lt;hb-mat-table-column name="birthDate" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
 &lt;/hb-mat-table&gt;
 &lt;h4&gt;Selected Rows:&lt;/h4&gt;
-&lt;p&gt;{{ '{{' }} hbTable?.selection?.selected?.length == 0 ? 'None' : hbTable?.selection?.selected }}&lt;/p&gt;
+&lt;p&gt;{{ '{{' }} hbTable?.selection?.selected?.length == 0 ? 'None' : hbTable?.selection?.selected &#125;&#125;&lt;/p&gt;
 </pre>
                 </code>
             </mat-tab>
@@ -111,17 +111,17 @@ class UserInfo {{ '{' }}
                     <pre>
 tableData: UserInfo[] = ...;
 matGridData: MatTableDataSource&lt;UserInfo&gt;;
-@ViewChild('table') hbTable: HbMatTable | undefined;
+&#64;ViewChild('table') hbTable: HbMatTable | undefined;
 
 constructor() {{ '{' }}
     this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
-}
+&#125;
 
 ngAfterViewInit(): void {{ '{' }}
     // the view child properties are undefined initially, and referencing the
     // selection directly causes an Expression Changed error without this.
     this.changeDetectorRef.detectChanges();
-}
+&#125;
 
 class UserInfo {{ '{' }}
     userId: number | null = null;
@@ -129,7 +129,7 @@ class UserInfo {{ '{' }}
     lastName: string | null = null;
     age: number | null = null;
     birthDate: Date | null = null;
-}
+&#125;
 </pre>
                 </code>
             </mat-tab>
@@ -173,7 +173,7 @@ class UserInfo {{ '{' }}
     &lt;hb-mat-table-column name="birthDate" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
 &lt;/hb-mat-table&gt;
 &lt;h4&gt;Selected Row:&lt;/h4&gt;
-&lt;p&gt;{{ '{{' }} hbTable?.selection?.selected?.length == 0 ? 'None' : hbTable?.selection?.selected }}&lt;/p&gt;
+&lt;p&gt;{{ '{{' }} hbTable?.selection?.selected?.length == 0 ? 'None' : hbTable?.selection?.selected &#125;&#125;&lt;/p&gt;
 </pre>
                 </code>
             </mat-tab>
@@ -182,17 +182,17 @@ class UserInfo {{ '{' }}
                     <pre>
 tableData: UserInfo[] = ...;
 matGridData: MatTableDataSource&lt;UserInfo&gt;;
-@ViewChild('table') hbTable: HbMatTable | undefined;
+&#64;ViewChild('table') hbTable: HbMatTable | undefined;
 
 constructor() {{ '{' }}
     this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
-}
+&#125;
 
 ngAfterViewInit(): void {{ '{' }}
     // the view child properties are undefined initially, and referencing the
     // selection directly causes an Expression Changed error without this.
     this.changeDetectorRef.detectChanges();
-}
+&#125;
 
 class UserInfo {{ '{' }}
     userId: number | null = null;
@@ -200,7 +200,7 @@ class UserInfo {{ '{' }}
     lastName: string | null = null;
     age: number | null = null;
     birthDate: Date | null = null;
-}
+&#125;
 </pre>
                 </code>
             </mat-tab>
@@ -243,7 +243,7 @@ class UserInfo {{ '{' }}
     &lt;hb-mat-table-column name="birthDate" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
 &lt;/hb-mat-table&gt;
 &lt;h4&gt;Selected Row:&lt;/h4&gt;
-&lt;p&gt;{{ '{{' }} hbTable?.selection?.selected?.length == 0 ? 'None' : hbTable?.selection?.selected }}&lt;/p&gt;
+&lt;p&gt;{{ '{{' }} hbTable?.selection?.selected?.length == 0 ? 'None' : hbTable?.selection?.selected &#125;&#125;&lt;/p&gt;
 </pre>
                 </code>
             </mat-tab>
@@ -252,17 +252,17 @@ class UserInfo {{ '{' }}
                     <pre>
 tableData: UserInfo[] = ...;
 matGridData: MatTableDataSource&lt;UserInfo&gt;;
-@ViewChild('table') hbTable: HbMatTable | undefined;
+&#64;ViewChild('table') hbTable: HbMatTable | undefined;
 
 constructor() {{ '{' }}
     this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
-}
+&#125;
 
 ngAfterViewInit(): void {{ '{' }}
     // the view child properties are undefined initially, and referencing the
     // selection directly causes an Expression Changed error without this.
     this.changeDetectorRef.detectChanges();
-}
+&#125;
 
 class UserInfo {{ '{' }}
     userId: number | null = null;
@@ -270,7 +270,7 @@ class UserInfo {{ '{' }}
     lastName: string | null = null;
     age: number | null = null;
     birthDate: Date | null = null;
-}
+&#125;
 </pre>
                 </code>
             </mat-tab>
@@ -314,11 +314,11 @@ class UserInfo {{ '{' }}
     &lt;hb-mat-table-column name="birthDate" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
 &lt;/hb-mat-table&gt;
 &lt;h4&gt;Selected Row:&lt;/h4&gt;
-&lt;p&gt;{{ '{{' }} hbTable?.selection?.selected?.length == 0 ? 'None' : hbTable?.selection?.selected }}&lt;/p&gt;
+&lt;p&gt;{{ '{{' }} hbTable?.selection?.selected?.length == 0 ? 'None' : hbTable?.selection?.selected &#125;&#125;&lt;/p&gt;
 &lt;h4&gt;Selected Row, Parsed and Displayed with JsonPipe:&lt;/h4&gt;
-&lt;p&gt;{{ '{{' }} selectedJson | json  }}&lt;/p&gt;
+&lt;p&gt;{{ '{{' }} selectedJson | json  &#125;&#125;&lt;/p&gt;
 &lt;h4&gt;Selected Row, Parsed and Displaying the 'userId' Property:&lt;/h4&gt;
-&lt;p&gt;{{ '{{' }} selectedJson?.userId  }}&lt;/p&gt;
+&lt;p&gt;{{ '{{' }} selectedJson?.userId  &#125;&#125;&lt;/p&gt;
 </pre>
                 </code>
             </mat-tab>
@@ -327,24 +327,24 @@ class UserInfo {{ '{' }}
                     <pre>
 tableData: UserInfo[] = ...;
 matGridData: MatTableDataSource&lt;UserInfo&gt;;
-@ViewChild('table') hbTable: HbMatTable | undefined;
+&#64;ViewChild('table') hbTable: HbMatTable | undefined;
 
 get selectedJson(): any | null {{ '{' }}
     if (this.hbTable?.selection && this.hbTable.selection.selected.length > 0)
         return JSON.parse(this.hbTable.selection.selected[0]);
 
     return null;
-}
+&#125;
 
 constructor() {{ '{' }}
     this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
-}
+&#125;
 
 ngAfterViewInit(): void {{ '{' }}
     // the view child properties are undefined initially, and referencing the
     // selection directly causes an Expression Changed error without this.
     this.changeDetectorRef.detectChanges();
-}
+&#125;
 
 class UserInfo {{ '{' }}
     userId: number | null = null;
@@ -352,7 +352,7 @@ class UserInfo {{ '{' }}
     lastName: string | null = null;
     age: number | null = null;
     birthDate: Date | null = null;
-}
+&#125;
 </pre>
                 </code>
             </mat-tab>
@@ -396,11 +396,11 @@ class UserInfo {{ '{' }}
     &lt;hb-mat-table-column name="birthDate" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
 &lt;/hb-mat-table&gt;
 &lt;h4&gt;Selected Row:&lt;/h4&gt;
-&lt;p&gt;{{ '{{' }} hbTable?.selection?.selected?.length == 0 ? 'None' : hbTable?.selection?.selected }}&lt;/p&gt;
+&lt;p&gt;{{ '{{' }} hbTable?.selection?.selected?.length == 0 ? 'None' : hbTable?.selection?.selected &#125;&#125;&lt;/p&gt;
 &lt;h4&gt;Selected Row, Parsed and Displayed with JsonPipe:&lt;/h4&gt;
-&lt;p&gt;{{ '{{' }} selectedJson | json  }}&lt;/p&gt;
+&lt;p&gt;{{ '{{' }} selectedJson | json  &#125;&#125;&lt;/p&gt;
 &lt;h4&gt;Selected Row, Parsed and Displaying the 'userId' Property:&lt;/h4&gt;
-&lt;p&gt;{{ '{{' }} selectedJson?.length > 1 ? selectedJson[1].userId : null  }}&lt;/p&gt;
+&lt;p&gt;{{ '{{' }} selectedJson?.length > 1 ? selectedJson[1].userId : null  &#125;&#125;&lt;/p&gt;
 
 </pre>
                 </code>
@@ -410,30 +410,30 @@ class UserInfo {{ '{' }}
                     <pre>
 tableData: UserInfo[] = ...;
 matGridData: MatTableDataSource&lt;UserInfo&gt;;
-@ViewChild('table') hbTable: HbMatTable | undefined;
+&#64;ViewChild('table') hbTable: HbMatTable | undefined;
 
 get selectedJson(): any | null {{ '{' }}
     if (this.hbTable?.selection && this.hbTable.selection.selected.length > 0) {{ '{' }}
         // the selected value is an array of strings. Parse all of them to get an array of objects.
         let selectedObjects: UserInfo[] = this.hbTable.selection.selected.map((val: any) => {{ '{' }}
             return JSON.parse(val);
-        });
+        &#125;);
 
         return selectedObjects;
-    }
+    &#125;
 
     return null;
-}
+&#125;
 
 constructor() {{ '{' }}
     this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
-}
+&#125;
 
 ngAfterViewInit(): void {{ '{' }}
     // the view child properties are undefined initially, and referencing the
     // selection directly causes an Expression Changed error without this.
     this.changeDetectorRef.detectChanges();
-}
+&#125;
 
 class UserInfo {{ '{' }}
     userId: number | null = null;
@@ -441,7 +441,7 @@ class UserInfo {{ '{' }}
     lastName: string | null = null;
     age: number | null = null;
     birthDate: Date | null = null;
-}
+&#125;
 </pre>
                 </code>
             </mat-tab>

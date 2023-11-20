@@ -48,7 +48,7 @@ matGridData: MatTableDataSource&lt;UserInfo&gt;;
 
 constructor() {{ '{' }}
     this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
-}
+{{ '}' }}
 
 class UserInfo {{ '{' }}
     userId: number | null = null;
@@ -56,7 +56,7 @@ class UserInfo {{ '{' }}
     lastName: string | null = null;
     age: number | null = null;
     birthDate: Date | null = null;
-}
+{{ '}' }}
 </pre>
                 </code>
             </mat-tab>
@@ -99,7 +99,7 @@ matGridData: MatTableDataSource&lt;UserInfo&gt;;
 
 constructor() {{ '{' }}
     this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
-}
+{{ '}' }}
 
 class UserInfo {{ '{' }}
     userId: number | null = null;
@@ -107,7 +107,7 @@ class UserInfo {{ '{' }}
     lastName: string | null = null;
     age: number | null = null;
     birthDate: Date | null = null;
-}
+{{ '}' }}
 </pre>
                 </code>
             </mat-tab>
@@ -152,7 +152,7 @@ matGridData: MatTableDataSource&lt;UserInfo&gt;;
 
 constructor() {{ '{' }}
     this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
-}
+{{ '}' }}
 
 class UserInfo {{ '{' }}
     userId: number | null = null;
@@ -160,7 +160,7 @@ class UserInfo {{ '{' }}
     lastName: string | null = null;
     age: number | null = null;
     birthDate: Date | null = null;
-}
+{{ '}' }}
 </pre>
                 </code>
             </mat-tab>
@@ -199,7 +199,7 @@ class UserInfo {{ '{' }}
     &lt;hb-mat-table-column name="firstName"&gt;&lt;/hb-mat-table-column&gt;
     &lt;hb-mat-table-column name="lastName"&gt;&lt;/hb-mat-table-column&gt;
     &lt;hb-mat-table-column name="fullName"&gt;
-        &lt;div *hbMatTableColumnTemplate="let data"&gt;{{ '{{' }} data.lastName }}, {{ '{{' }} data.firstName }}&lt;/div&gt;
+        &lt;div *hbMatTableColumnTemplate="let data"&gt;{{ '{{' }} data.lastName {{ '}' }}{{ '}' }}, {{ '{{' }} data.firstName {{ '}' }}{{ '}' }}&lt;/div&gt;
     &lt;/hb-mat-table-column&gt;
     &lt;hb-mat-table-column name="age" dataType="number"&gt;&lt;/hb-mat-table-column&gt;
     &lt;hb-mat-table-column name="birthDate" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
@@ -226,12 +226,12 @@ constructor() {{ '{' }}
                 if (data.birthDate == null) return 0;
                 return data.birthDate.valueOf();
             case 'fullName':
-                return `${{ '{' }}data.lastName} ${{ '{' }}data.firstName}`;
-        }
+                return `${{ '{' }}data.lastName{{ '}' }} ${{ '{' }}data.firstName{{ '}' }}`;
+        {{ '}' }}
 
         return '';
-    };
-}
+    {{ '}' }};
+{{ '}' }}
 
 class UserInfo {{ '{' }}
     userId: number | null = null;
@@ -239,7 +239,68 @@ class UserInfo {{ '{' }}
     lastName: string | null = null;
     age: number | null = null;
     birthDate: Date | null = null;
-}
+{{ '}' }}
+</pre>
+                </code>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Default Initial Sorting</mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>
+            To apply an initial sort to the table, add an <code>hb-mat-table-sort</code> element to the table. To specify
+            the sorting direction, use the <code>direction</code> attribute, with a value of "asc" or "desc".
+        </p>
+        <p>
+            This utilizes the <code>MatSort</code> component, which does not currently support multi-column sorting.
+        </p>
+
+        <mat-tab-group>
+            <mat-tab label="Example">
+                <hb-mat-table [tableData]="matGridData05">
+                    <hb-mat-table-column name="firstName"></hb-mat-table-column>
+                    <hb-mat-table-column name="lastName"></hb-mat-table-column>
+                    <hb-mat-table-column name="age" dataType="number"></hb-mat-table-column>
+                    <hb-mat-table-column name="birthDate" dataType="date"></hb-mat-table-column>
+                    <hb-mat-table-sort>
+                        <hb-mat-table-sort-column name="lastName" />
+                    </hb-mat-table-sort>
+                </hb-mat-table>
+            </mat-tab>
+            <mat-tab label="Html">
+                <code>
+                    <pre>
+&lt;hb-mat-table [tableData]="matGridData"&gt;
+    &lt;hb-mat-table-column name="firstName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="lastName"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="age" dataType="number"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-column name="birthDate" dataType="date"&gt;&lt;/hb-mat-table-column&gt;
+    &lt;hb-mat-table-sort&gt;
+        &lt;hb-mat-table-sort-column name="lastName" /&gt;
+    &lt;/hb-mat-table-sort&gt;
+&lt;/hb-mat-table&gt;
+</pre>
+                </code>
+            </mat-tab>
+            <mat-tab label="TypeScript">
+                <code>
+                    <pre>
+tableData: UserInfo[] = ...;
+matGridData: MatTableDataSource&lt;UserInfo&gt;;
+
+constructor() {{ '{' }}
+    this.matGridData = new MatTableDataSource&lt;UserInfo&gt;(this.tableData);
+{{ '}' }}
+
+class UserInfo {{ '{' }}
+    userId: number | null = null;
+    firstName: string | null = null;
+    lastName: string | null = null;
+    age: number | null = null;
+    birthDate: Date | null = null;
+{{ '}' }}
 </pre>
                 </code>
             </mat-tab>

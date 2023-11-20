@@ -11,6 +11,8 @@ import { HbMatTableColumn } from '../hb-mat-table-column/hb-mat-table-column.com
 import { HbMatTableColumnHeaderPipe } from '../../pipes/hb-mat-table-column-header.pipe';
 import { HbMatTableColumnTemplateDirective } from '../../directives/hb-mat-table-column-template.directive';
 import { HbMatTableFooterTemplateDirective } from '../../directives/hb-mat-table-footer-template.directive';
+import { HbMatTableSort } from '../hb-mat-table-sort/hb-mat-table-sort.component';
+import { HbMatTableSortColumn } from '../hb-mat-table-sort-column/hb-mat-table-sort-column.component';
 import { DateTime } from 'luxon';
 import { DatePipe, DecimalPipe, PercentPipe } from '@angular/common';
 
@@ -24,10 +26,15 @@ describe('HbMatTable', () => {
                     HbMatTableColumnHeaderPipe,
                     HbMatTableColumnTemplateDirective,
                     HbMatTableFooterTemplateDirective,
+                    HbMatTableSort,
+                    HbMatTableSortColumn,
                     MockBasicTableOneRow,
                     MockBasicTableOneRowLongColumnName,
                     MockBasicTableOneRowCustomColumnRendering,
                     MockBasicTableOneRowColumnDataTypes,
+                    MockBasicTableInitialSortImpliedDirection,
+                    MockBasicTableInitialSortAsc,
+                    MockBasicTableInitialSortDesc,
                 ],
                 imports: [
                     MatCheckboxModule,
@@ -106,6 +113,59 @@ describe('HbMatTable', () => {
             ]);
     });
 
+    it('basic table with initial sort', () => {
+        const fixture = TestBed.createComponent(MockBasicTableInitialSortImpliedDirection);
+        fixture.detectChanges();
+
+        const tableElement = fixture.nativeElement.querySelector('table')!;
+        const data = fixture.componentInstance.componentData.data;
+
+        // the default direction is ascending
+        data.sort((a, b) => a.column2.localeCompare(b.column2));
+
+        const expectedData = [['Column1', 'Column2']];
+        data.forEach(row => {
+            expectedData.push([row.column1, row.column2]);
+        })
+
+        expectTableToMatchContent(tableElement, expectedData);
+    });
+
+    it('basic table with initial sort asc', () => {
+        const fixture = TestBed.createComponent(MockBasicTableInitialSortAsc);
+        fixture.detectChanges();
+
+        const tableElement = fixture.nativeElement.querySelector('table')!;
+        const data = fixture.componentInstance.componentData.data;
+
+        // the default direction is ascending
+        data.sort((a, b) => a.column2.localeCompare(b.column2));
+
+        const expectedData = [['Column1', 'Column2']];
+        data.forEach(row => {
+            expectedData.push([row.column1, row.column2]);
+        })
+
+        expectTableToMatchContent(tableElement, expectedData);
+    });
+
+    it('basic table with initial sort desc', () => {
+        const fixture = TestBed.createComponent(MockBasicTableInitialSortDesc);
+        fixture.detectChanges();
+
+        const tableElement = fixture.nativeElement.querySelector('table')!;
+        const data = fixture.componentInstance.componentData.data;
+
+        // the default direction is ascending
+        data.sort((a, b) => a.column2.localeCompare(b.column2)).reverse();
+
+        const expectedData = [['Column1', 'Column2']];
+        data.forEach(row => {
+            expectedData.push([row.column1, row.column2]);
+        })
+
+        expectTableToMatchContent(tableElement, expectedData);
+    });
 });
 
 @Component({
@@ -117,7 +177,7 @@ describe('HbMatTable', () => {
     `,
 })
 class MockBasicTableOneRow {
-    componentData: MatTableDataSource<any> = new MatTableDataSource<any>([{
+    componentData: MatTableDataSource<any> = new MatTableDataSource<any>([{ // eslint-disable-line @typescript-eslint/no-explicit-any
         'column1': 'row01 cell01',
         'column2': 'row01 cell02',
     }]);
@@ -132,7 +192,7 @@ class MockBasicTableOneRow {
     `,
 })
 class MockBasicTableOneRowLongColumnName {
-    componentData: MatTableDataSource<any> = new MatTableDataSource<any>([{
+    componentData: MatTableDataSource<any> = new MatTableDataSource<any>([{ // eslint-disable-line @typescript-eslint/no-explicit-any
         'column1': 'row01 cell01',
         'thisIsColumnTwo': 'row01 cell02',
     }]);
@@ -152,7 +212,7 @@ class MockBasicTableOneRowLongColumnName {
 class MockBasicTableOneRowColumnDataTypes {
     testDate = new Date(2020, 3, 9, 4, 12, 24, 356);
 
-    componentData: MatTableDataSource<any> = new MatTableDataSource<any>([{
+    componentData: MatTableDataSource<any> = new MatTableDataSource<any>([{ // eslint-disable-line @typescript-eslint/no-explicit-any
         'stringColumn': 'row01 cell01',
         'numberColumn': 12345.6789,
         'dateIsoColumn': DateTime.fromJSDate(this.testDate).toISO(),
@@ -172,10 +232,106 @@ class MockBasicTableOneRowColumnDataTypes {
     `,
 })
 class MockBasicTableOneRowCustomColumnRendering {
-    componentData: MatTableDataSource<any> = new MatTableDataSource<any>([{
+    componentData: MatTableDataSource<any> = new MatTableDataSource<any>([{ // eslint-disable-line @typescript-eslint/no-explicit-any
         'column1': 'row01 cell01',
         'column2': 'row01 cell02',
     }]);
+}
+
+@Component({
+    template: `
+        <hb-mat-table [tableData]="componentData">
+            <hb-mat-table-column name="column1"></hb-mat-table-column>
+            <hb-mat-table-column name="column2"></hb-mat-table-column>
+            <hb-mat-table-sort>
+                <hb-mat-table-sort-column name="column2" />
+            </hb-mat-table-sort>
+        </hb-mat-table>
+    `,
+})
+class MockBasicTableInitialSortImpliedDirection {
+    componentData: MatTableDataSource<any> = new MatTableDataSource<any>([ // eslint-disable-line @typescript-eslint/no-explicit-any
+        {
+            'column1': 'row01 cell01',
+            'column2': 'abc',
+        },
+        {
+            'column1': 'row02 cell01',
+            'column2': 'xyz',
+        },
+        {
+            'column1': 'row03 cell01',
+            'column2': 'def',
+        },
+        {
+            'column1': 'row04 cell01',
+            'column2': 'lmn',
+        },
+    ]);
+}
+
+@Component({
+    template: `
+        <hb-mat-table [tableData]="componentData">
+            <hb-mat-table-column name="column1"></hb-mat-table-column>
+            <hb-mat-table-column name="column2"></hb-mat-table-column>
+            <hb-mat-table-sort>
+                <hb-mat-table-sort-column name="column2" direction="asc" />
+            </hb-mat-table-sort>
+        </hb-mat-table>
+    `,
+})
+class MockBasicTableInitialSortAsc {
+    componentData: MatTableDataSource<any> = new MatTableDataSource<any>([ // eslint-disable-line @typescript-eslint/no-explicit-any
+        {
+            'column1': 'row01 cell01',
+            'column2': 'abc',
+        },
+        {
+            'column1': 'row02 cell01',
+            'column2': 'xyz',
+        },
+        {
+            'column1': 'row03 cell01',
+            'column2': 'def',
+        },
+        {
+            'column1': 'row04 cell01',
+            'column2': 'lmn',
+        },
+    ]);
+}
+
+@Component({
+    template: `
+        <hb-mat-table [tableData]="componentData">
+            <hb-mat-table-column name="column1"></hb-mat-table-column>
+            <hb-mat-table-column name="column2"></hb-mat-table-column>
+            <hb-mat-table-sort>
+                <hb-mat-table-sort-column name="column2" direction="desc" />
+            </hb-mat-table-sort>
+        </hb-mat-table>
+    `,
+})
+class MockBasicTableInitialSortDesc {
+    componentData: MatTableDataSource<any> = new MatTableDataSource<any>([ // eslint-disable-line @typescript-eslint/no-explicit-any
+        {
+            'column1': 'row01 cell01',
+            'column2': 'abc',
+        },
+        {
+            'column1': 'row02 cell01',
+            'column2': 'xyz',
+        },
+        {
+            'column1': 'row03 cell01',
+            'column2': 'def',
+        },
+        {
+            'column1': 'row04 cell01',
+            'column2': 'lmn',
+        },
+    ]);
 }
 
 
@@ -233,7 +389,7 @@ function getActualTableContent(tableElement: Element): string[][] {
     return actualTableContent.map(row => row.map(cell => cell.textContent!.trim()));
 }
 
-export function expectTableToMatchContent(tableElement: Element, expected: any[]) {
+export function expectTableToMatchContent(tableElement: Element, expected: any[]) { // eslint-disable-line @typescript-eslint/no-explicit-any
     const missedExpectations: string[] = [];
     function checkCellContent(actualCell: string, expectedCell: string) {
         if (actualCell !== expectedCell) {

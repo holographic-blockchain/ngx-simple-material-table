@@ -10,14 +10,14 @@ import { DataService } from '../../services/data.service';
     encapsulation: ViewEncapsulation.None,
 })
 export class StyleExamplesComponent {
-    matStyleGridData: MatTableDataSource<any>;
+    matStyleGridData: MatTableDataSource<any>; // eslint-disable-line @typescript-eslint/no-explicit-any
     matGridData01: MatTableDataSource<UserInfo>;
     matGridData02: MatTableDataSource<UserInfo>;
     matGridData03: MatTableDataSource<UserInfo>;
     matGridData04: MatTableDataSource<UserInfo>;
 
     constructor(private dataService: DataService) {
-        this.matStyleGridData = new MatTableDataSource<any>([
+        this.matStyleGridData = new MatTableDataSource<any>([ // eslint-disable-line @typescript-eslint/no-explicit-any
             {
                 'htmlElement': 'table',
                 'cssClasses': 'mat-mdc-table mdc-data-table__table cdk-table',
