@@ -13,6 +13,7 @@ export class SortingExamplesComponent {
     matGridData02: MatTableDataSource<UserInfo>;
     matGridData03: MatTableDataSource<UserInfo>;
     matGridData04: MatTableDataSource<UserInfo>;
+    matGridData05: MatTableDataSource<UserInfo>;
 
     constructor(private dataService: DataService) {
         this.matGridData01 = new MatTableDataSource<UserInfo>(this.dataService.gridData);
@@ -35,5 +36,6 @@ export class SortingExamplesComponent {
 
             return '';
         };
+        this.matGridData05 = new MatTableDataSource<UserInfo>(this.dataService.gridData);
     }
 }
