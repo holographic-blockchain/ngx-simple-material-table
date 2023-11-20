@@ -23,17 +23,17 @@ export class FilteringExamplesComponent implements AfterViewInit {
     get gridFilter01(): string {
         return this._gridFilter01;
     }
-    get gridFilter02(): string {
-        return this._gridFilter02;
-    }
-
-    set gridFilter02(value: string) {
-        this._gridFilter02 = value;
-        this.matGridData02.filter = value;
-    }
     set gridFilter01(value: string) {
         this._gridFilter01 = value;
         this.matGridData01.filter = value;
+    }
+
+    get gridFilter02(): string {
+        return this._gridFilter02;
+    }
+    set gridFilter02(value: string) {
+        this._gridFilter02 = value;
+        this.matGridData02.filter = value;
     }
 
     ngAfterViewInit(): void {

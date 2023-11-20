@@ -54,7 +54,6 @@ export class HbMatTable implements AfterViewInit {
     }
 
     ngAfterViewInit(): void {
-        console.debug('table after view init');
         // if the sort property hasn't been set, set it (this allows the user to override if they want).
         if (!this.tableData.sort) {
             this.tableData.sort = this.sort;
@@ -120,7 +119,7 @@ export class HbMatTable implements AfterViewInit {
     /** Builds the row's key used by the selection model. Objects are by reference, so stringify the key to allow for comparisons. */
     private buildRowKey(row: any): any {
         if (this.rowKey) {
-            let key: any = {};
+            const key: any = {};
             this.rowKey.forEach(propName => {
                 key[propName] = row[propName];
             });

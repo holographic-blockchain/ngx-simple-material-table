@@ -45,7 +45,7 @@ export class SelectionExamplesComponent implements AfterViewInit {
         if (this.table06?.selection && this.table06.selection.selected.length > 0) {
 
             // the selected value is an array of strings. Parse all of them to get an array of objects.
-            let selectedObjects: UserInfo[] = this.table06.selection.selected.map((val: any) => {
+            const selectedObjects: UserInfo[] = this.table06.selection.selected.map((val: any) => {
                 return JSON.parse(val);
             });
 
