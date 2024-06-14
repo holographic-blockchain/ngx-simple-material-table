@@ -14,7 +14,7 @@
         "lint": "ng lint dev-tests",
         "lint-lib": "ng lint ngx-simple-material-table"
     },
-    "private": false,
+    "private": true,
     "dependencies": {
         "@angular/animations": "18.0.3",
         "@angular/cdk": "18.0.3",
