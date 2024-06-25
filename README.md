@@ -32,6 +32,10 @@ workspaces/examples application. This readme only contains more common examples.
 
 ## Release Notes
 
+### Release 18.x
+
+- Support Angular 18.
+
 ### Release 17.x
 
 - Added support for an initial sort definition.
