@@ -22,7 +22,7 @@
     "@angular/platform-browser-dynamic": "18.2.13",
     "@angular/router": "18.2.13",
     "luxon": "3.4.4",
-    "ngx-simple-material-table": "18.0.1",
+    "ngx-simple-material-table": "18.0.2",
     "rxjs": "7.8.1",
     "tslib": "2.5.3",
     "zone.js": "0.14.10"
